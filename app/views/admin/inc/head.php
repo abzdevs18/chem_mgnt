@@ -12,9 +12,6 @@
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>	
 	<script src="https://cdn.tiny.cloud/1/hhu3aczt7p034dcjnizjwnns5faj5u4s14e894midesztea0/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
-<!-- 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css"/>
-	<script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script> -->
-
 	<style>
 		@import url("<?=URL_ROOT;?>/css/static-style.css");
 
@@ -58,7 +55,7 @@
 	<!-- Base on the documentation, if multiple editors we need to initialize each -->
 	<script>
 		$( function() {
-			$( document ).tooltip();
+			$('i').tooltip();
 		});
 	</script>
 </head>

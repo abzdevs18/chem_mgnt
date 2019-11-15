@@ -440,3 +440,7 @@ function precaution(icon,label_text,label_background,content,content_background)
   $(".warning_content").css("background-color",content_background);
 }
 // End of Precaution Selection
+
+$(document).on('click','.open_file_ex',function(){
+  $('.new_user_photo_set').show(50);
+});

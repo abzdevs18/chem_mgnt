@@ -130,15 +130,14 @@
 		<div class="msgs-acc">
 			<div class="msgs-container">
 				<div class="content-head">
-					<h2>Chemical and Bidders Logs</h2>
+					<h2>Faculty Messages</h2>
 				</div>	
 				<div id="msgs-update-3-col">
 					<div class="msgs-3-col-item">
 						<ul class="jobs-updates">
-							<li>Brand new lenovo laptop i5 for sale</li>
-							<li>Brand new lenovo laptop i5 for sale</li>
-							<li>Brand new lenovo laptop i5 for sale</li>
-							<li>Brand new lenovo laptop i5 for sale</li>
+							<li>Geology Department</li>
+							<li>Pharmacy Department</li>
+							<li>Chemistry Department</li>
 						</ul>
 					</div>
 					<div class="msgs-3-col-item">

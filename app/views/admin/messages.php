@@ -1,14 +1,14 @@
 <?php require_once APP_ROOT . '/views/admin/inc/head.php'; ?>
 
 	<section class="tg-dash">
-		<h1>id est laborum.</h1>
+		<h1>Administrator Messages</h1>
 	</section>
 
 	<section class="updates-msgs">
 		<div class="msgs-acc">
 			<div class="msgs-container">
 				<div class="content-head">
-					<h2>Job Messages/Bidders</h2>
+					<h2>Faculty Messages</h2>
 				</div>	
 				<div id="msgs-update-3-col">
 					<div class="msgs-3-col-item">
@@ -17,14 +17,31 @@
 							<i class="fal fa-search"></i>
 						</div>
 						<ul class="jobs-updates">
-							<li>Brand new lenovo laptop i5 for sale</li>
-							<li>Brand new lenovo laptop i5 for sale</li>
-							<li>Brand new lenovo laptop i5 for sale</li>
-							<li>Brand new lenovo laptop i5 for sale</li>
+							<li>Geology Department</li>
+							<li>Pharmacy Department</li>
+							<li>Chemistry Department</li>
 						</ul>
 					</div>
 					<div class="msgs-3-col-item">
 						<ul class="jobs-updates bidders">
+							<li>
+								<div>
+									<img src="<?=URL_ROOT?>/img/icons/small-prof.jpg" /> <span>Lissa Heir</span>								
+								</div>
+								<div class="pep-chat-list">
+									<span class="trash"><i class="fal fa-trash"></i></span>	
+									<span class="acc-status-online"></span>									
+								</div>
+							</li>
+							<li>
+								<div>
+									<img src="<?=URL_ROOT?>/img/icons/small-prof.jpg" /> <span>Lissa Heir</span>								
+								</div>
+								<div class="pep-chat-list">
+									<span class="trash"><i class="fal fa-trash"></i></span>	
+									<!-- <span class="acc-status-online"></span>									 -->
+								</div>
+							</li>
 							<li>
 								<div>
 									<img src="<?=URL_ROOT?>/img/icons/small-prof.jpg" /> <span>Lissa Heir</span>								

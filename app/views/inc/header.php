@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title><?=SITE_NAME;?></title>
 	<link rel="icon" type="image/x-icon" href="<?=URL_ROOT;?>/img/logo_icon/lab.ico">
+	<link rel="icon" type="image/x-icon" href="<?=URL_ROOT;?>/img/logo_icon/lab.ico">
 	<link rel="stylesheet" type="text/css" href="<?=URL_ROOT;?>/css/main.css">
 	<link
   rel="stylesheet"

@@ -47,7 +47,7 @@
 					</thead>
 					<tbody id="filter-job-container">
 						<!-- if job is close add row with class name "sold" -->
-						<?php for($i = 0; $i < 10; $i++) : ?>
+						<?php for($i = 0; $i < 5; $i++) : ?>
 						<tr class="req_logs_">
 							<td style="text-align: center;">
 								<input type="checkbox" name="">

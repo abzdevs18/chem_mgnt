@@ -10,15 +10,15 @@
 				<div class="content-head">
 					<h2>User Photo</h2>
 				</div>
-				<div class="prof-container admin-prof" style="display:none;">
-					<div style="margin-bottom:0px;background:url('<?=URL_ROOT?>/img/default/kalen-emsley-Bkci_8qcdvQ-unsplash.jpg');background-position: center;background-size: cover;background-repeat: no-repeat;border: none;box-shadow: var(--box-shadow);">
+				<div class="prof-container admin-prof new_user_photo_set" style="display:none;">
+					<div style="margin-bottom:0px;background:url('<?=URL_ROOT?>/img/default/kalen-emsley-Bkci_8qcdvQ-unsplash.jpg');background-position: center;background-size: cover;background-repeat: no-repeat;border: none;box-shadow: var(--box-shadow);width: 50%;border-radius: 50%;margin: 20px auto 0px;">
 					</div>
 				</div>
 				<div class="prof-container admin-prof">
 					<div>
 						<p>Drop files anywhere to upload</p>
 						<p>Or</p>
-						<button class="tg-btn" type="button">Select Files</button>
+						<button class="tg-btn open_file_ex" type="button">Select Files</button>
 					</div>
 				</div>
 			</div>

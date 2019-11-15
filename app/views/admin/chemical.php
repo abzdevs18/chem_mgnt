@@ -39,48 +39,52 @@
 					<thead>
 						<tr>
 							<th><input type="checkbox" name=""></th>
-							<th>Job Tittle</th>
-							<th>Category</th>
-							<th>Featured</th>
-							<th>Job Status</th>
-							<th>Price & Location</th>
-							<th>Due Date</th>
+							<th>Chemical Name</th>
+							<th>Chemical Formula</th>
+							<th>Mol. Wt.</th>
+							<th>% Assay</th>
+							<th>Quantity</th>
+							<th>Expiry Date</th>
+							<th>Brand</th>
 							<th>Actions</th>
 						</tr>
 					</thead>
 					<tbody>
-						<?php foreach($data['job'] AS $job) : ?>
+						<?php for($i = 0; $i < 5; $i++) : ?>
 						<tr>
-							<td style="text-align: center;">
+							<td style="text-align: center;" valign="middle">
 								<input type="checkbox" name="">
 							</td>
-							<td class="tittle-id">
-								<h3><?=$job->jTitle;?></h3>
-								<span>Ad ID: <?=$job->jId;?></span>
+							<td class="tittle-id" valign="middle">
+								<h3>Ammonium Sulphate  AR Grade  </h3>
+								<span>Chemical ID: 20190321341</span>
+							</td> 
+							<td class="item-cat" valign="middle">
+								<span>(NH<sub>4</sub>)2SO<sub>3</sub></span>	
 							</td>
 							<td class="item-cat">
-								<span>Laptops & PCs</span>	
+								<span>77.08</span>	
 							</td>
 							<td>
-								<span>Yes</span>
-							</td>
-							<td class="status-job">
-								<span>Active</span>
+								<span>98%</span>
 							</td>
 							<td class="price-loc">								
-								<h3>P <?=$job->jSalary;?></h3>
+								<h3>250 g</h3>
 								<span><?=$job->comLoc;?></span>
 							</td>
 							<td class="date-pub">								
-								<h4 style="margin-bottom: 10px;"><?=$job->jDeadline;?></h4>
-								<span>Published</span>
+								<h4 style="margin-bottom: 10px;">Dec. 13, 2020</h4>
+							</td>
+							<td class="item-cat">
+								<span>UNIVAR</span>
 							</td>
 							<td class="action-btn">
 								<span class="eye"><i class="fal fa-eye"></i></span>
+								<span class="pencil"><i class="fal fa-pencil-alt"></i></span>
 								<span class="trash"><i class="fal fa-trash"></i></span>
 							</td>
 						</tr>
-						<?php endforeach; ?>
+						<?php endfor; ?>
 					</tbody>
 				</table>
 			</div><!-- End of Table Design -->

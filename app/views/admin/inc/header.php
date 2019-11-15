@@ -12,12 +12,24 @@
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css"/>
 	<script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
+	<script src="https://raw.githubusercontent.com/superRaytin/paginationjs/master/dist/pagination.js"></script>
 
 
 	<script src="<?=URL_ROOT;?>/js/admin_script.js"></script>
 	<style type="text/css">		
 		@import url("<?=URL_ROOT;?>/css/static_style.css");
 	</style>
+	<!-- Pagination -->
+	<script>
+		$('#pagination-container').pagination({
+			dataSource: [1, 2, 3, 4, 5, 6, 7, ... , 195],
+			callback: function(data, pagination) {
+				// template method of yourself
+				var html = template(data);
+				$('#data-container').html(html);
+			}
+		});
+	</script>
 </head>
 <body style="width: auto !important;">
 	<main>

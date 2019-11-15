@@ -11,7 +11,7 @@
 			define('APP_ROOT', dirname(dirname(__FILE__)));
 
 			//URL ROOT
-			define('URL_ROOT', 'https://localhost/chem');
+			define('URL_ROOT', 'https://192.168.0.35/chem');
 
 			//SITE NAME
 			define('SITE_NAME', 'Chem Management System');

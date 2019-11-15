@@ -11,10 +11,10 @@
 			define('APP_ROOT', dirname(dirname(__FILE__)));
 
 			//URL ROOT
-			define('URL_ROOT', 'https://192.168.0.35/chem');
+			define('URL_ROOT', 'https://localhost/chem');
 
 			//SITE NAME
-			define('SITE_NAME', 'Chem Management System');
+			define('SITE_NAME', 'Help Agency');
 
 			//SALT
 			define('SECURE_SALT', 'k<UL?Gxr%6bTv[IX5h>s)vaEurK]4Sn');

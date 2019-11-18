@@ -4,14 +4,14 @@
 
 			define('DB_HOST', 'localhost');
 			define('DB_USER', 'root');
-			define('DB_PASS', '');
-			define('DB_NAME', 'ch_mgnt');
+			define('DB_PASS', 'D3b1an!?');
+			define('DB_NAME', 'ss');
 
 			//APP ROOT
 			define('APP_ROOT', dirname(dirname(__FILE__)));
 
 			//URL ROOT
-			define('URL_ROOT', 'https://localhost/chem');
+			define('URL_ROOT', 'https://192.168.0.35/chem');
 
 			//SITE NAME
 			define('SITE_NAME', 'Help Agency');

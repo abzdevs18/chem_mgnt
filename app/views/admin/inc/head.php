@@ -10,8 +10,9 @@
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="<?=URL_ROOT;?>/css/jquery.mCustomScrollbar.css">
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>	
 	<script src="https://cdn.tiny.cloud/1/hhu3aczt7p034dcjnizjwnns5faj5u4s14e894midesztea0/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-
+	
 	<style>
 		@import url("<?=URL_ROOT;?>/css/static-style.css");
 
@@ -122,7 +123,7 @@
 			<div id="head_name">
 				<div class="request_icon_wrapper m_icon">
 					<div class="req_icon m_icon_req">
-						<span>IV</span>
+						<span>M</span>
 					</div>
 					<div style="margin:5px;margin-top:11px;" class="m_head_req">
 						<h3>Clint Anthony Abueva</h3>
@@ -181,7 +182,7 @@
 					</div>
 					<div class="request_icon_wrapper" style="margin-top:4px;margin-bottom:5px;">
 						<div class="req_icon m_notif_icon">
-							<span>KS</span>
+							<span>K</span>
 						</div>
 						<div style="margin:5px;" class="m_notif_content">
 							<b>Kate Saycon</b>

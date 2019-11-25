@@ -42,6 +42,7 @@
 							<th>User Type</th>
 							<th>Department</th>
 							<th>Student No.</th>
+							<th>Status</th>
 							<th>Actions</th>
 						</tr>
 					</thead>
@@ -71,6 +72,9 @@
 							</td>
 							<td>
 								<span>02131011</span>
+							</td>
+							<td>
+								<span>Pending</span>
 							</td>
 							<td class="action-btn">
 								<span class="eye" data-jId="<?=$job->jId;?>"><i class="fal fa-eye"></i></span>

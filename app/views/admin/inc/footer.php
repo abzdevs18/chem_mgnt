@@ -11,6 +11,7 @@
 	<script src="<?=URL_ROOT;?>/js/push.min.js"></script>
 	<script src="<?=URL_ROOT;?>/js/main.js"></script>
 	<script src="<?=URL_ROOT;?>/js/admin_script.js"></script>
+	<script src="<?=URL_ROOT;?>/js/graph_representation.js"></script>
 	<!-- <script src="https://cdn.tiny.cloud/1/hhu3aczt7p034dcjnizjwnns5faj5u4s14e894midesztea0/tinymce/5/tinymce.min.js"></script>  -->
 </body>
 </html>

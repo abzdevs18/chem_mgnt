@@ -32,6 +32,20 @@ class user
 
 	}
 
+	public function modLog($data){
+		$this->db->query("INSERT INTO `ch_log`(`user_id`, `is_admin`, `date_login`, `log_type`) VALUES (:user_id, :is_admin, :date_login, :log_type)");
+		$this->db->bind(':user_id', $data['uId']);
+		$this->db->bind(':is_admin', $data['is_admin']);
+		$this->db->bind(':date_login', $data['date_login']);
+		$this->db->bind(':log_type', $data['log_type']);
+
+		if ($this->db->execute()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	public function findUserEmail($email){
 		$this->db->query("SELECT * FROM user_email WHERE email_add = :email_add");
 		$this->db->bind(':email_add', $email);

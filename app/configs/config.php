@@ -11,7 +11,7 @@
 			define('APP_ROOT', dirname(dirname(__FILE__)));
 
 			//URL ROOT
-			define('URL_ROOT', 'http://192.168.0.28/chem');
+			define('URL_ROOT', 'https://chemlab.cf');
 
 			//SITE NAME
 			define('SITE_NAME', 'Help Agency');

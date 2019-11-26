@@ -245,11 +245,22 @@ class Init extends Controller
 					$data['status'] = 1;
 					$this->createUserSession($loggedIn);
 					// var_dump($loggedIn);
-					$arr = [
-						"data" => $data,
-						"row" => $loggedIn
+					$time = date("D, M d, g:i A");
+					// $date = date("M. d, Y");
+					// $time = date("h:i a");
+					$log = [
+						"uId" => $_SESSION['uId'],
+						"is_admin" => $_SESSION['is_admin'],
+						"date_login" => $time,
+						"log_type" => 1,
 					];
-					echo json_encode($arr);
+					if($this->userModel->modLog($log)){
+						$arr = [
+							"data" => $data,
+							"row" => $loggedIn
+						];
+						echo json_encode($arr);
+					}
 				}else{
 					$data['status'] = 2;
 

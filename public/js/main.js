@@ -16,25 +16,25 @@
   });
 })(jQuery);
 /*ENd ScrollBar*/
-// var URL_ROOT = '/chem';
-var URL_ROOT = "";
-$(document).on("click", ".save-btn", function(e) {
-  e.preventDefault();
-  var data = $("#chemicalAdd").serializeArray();
+var URL_ROOT = "/chem";
+// var URL_ROOT = "";
+// $(document).on("click", ".save-btn", function(e) {
+//   e.preventDefault();
+//   var data = $("#chemicalAdd").serializeArray();
 
-  $.ajax({
-    url: URL_ROOT + "/admin/add",
-    type: "POST",
-    data: $.param(data),
-    success: function(e) {
-      console.log(e);
-    },
-    error: function(_e) {
-      console.log("l");
-    }
-  });
-  console.log(data);
-});
+//   $.ajax({
+//     url: URL_ROOT + "/admin/add",
+//     type: "POST",
+//     data: $.param(data),
+//     success: function(e) {
+//       console.log(e);
+//     },
+//     error: function(_e) {
+//       console.log("l");
+//     }
+//   });
+//   console.log(data);
+// });
 
 $(document).on("click", ".setup-btn", function() {
   var form = $(this).attr("data-form");
@@ -277,9 +277,21 @@ $(document).on("click", ".login-admin", function() {
   login();
 });
 
+$(document).on("click", ".login-p-btn", function() {
+  login();
+  // console.log("s");
+});
+
 $("#loginCredentials").keypress(function(e) {
   if (e.keyCode == 13) {
     login();
+  }
+});
+
+$(".loginCredentials").keypress(function(e) {
+  if (e.keyCode == 13) {
+    login();
+    // console.log("s");
   }
 });
 function login() {

@@ -1,4 +1,4 @@
-var URL_ROOT = "";
+var URL_ROOT = "/chem";
 
 $(document).on("click", ".clip-path", function() {
   $("#side-navigation").toggleClass("sideNav-full");

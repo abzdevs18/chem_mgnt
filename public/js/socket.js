@@ -1,6 +1,6 @@
-var URL = "";
+var URL = "/chem";
 
-var sock = new WebSocket("wss://chemlab.cf/js/socket.js:5001");
+var sock = new WebSocket("ws://192.168.0.28:5001");
 // var log = document.getElementById("log");
 sock.onopen = function(event) {
   //   console.log("Connected");

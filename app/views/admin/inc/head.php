@@ -5,6 +5,7 @@
 	<link rel="icon" type="image/x-icon" href="<?=URL_ROOT;?>/img/logo_icon/lab.ico">
 	<link href="https://fonts.googleapis.com/css?family=Quicksand:400,500&display=swap" rel="stylesheet"> 
 	<link rel="stylesheet" type="text/css" href="https://cdndevelopment.blob.core.windows.net/cdn/fa/css/all.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="<?=URL_ROOT;?>/css/fa/css/all.min.css"> -->
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<link rel="stylesheet" type="text/css" href="<?=URL_ROOT;?>/css/style.css">
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -298,6 +299,10 @@
 							<li data-link="<?=URL_ROOT;?>/admin/privacy" class="<?=($_SESSION['menu_active']=="privacy") ? 'menu-active' : ''; ?>">
 								<i class="fal fa-shield-check"></i>
 								<a href="#"> Privacy settings</a>
+							</li>
+							<li data-link="<?=URL_ROOT;?>/admin/log" class="<?=($_SESSION['menu_active']=="log") ? 'menu-active' : ''; ?>">
+								<i class="fal fa-question-circle"></i>
+								<a href="#"> Logs</a>
 							</li>
 							<li data-link="<?=URL_ROOT;?>/users/signout">
 								<i class="fal fa-sign-out"></i>

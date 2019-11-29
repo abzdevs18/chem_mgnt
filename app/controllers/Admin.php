@@ -63,6 +63,15 @@ class Admin extends Controller
 		$this->view('admin/update-prof');
 	}
 
+	public function log(){
+		
+		// no other solution this is for the Left sidebar navigation
+		// the active state is dependent to this SESSION we are setting.
+		unset($_SESSION['menu_active']);
+		$_SESSION['menu_active'] = "log";
+
+		$this->view('admin/logs');
+	}
 	public function posted(){
 		$data = [
 			"one" => $this->breadcrump()

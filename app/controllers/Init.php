@@ -8,7 +8,7 @@ class Init extends Controller
 	private $salt = SECURE_SALT;
 	
 	function __construct(){
-		$this->initModel = $this->model('inits');
+		$this->initModel = $this->model('Inits');
 		$this->userModel = $this->model('user');	
 	}
 

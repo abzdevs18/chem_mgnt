@@ -9,7 +9,7 @@ class Admin extends Controller
 	{
 
 		if (file_exists( dirname(__FILE__) . '/../configs/config.php')) {
-			$this->Chem = $this->model('Chem');
+			$this->Chem = $this->model('chem');
 			$this->adminModel = $this->model('admins');
 			// $this->userModel = $this->model('user');
 			if (!isLoggedIn()) {

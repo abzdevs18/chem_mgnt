@@ -11,7 +11,7 @@ $(".content").mCustomScrollbar({
     autoHideScrollbar: true
 });
 /*ENd ScrollBar*/
-var URL_ROOT = '/chem';
+var URL_ROOT = '';
 $(document).on('click', '.save-btn', function(e){
 	e.preventDefault();
 	var data = $('#chemicalAdd').serializeArray();

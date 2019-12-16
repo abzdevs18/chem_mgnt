@@ -5,5 +5,5 @@ function redirect($page){
 }
 
 function setupRedirect($page){
-	header("Location: http://" . $_SERVER['SERVER_NAME'] . '/chem/' . $page);
+	header("Location: http://" . $_SERVER['SERVER_NAME'] . '/' . $page);
 }

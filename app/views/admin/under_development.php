@@ -48,7 +48,7 @@
 				<div class="changepass-holder half-row">
 					<div class="form-group">
                         <textarea id="chemicalFormula" name="mytextarea" value=""></textarea>
-						<label for="chemName">Chemical Formula</label>
+						<label for="chemName" style="z-index: 99;">Chemical Formula</label>
                     </div>
 				</div>
 				<div class="changepass-holder half-row">
@@ -114,7 +114,7 @@
 				<div class="request_icon_wrapper guide_icons caution_note_label" style="display:none;">
 					<div class="req_icon warning_icon">
 						<!-- <span>IV</span> -->
-						<img id="precaution_icon" src="<?=URL_ROOT;?>/img/icons/safety/precaution.png" alt="" style="width:100%;margin:10px;">
+						<img id="precaution_icon" src="/img/icons/safety/precaution.png" alt="" style="width:100%;margin:10px;">
 					</div>
 					<div class="m_notif_content warning_content">
 						<b id="precaution_label">Proceed with Caution</b>

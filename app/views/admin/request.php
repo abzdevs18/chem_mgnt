@@ -37,8 +37,8 @@
 				<table>
 					<thead>
 						<tr>
-							<th style="text-align: center;"><input type="checkbox" name=""></th>
-							<th>Name</th>
+							<!-- <th style="text-align: center;"></th> -->
+							<th colspan="2">Name</th>
 							<th>User Type</th>
 							<th>Department</th>
 							<th>Student No.</th>
@@ -50,15 +50,15 @@
 						<!-- if job is close add row with class name "sold" -->
 						<?php for($i = 0; $i < 5; $i++) : ?>
 						<tr class="req_logs_">
-							<td style="text-align: center;">
+							<td style="text-align: center;" class="ch-selection-item-action">
 								<input type="checkbox" name="">
 							</td>
 							<td>
 								<div class="request_icon_wrapper">
 									<div class="req_icon">
-										<span>IV</span>
+										<span>C</span>
 									</div>
-									<div style="margin:5px;margin-top:0px;">
+									<div class="cc-name" style="margin:5px;margin-top:0px;">
 										<h3>Clint Anthony Abueva</h3>
 										<time datetime="2017-08-08">01 Day Ago</time>
 									</div>
@@ -74,7 +74,7 @@
 								<span>02131011</span>
 							</td>
 							<td>
-								<span>Pending</span>
+								<span class="ch-request-status">Pending</span>
 							</td>
 							<td class="action-btn">
 								<span class="eye" data-jId="<?=$job->jId;?>"><i class="fal fa-eye"></i></span>

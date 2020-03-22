@@ -45,12 +45,21 @@ class Admin extends Controller
 		}else if(isLoggedIn() && $_SESSION['user_type'] == 1){
 			redirect("dashboard/index");
 		}else{
-		$this->view('admin/login');
+			$logo = $this->adminModel->getLogo();
+
+			$data = [
+				'logo' => $logo
+			];
+			$this->view('admin/login', $data);
 		}
 	}
 
 	public function setup(){
 		$this->view('admin/setup/ch_admin');
+	}
+
+	public function notification(){
+		$this->view('admin/templates/notifwrapper');
 	}
 
 	public function profile(){

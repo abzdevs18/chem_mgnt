@@ -51,7 +51,7 @@
 					</thead>
 					<tbody>
 						<?php for($i = 0; $i < 5; $i++) : ?>
-						<tr>
+						<tr class="chemRows">
 							<td style="text-align: center;" valign="middle">
 								<input type="checkbox" name="">
 							</td>
@@ -70,7 +70,7 @@
 							</td>
 							<td class="price-loc">								
 								<h3>250 g</h3>
-								<span><?=$job->comLoc;?></span>
+								<div class="qStat"></div>
 							</td>
 							<td class="date-pub">								
 								<h4 style="margin-bottom: 10px;">Dec. 13, 2020</h4>

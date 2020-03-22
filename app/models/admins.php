@@ -31,4 +31,14 @@ class Admins
 		return false;
 		// echo $this->db;
 	}
+
+	public function getLogo(){
+		$this->db->query("SELECT * FROM `ch_logo`");
+		$row = $this->db->single();
+		if ($row) {
+			return $row;
+		} else {
+			return false;
+		}
+	}
 }

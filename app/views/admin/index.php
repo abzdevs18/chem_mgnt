@@ -10,7 +10,7 @@
 				<sup><i class="fal fa-question-circle" style="font-size:12px;" title="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi est eaque laborum eum sit? Ipsa earum dolor velit non praesentium architecto hic cupiditate fugiat sed. Maiores quod repellendus aliquam commodi."></i></sup>
 				<div class="col-wrap pad-30">
 					<figure>
-						<img src="<?=URL_ROOT;?>/img/icons/col-1.png">				
+						<img src="/img/icons/col-1.png">				
 					</figure>
 					<div class="col-content">
 						<p>562</p>
@@ -23,7 +23,7 @@
 				<sup><i class="fal fa-question-circle" style="font-size:12px;" title="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi est eaque laborum eum sit? Ipsa earum dolor velit non praesentium architecto hic cupiditate fugiat sed. Maiores quod repellendus aliquam commodi."></i></sup>
 				<div class="col-wrap pad-30">
 					<figure>
-						<img src="<?=URL_ROOT;?>/img/icons/clock.png">				
+						<img src="/img/icons/clock.png">				
 					</figure>
 					<div class="col-content">
 						<p>562</p>
@@ -36,7 +36,7 @@
 				<sup><i class="fal fa-question-circle" style="font-size:12px;" title="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi est eaque laborum eum sit? Ipsa earum dolor velit non praesentium architecto hic cupiditate fugiat sed. Maiores quod repellendus aliquam commodi."></i></sup>
 				<div class="col-wrap pad-30">
 					<figure>
-						<img src="<?=URL_ROOT;?>/img/icons/chemistry.png">				
+						<img src="/img/icons/chemistry.png">				
 					</figure>
 					<div class="col-content">
 						<p>562</p>
@@ -49,7 +49,7 @@
 				<sup><i class="fal fa-question-circle" style="font-size:12px;" title="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi est eaque laborum eum sit? Ipsa earum dolor velit non praesentium architecto hic cupiditate fugiat sed. Maiores quod repellendus aliquam commodi."></i></sup>
 				<div class="col-wrap pad-30">
 					<figure>
-						<img src="<?=URL_ROOT;?>/img/icons/col-4.png">				
+						<img src="/img/icons/col-4.png">				
 					</figure>
 					<div class="col-content">
 						<p>562</p>
@@ -153,7 +153,7 @@
 						<ul class="jobs-updates bidders">
 							<li>
 								<div>
-								<img src="<?=URL_ROOT;?>/img/icons/small-prof.jpg" /> <span>Lissa Heir</span>									
+								<img src="/img/icons/small-prof.jpg" /> <span>Lissa Heir</span>									
 								</div>
 								<span class="acc-status-online"></span>
 							</li>
@@ -162,7 +162,7 @@
 					<div class="msgs-3-col-item" style="width:59.66%;">
 						<div class="message-container">
 							<div class="message-reciever">
-								<img src="<?=URL_ROOT;?>/img/icons/small-prof.jpg" />
+								<img src="/img/icons/small-prof.jpg" />
 								<div class="msg-content">
 									<p>Duis aute irure dolor in reprehenderit in voluptate velit esse
 									cillum dolore eu fugiat nulla pariatur.</p>
@@ -175,10 +175,10 @@
 									cillum dolore eu fugiat nulla pariatur.</p>
 									<span>Jan. 13, 2019 <i class="far fa-check"></i></span>
 								</div>
-								<img src="<?=URL_ROOT;?>/img/icons/small-prof.jpg" />
+								<img src="/img/icons/small-prof.jpg" />
 							</div>
 							<div class="message-reciever">
-								<img src="<?=URL_ROOT;?>/img/icons/small-prof.jpg" />
+								<img src="/img/icons/small-prof.jpg" />
 								<div class="msg-content">
 									<p>Duis aute irure dolor in reprehenderit in voluptate velit esse
 									cillum dolore eu fugiat nulla pariatur.</p>
@@ -186,7 +186,7 @@
 								</div>
 							</div>
 							<div class="message-reciever">
-								<img src="<?=URL_ROOT;?>/img/icons/small-prof.jpg" />
+								<img src="/img/icons/small-prof.jpg" />
 								<div class="msg-content">
 									<p>Duis aute irure dolor in reprehenderit in voluptate velit esse
 									cillum dolore eu fugiat nulla pariatur.</p>
@@ -223,7 +223,7 @@
 							<div class="request_icon_wrapper">
 								<div class="req_icon" style="margin-top:13px;">
 									<span>IV</span>
-									<!-- <img src="<?=URL_ROOT;?>/img/icons/danger.png" alt="" style="width:100%;"> -->
+									<!-- <img src="/img/icons/danger.png" alt="" style="width:100%;"> -->
 								</div>
 								<div style="margin:5px;" class="m_notif_content">
 									<b>Kate Saycon</b>

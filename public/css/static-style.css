@@ -17,6 +17,11 @@
 	--dispose-properly-label: #004D40;
 	--biohazard-label: #b71c1c;
 
+	/*Request Color*/
+	--ch-request-decline: rgb(226, 68, 92);
+	--ch-request-pending: rgb(253, 171, 61);
+	--ch-request-done: rgb(0, 200, 117);
+
 	--box-shadow: 2px 0 15px 0 rgba(0,0,0,0.20);
 	--border: 1px solid #d5d5d5;
 	--border-2px: 2px solid #d5d5d5;

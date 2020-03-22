@@ -13,7 +13,7 @@
 				<div id="msgs-update-3-col">
 					<div class="msgs-3-col-item">
 						<div id="search-sort" class="job-search-field">
-							<input type="text" name="search" placeholder="Search Here" style="width: 100%;">
+							<input type="text" name="search" autocomplete="off" placeholder="Search Here" style="width: 100%;">
 							<i class="fal fa-search"></i>
 						</div>
 						<ul class="jobs-updates">

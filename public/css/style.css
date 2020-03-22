@@ -535,19 +535,19 @@ Ads Log
   display: flex;
 }
 .req_icon {
-  height: 40px;
-  width: 40px;
-  background-color: #1e8cbe;
+  height: 30px;
+  width: 30px;
+  background-color: #333333;
   border-radius: 50%;
   justify-content: center;
   display: flex;
   margin-right: 5px;
 }
 .req_icon span {
-  padding: 13px;
+  padding: 8px;
   font: var(--font-quick-500-18);
   color: #f3f3f3;
-  font-size: 25px;
+  font-size: 14px;
 }
 .ad-log ul li time {
   font: var(--font-quick-400-13);
@@ -782,11 +782,11 @@ input[type="color"]:focus,
 .tg-btn {
   color: #fff;
   cursor: pointer;
-  padding: 0 50px;
+  padding: 0px 30px;
   position: relative;
   text-align: center;
   overflow: hidden;
-  border-radius: 23px;
+  border-radius: 35px;
   /* display: inline-block; */
   /* vertical-align: middle; */
   text-transform: capitalize;
@@ -960,6 +960,7 @@ thead tr th:last-child {
 tbody tr {
   font: var(--font-quick-500-14);
   transition: all 0.5s ease-in-out;
+  border-bottom: 1px solid var(--dark-font);
 }
 tbody tr:hover {
   box-shadow: var(--box-shadow);
@@ -967,11 +968,34 @@ tbody tr:hover {
 }
 tbody tr td {
   text-align: left;
-  padding: 20px 6px;
+  padding: 5px 6px;
   vertical-align: top;
+}
+.ch-selection-item-action {
+  width: 1px;
+  min-height: 100%;
+  position: relative;
+  background: var(--ch-request-pending);
+  transition: width 0.1s ease-in;
+  transform: translate3d(0, 0, 0);
+}
+.ch-selection-item-action:hover {
+  width: 35px;
 }
 .req_logs_ td {
   vertical-align: middle !important;
+}
+.ch-request-status {
+  background: var(--ch-request-pending);
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-size: 14px;
+  color: #fff;
+}
+.oo {
+  width: 25px;
+  height: 25px;
+  background-color: red;
 }
 .path {
   clip-path: url("/svg/header.svg");
@@ -982,10 +1006,10 @@ tbody tr td {
   z-index: 9999999999999;
 }
 tbody h3 {
-  font-family: "Quicksand", Arial, Helvetica, sans-serif;
-  font-size: 17px;
-  color: #666;
-  margin-bottom: 10px;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 2px;
   font-weight: 500;
 }
 table tr,
@@ -997,6 +1021,10 @@ table th {
 }
 table tr td {
   vertical-align: middle !important;
+}
+.cc-name > time {
+  font-family: "Roboto";
+  font-size: 12px;
 }
 .action-btn {
   display: flex;
@@ -1010,24 +1038,42 @@ table tr td {
 }
 .price-loc {
   max-width: 250px;
+  position: relative;
+}
+.price-loc::after {
+    content: "";
+    position: absolute;
+    background: red;
+    width: 6px;
+    height: calc( 100% - 8px);
+    right: 5px;
+    top: 4px;
+    border: 4px;
+    opacity: 0;
+    border-radius: 10px;
+
+}
+}
+.chemRows:hover .price-loc::after {
+  opacity: 1;
 }
 .date-pub {
   width: 100px;
 }
 .action-btn span {
   margin: 5px;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   float: left;
   color: #363b4d;
-  line-height: 40px;
+  line-height: 30px;
   border-radius: 5px;
   background: #f7f7f7;
   text-align: center;
   transition: all 0.5s ease-in-out;
 }
 .action-btn span i {
-  transition: all 0.5s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 .status-job span {
   padding: 10px 20px;

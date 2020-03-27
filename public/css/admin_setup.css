@@ -130,7 +130,7 @@ main {
 .setup-btn {
   padding: 5px 40px;
   background-color: #7fd3bf;
-  border-radius: 35px;
+  border-radius: 5px;
   outline: none;
   border: 1px solid #7fd3bf;
   box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2);
@@ -138,6 +138,7 @@ main {
   font-weight: 100;
   color: #fff;
   cursor: pointer;
+  float: left;
 }
 
 .add form {

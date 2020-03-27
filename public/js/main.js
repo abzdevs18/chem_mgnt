@@ -391,6 +391,7 @@ $(window).scroll(function() {
     // $(".dashboard-nav").css("position","fixed");
   }
 });
+
 $(document).on("click", "#notif-icon", function() {
   $(".m_notification").toggleClass("m_notif_show");
 });
@@ -510,4 +511,8 @@ function precaution(
 $(document).on("click", ".open_file_ex", function() {
   $(".new_user_photo_set").show(50);
 });
-console.log(moment());
+$(document).ready(function(){
+  $(document).mousemove(function(event){
+    console.log(event.pageX + ", " + event.pageY);
+  });
+});

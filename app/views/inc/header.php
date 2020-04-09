@@ -10,6 +10,10 @@
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css"
 />
+<script type="text/javascript">
+	
+    var socket = io.connect('http://192.168.0.16:3000');
+</script>
 <script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
 </head>
 <body>

@@ -966,24 +966,67 @@ tbody tr:hover {
   box-shadow: var(--box-shadow);
   background: #3333330a;
 }
+/*.ch-selection-item-action:before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+}*/
 tbody tr td {
   text-align: left;
   padding: 5px 6px;
   vertical-align: top;
-}
-.ch-selection-item-action {
-  width: 1px;
-  min-height: 100%;
-  position: relative;
-  background: var(--ch-request-pending);
   transition: width 0.1s ease-in;
   transform: translate3d(0, 0, 0);
+}
+.ch-selection-item-action {
+  width: 8px;
+  position: absolute;
+  padding: 0;
+  height: 100%;
+  top: 0;
+  cursor: pointer;
+  z-index: 9;
+  overflow: hidden;
+  background: var(--hover-dark-font);
+  transition: all .3s ease-in-out;
+  transform: translate3d(0, 0, 0);
+}
+.ch-checkbox-item {
+  position: absolute;
+  top: 16px;
+  left: 9px;
+  height: 16px;
+  width: 16px;
+  background-color: rgba(0, 0, 0, 0.2);
+  outline: 1px rgba(255, 255, 255, 0.2) solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ch-checkbox-item i {
+  color: #fff;
 }
 .ch-selection-item-action:hover {
   width: 35px;
 }
+.req_logs_ td:nth-child(2){
+  padding-left: 15px;
+  transition: all .3s ease-in-out;
+}
+.ch-selection-item-action:hover + .ch-row-second {
+  padding-left: 42px;
+}
 .req_logs_ td {
   vertical-align: middle !important;
+}
+.ch-selection-expanded {
+  width: 35px;
+}
+.ch-second-col-expanded {
+  padding-left: 42px !important;
 }
 .ch-request-status {
   background: var(--ch-request-pending);
@@ -1018,6 +1061,7 @@ table th {
   /* border: var(--border); */
   text-align: center;
   vertical-align: middle;
+  position: relative;
 }
 table tr td {
   vertical-align: middle !important;

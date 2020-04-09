@@ -49,7 +49,7 @@
     });
     </script>
     <script>
-    var socket = io.connect('http://193.161.193.99:44442');
+    var socket = io.connect('http://192.168.0.16:3000');
 
     tinymce.init({
         selector: 'textarea#chemicalFormula',

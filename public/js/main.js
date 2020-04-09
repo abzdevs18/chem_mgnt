@@ -371,16 +371,16 @@ function feedbackHide(container) {
   $("." + container + " .invalid-feedback").hide();
 }
 
-$(document).on("click", ".req_logs_", function() {
-  var stat = $(".request_side").attr("data-status");
-  if (stat == "open") {
-    $(".request_side").attr("data-status", "");
-    $(".request_side").css("right", "-33%");
-  } else {
-    $(".request_side").attr("data-status", "open");
-    $(".request_side").css("right", "0");
-  }
-});
+// $(document).on("click", ".req_logs_", function() {
+//   var stat = $(".request_side").attr("data-status");
+//   if (stat == "open") {
+//     $(".request_side").attr("data-status", "");
+//     $(".request_side").css("right", "-33%");
+//   } else {
+//     $(".request_side").attr("data-status", "open");
+//     $(".request_side").css("right", "0");
+//   }
+// });
 
 $(window).scroll(function() {
   var w = $(window).scrollTop();
@@ -513,6 +513,6 @@ $(document).on("click", ".open_file_ex", function() {
 });
 $(document).ready(function(){
   $(document).mousemove(function(event){
-    console.log(event.pageX + ", " + event.pageY);
+    // console.log(event.pageX + ", " + event.pageY);
   });
 });

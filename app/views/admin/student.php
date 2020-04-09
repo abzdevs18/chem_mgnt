@@ -42,8 +42,8 @@
 						<!-- if job is close add row with class name "sold" -->
 						<?php for($i = 0; $i < 3; $i++) : ?>
 						<tr>
-							<td style="text-align: center;">
-								<input type="checkbox" name="">
+							<td style="text-align: center;" class="ch-check-box">
+								<!-- <input type="checkbox" name=""> -->
 							</td>
 							<td>
 								<div class="request_icon_wrapper">

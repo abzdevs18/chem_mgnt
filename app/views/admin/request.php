@@ -38,7 +38,7 @@
 					<thead>
 						<tr>
 							<!-- <th style="text-align: center;"></th> -->
-							<th colspan="2">Name</th>
+							<th colspan="2" style="width: 220px;">Name</th>
 							<th>User Type</th>
 							<th>Department</th>
 							<th>Student No.</th>
@@ -51,9 +51,10 @@
 						<?php for($i = 0; $i < 5; $i++) : ?>
 						<tr class="req_logs_">
 							<td style="text-align: center;" class="ch-selection-item-action">
-								<input type="checkbox" name="">
+								<div class="ch-checkbox-item" data-checked></div>
+								<!-- <input type="checkbox" name=""> -->
 							</td>
-							<td>
+							<td class="ch-row-second">
 								<div class="request_icon_wrapper">
 									<div class="req_icon">
 										<span>C</span>

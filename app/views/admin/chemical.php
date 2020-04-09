@@ -52,8 +52,8 @@
 					<tbody>
 						<?php for($i = 0; $i < 5; $i++) : ?>
 						<tr class="chemRows">
-							<td style="text-align: center;" valign="middle">
-								<input type="checkbox" name="">
+							<td style="text-align: center;" valign="middle" class="check-box-chemical">
+								<!-- <input type="checkbox" name=""> -->
 							</td>
 							<td class="tittle-id" valign="middle">
 								<h3>Ammonium Sulphate  AR Grade  </h3>

@@ -1,12 +1,14 @@
-var express = require("express");
-var moment = require("moment");
-var app = express();
+let express = require("express");
+let moment = require("moment");
+let chalk = require("chalk");
+let app = express();
+let port = 3000;
 
-var server = require("http").createServer(app);
-var io = require("socket.io")(server);
+let server = require("http").createServer(app);
+let io = require("socket.io")(server);
 
-server.listen(3000, function() {
-  console.log("j");
+server.listen(port, function() {
+  console.log(chalk.green("Server running on: " + port));
 });
 
 io.on("connection", function(socket) {

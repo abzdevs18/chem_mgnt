@@ -3,7 +3,7 @@
 /**
  * 
  */
-class Chem
+class chemModel
 {
 	private $db;
 	
@@ -42,7 +42,7 @@ class Chem
 
 		} catch (Exception $e) {
 			$this->db->rollBack();
-			return false;
+			return $e->getMessage();
 		}
 		// $this->db->query("INSERT INTO `chemicals`(`brand_id`, `cat_id`, `label_id`, `chemical_name`, `chemical_formula`, `mol.wt`, `assay`, `quantity`, `expiry_date`) VALUES ()")
 		// $this->db->query("SELECT * FROM posts");

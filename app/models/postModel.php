@@ -3,7 +3,7 @@
 /**
  * 
  */
-class Post
+class postModel
 {
 	private $db;
 	

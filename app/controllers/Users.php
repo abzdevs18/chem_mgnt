@@ -10,8 +10,8 @@ class Users extends Controller
 	{
 
 		if (file_exists( dirname(__FILE__) . '/../configs/config.php')) {
-			$this->userModel = $this->model('user');
-			$this->adminModel = $this->model('admins');
+			$this->userModel = $this->model('userModel');
+			$this->adminModel = $this->model('adminModel');
 			if (!$this->adminModel->isAdminFound()) {
 				redirect('admin/sf_admin');
 			}

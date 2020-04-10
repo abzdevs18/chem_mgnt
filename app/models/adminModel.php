@@ -3,7 +3,7 @@
 /**
  * 
  */
-class Admins
+class adminModel
 {
 	private $db;
 	private $error;

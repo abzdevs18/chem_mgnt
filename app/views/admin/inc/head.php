@@ -9,9 +9,10 @@
     <link rel="stylesheet" type="text/css" href="https://fontawesome.azureedge.net/fontawesome/fa/css/all.min.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/drop_down.css">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" type="text/css" href="/lib/css/jquery.mCustomScrollbar.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
     <script src="https://cdn.tiny.cloud/1/hhu3aczt7p034dcjnizjwnns5faj5u4s14e894midesztea0/tinymce/5/tinymce.min.js"
@@ -49,7 +50,7 @@
     });
     </script>
     <script>
-    var socket = io.connect('http://192.168.0.16:3000');
+    // var socket = io.connect('http://192.168.0.16:3000');
 
     tinymce.init({
         selector: 'textarea#chemicalFormula',

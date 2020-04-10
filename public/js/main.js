@@ -12,25 +12,30 @@ $(".content").mCustomScrollbar({
 });
 /*ENd ScrollBar*/
 var URL_ROOT = "";
-$(document).on("click", ".save-btn", function(e) {
+$(document).on("click", ".save-btn", function (e) {
   e.preventDefault();
   var data = $("#chemicalAdd").serializeArray();
+  var b = '<p>H<sub>2</sub><span id=\"_mce_caret\" data-mce-bogus=\"1\" data-mce-type=\"format-caret\">O</span><br></p>';
 
   $.ajax({
     url: URL_ROOT + "/admin/add",
     type: "POST",
-    data: $.param(data),
-    success: function(e) {
-      console.log(e);
+    data: {
+      mytextarea: b
     },
-    error: function(_e) {
-      console.log("l");
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function (data) {
+      console.log(data);
+    },
+    error: function (e) {
+      console.log(e);
     }
   });
   console.log(data);
 });
 
-$(document).on("click", ".setup-btn", function() {
+$(document).on("click", ".setup-btn", function () {
   var form = $(this).attr("data-form");
   var link = $(this).attr("data-link");
   /* Admin configuration Script*/
@@ -59,7 +64,7 @@ $(document).on("click", ".setup-btn", function() {
       type: "POST",
       dataType: "json",
       data: $.param(dbCon),
-      success: function(data) {
+      success: function (data) {
         /* If inputs are valid show connecting to the DB */
         if (data["status"] == 1) {
           $(".modal")
@@ -74,26 +79,26 @@ $(document).on("click", ".setup-btn", function() {
             type: "POST",
             dataType: "json",
             data: $.param(dbCon),
-            success: function(data) {
+            success: function (data) {
               if (data["status"] == 1) {
                 $.ajax({
                   url: URL_ROOT + "/init/err",
                   type: "POST",
                   dataType: "json",
-                  success: function(data) {
+                  success: function (data) {
                     /* If this goes wrong error will throw up*/
                     if (data["error"] == 0) {
                       $.ajax({
                         url: URL_ROOT + "/init/uploadTable",
                         dataType: "json",
-                        beforeSend: function() {
-                          setTimeout(function() {
+                        beforeSend: function () {
+                          setTimeout(function () {
                             $(".loadingTxt").text("Uploading Tables");
                           }, 5000);
                         },
-                        success: function(data) {
+                        success: function (data) {
                           /* Checking SQL upload status*/
-                          setTimeout(function() {
+                          setTimeout(function () {
                             if (data["error"] == 0) {
                               $(".modal").hide(100);
                               $(".loading").hide();
@@ -131,7 +136,7 @@ $(document).on("click", ".setup-btn", function() {
                         .animate({ opacity: "1", "margin-right": "25%" }, 800);
                     }
                   },
-                  error: function(e) {
+                  error: function (e) {
                     console.log(e);
                   }
                 });
@@ -168,7 +173,7 @@ $(document).on("click", ".setup-btn", function() {
           }
         }
       },
-      error: function(e) {
+      error: function (e) {
         console.log(e);
       }
     });
@@ -203,7 +208,7 @@ $(document).on("click", ".setup-btn", function() {
       contentType: false, // important
       // data: $.param(ch_site),
       data: fd,
-      success: function(data) {
+      success: function (data) {
         if (data["status"] == 1) {
           $("body").css("overflow", "hidden");
           $(".modal")
@@ -247,7 +252,7 @@ $(document).on("click", ".setup-btn", function() {
           }
         }
       },
-      error: function(e) {
+      error: function (e) {
         console.log(e);
       }
     });
@@ -259,7 +264,7 @@ $(document).on("click", ".setup-btn", function() {
   }
 });
 /* Admin initialization*/
-$(document).on("click", ".error > span", function() {
+$(document).on("click", ".error > span", function () {
   $(".error").animate({ opacity: "0", "margin-right": "50%" }, 800);
   $(".modal")
     .delay(500)
@@ -267,11 +272,11 @@ $(document).on("click", ".error > span", function() {
     .hide(100);
 });
 
-$(document).on("click", ".login-admin", function() {
+$(document).on("click", ".login-admin", function () {
   login();
 });
 
-$("#loginCredentials").keypress(function(e) {
+$("#loginCredentials").keypress(function (e) {
   if (e.keyCode == 13) {
     login();
   }
@@ -284,7 +289,7 @@ function login() {
     type: "POST",
     dataType: "json",
     data: $.param(adminData),
-    success: function(data) {
+    success: function (data) {
       if (data["data"].status == 1 && data["row"].fId != "") {
         feedbackDefault("f-form");
         window.location.href = URL_ROOT + "/admin";
@@ -310,7 +315,7 @@ function login() {
       }
       // console.log(data);
     },
-    error: function(err) {
+    error: function (err) {
       console.log(err);
     }
   });
@@ -321,7 +326,7 @@ function animate(current, next) {
   current.animate(
     { opacity: 0 },
     {
-      step: function(now, _mx) {
+      step: function (now, _mx) {
         scale = 1 - (1 - now) * 0.2;
         left = now * 50 + "%";
         opacity = 1 - now;
@@ -329,7 +334,7 @@ function animate(current, next) {
         next.css({ left: left, opacity: opacity });
       },
       duration: 800,
-      complete: function() {
+      complete: function () {
         current.hide();
       }
     }
@@ -340,7 +345,7 @@ function readURL(input) {
   if (input.files && input.files[0]) {
     var reader = new FileReader();
 
-    reader.onload = function(e) {
+    reader.onload = function (e) {
       $("#blah").attr("src", e.target.result);
     };
 
@@ -348,7 +353,7 @@ function readURL(input) {
   }
 }
 
-$("#imgInp").change(function() {
+$("#imgInp").change(function () {
   $("#blah").show(100);
   readURL(this);
 });
@@ -382,7 +387,7 @@ function feedbackHide(container) {
 //   }
 // });
 
-$(window).scroll(function() {
+$(window).scroll(function () {
   var w = $(window).scrollTop();
   var e = $(".dashboard-nav").offset().top;
   var t = e - w;
@@ -392,11 +397,11 @@ $(window).scroll(function() {
   }
 });
 
-$(document).on("click", "#notif-icon", function() {
+$(document).on("click", "#notif-icon", function () {
   $(".m_notification").toggleClass("m_notif_show");
 });
 
-$(document).on("click", "#add_record", function() {
+$(document).on("click", "#add_record", function () {
   $(".m_add_hidden").toggleClass("add_m");
   if (!Push.Permission.has()) {
     Push.Permission.request(onGranted, onDenied);
@@ -422,7 +427,7 @@ function demo() {
     link: "/#",
     // timeout: 4000,
     requireInteraction: true,
-    onClick: function() {
+    onClick: function () {
       console.log("Fired!");
       window.focus();
       this.close();
@@ -433,9 +438,9 @@ function demo() {
   // playSound(URL_ROOT + '/media/audio/notif');
 }
 // callback For Push Notification if Granted
-function onGranted() {}
+function onGranted() { }
 // callback For Push Notification if Denied
-function onDenied() {}
+function onDenied() { }
 
 // function playSound(filename){
 //   var mp3Source = '<source src="' + filename + '.mp3" type="audio/mpeg">';
@@ -443,7 +448,7 @@ function onDenied() {}
 //   var embedSource = '<embed hidden="true" autostart="true" loop="false" src="' + filename +'.mp3">';
 //   document.getElementById("sound").innerHTML='<audio autoplay="autoplay">' + mp3Source + oggSource + embedSource + '</audio>';
 // }
-$("#tinymce").submit(function(e) {
+$("#tinymce").submit(function (e) {
   e.preventDefault();
   // var name = $('#mytextarea').val();
 
@@ -451,7 +456,7 @@ $("#tinymce").submit(function(e) {
 });
 
 // Precaution Selection
-$(document).on("change", "#pre_warning_label", function() {
+$(document).on("change", "#pre_warning_label", function () {
   var option = $(this).val();
   var content =
     "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas commodi incidunt similique";
@@ -508,11 +513,11 @@ function precaution(
 }
 // End of Precaution Selection
 
-$(document).on("click", ".open_file_ex", function() {
+$(document).on("click", ".open_file_ex", function () {
   $(".new_user_photo_set").show(50);
 });
-$(document).ready(function(){
-  $(document).mousemove(function(event){
+$(document).ready(function () {
+  $(document).mousemove(function (event) {
     // console.log(event.pageX + ", " + event.pageY);
   });
 });

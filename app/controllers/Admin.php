@@ -9,8 +9,8 @@ class Admin extends Controller
 	{
 
 		if (file_exists( dirname(__FILE__) . '/../configs/config.php')) {
-			$this->Chem = $this->model('chem');
-			$this->adminModel = $this->model('admins');
+			$this->chemModel = $this->model('chemModel');
+			$this->adminModel = $this->model('adminModel');
 			// $this->userModel = $this->model('user');
 			if (!isLoggedIn()) {
 				if (!$this->adminModel->isAdminFound() || $this->adminModel->connError()) {
@@ -143,9 +143,9 @@ class Admin extends Controller
 	}
 
 	public function form(){
-		$brand = $this->Chem->getBrand();
-		// $label = $this->Chem->getLabel();
-		$category = $this->Chem->getCategory();
+		$brand = $this->chemModel->getBrand();
+		// $label = $this->chemModel->getLabel();
+		$category = $this->chemModel->getCategory();
 
 		$data = [
 			"brand" => $brand,
@@ -159,7 +159,7 @@ class Admin extends Controller
 	public function add(){
 		if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {		
 			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
+			$v = '<p>H<sub>2</sub><span id=\"_mce_caret\" data-mce-bogus=\"1\" data-mce-type=\"format-caret\">O</span><br></p>';
 			$data = [
 				/*check this first form*/
 				"status" => "",
@@ -171,20 +171,20 @@ class Admin extends Controller
 				"chemQuantity" => trim($_POST['chemQuantity']),
 				"chemExpiration" => trim($_POST['chemExpiration']),
 				"chemBrand" => trim($_POST['chemBrand']),
-				"chemFormula" => trim($_POST['chemFormula']),
+				"chemFormula" => trim($_POST['mytextarea']),
 				"note" => trim($_POST['note'])
 			];
 
-			$res = $this->Chem->addChemical($data);
+			$res = $this->chemModel->addChemical($data);
 
-			// if ($res) {
-			// 	echo $res;
-			// }else {
-			// 	echo $res;
-			// }
+			if ($res) {
+				echo $_POST['mytextarea'];
+			}else {
+				echo $res;
+			}
 			// echo json_encode($data)
 
-			echo $res;
+			// echo "D";
 		}else {
 			echo "not";
 		}

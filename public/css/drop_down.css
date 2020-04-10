@@ -1,0 +1,82 @@
+.cus-drop {
+  color: #666;
+  outline: none;
+  height: 40px;
+  background: #fff;
+  font-size: 14px;
+  line-height: 18px;
+  padding: 10px 15px;
+  border-radius: 4px;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: 1px solid #2b2f3e4f;
+  text-transform: capitalize;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  font-family: quicksand;
+  transition: all 0.5s;
+}
+.options-wrapper {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    left: 0;
+    /* display: none; */
+    overflow-y: hidden;
+}
+.options {
+    display: flex;
+    flex-direction: column;
+}
+.options a {
+    display: inline-block;
+    transition: all 0.2s;
+    font-size: 14px;
+    font-family: quicksand;
+    font-weight: 600;
+    color: #333333;
+    padding: 10px 5px;
+    background: #f4f6f8;
+    margin-bottom: 1px;
+    border-bottom: 1px solid #e6e9ef;
+}
+
+.options-item span{
+    padding: 5px 5px 5px 11px;
+}
+.options-item:hover{
+    box-shadow: inset 0 0 0 1px #99d4ff;
+    background-color: #e5f4ff;
+}
+.options-item:hover .brand-name::after {
+    display: inline-block;
+}
+.brand-name {
+    position: relative;
+}
+.brand-name:hover {
+    border: 1px dashed;
+}
+.brand-name:hover::after{    
+    background-color: #e0e0e0;
+}
+.brand-name::after {
+    content: "\f303";
+    font-family: "Font Awesome 5 Pro";
+    font-weight: 400;
+    display: none;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    padding: 7px;
+    position: absolute;
+    top: -1px;
+    right: -30px;
+    border-radius: 2px;
+    color: #888888;
+    -webkit-font-smoothing: antialiased;
+}

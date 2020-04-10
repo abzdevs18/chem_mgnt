@@ -12,11 +12,16 @@ $(document).ready(function(){
 			console.log("Yep");
 		}else{
 			$(this).attr("data-checked",true);
-			$(this).addClass("ch-req-selected"a);
+			$(this).addClass("ch-req-selected");
 			$(this).html('<i class="fas fa-check"></i>');
 			// $(".ch-row-second").css("padding-left","42px");
 			console.log('Empty');
 		}
 		console.log('click');
 	});
+});
+
+$(".brand-name:after").click(function(e){
+	e.preventDefault();
+	console.log("Hel")
 });

@@ -3,7 +3,7 @@
 /**
  * 
  */
-class user
+class userModel
 {
 	private $db;
 

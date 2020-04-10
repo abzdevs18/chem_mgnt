@@ -3,7 +3,7 @@
 /**
  * 
  */
-class Inits
+class initModel
 {
 	private $db;
 	private $error;

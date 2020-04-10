@@ -8,8 +8,8 @@ class Init extends Controller
 	private $salt = SECURE_SALT;
 	
 	function __construct(){
-		$this->initModel = $this->model('Inits');
-		$this->userModel = $this->model('user');	
+		$this->initModel = $this->model('initModel');
+		$this->userModel = $this->model('userModel');	
 	}
 
 	public function adminSetup(){

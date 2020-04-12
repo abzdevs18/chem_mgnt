@@ -38,8 +38,8 @@
 				<table>
 					<thead>
 						<tr>
-							<th><input type="checkbox" name=""></th>
-							<th>Chemical Name</th>
+							<!-- <th><input type="checkbox" name=""></th> -->
+							<th colspan="2" style="width:240px;">Chemical Name</th>
 							<th>Chemical Formula</th>
 							<th>Mol. Wt.</th>
 							<th>% Assay</th>
@@ -50,33 +50,34 @@
 						</tr>
 					</thead>
 					<tbody>
-						<?php for($i = 0; $i < 5; $i++) : ?>
-						<tr class="chemRows">
-							<td style="text-align: center;" valign="middle" class="check-box-chemical">
+						<?php foreach($data['chem'] AS $chem) : ?>
+						<tr class="chemRows req_logs_">
+							<td style="text-align: center;" class="ch-selection-item-action">
+								<div class="ch-checkbox-item" data-checked></div>
 								<!-- <input type="checkbox" name=""> -->
 							</td>
-							<td class="tittle-id" valign="middle">
-								<h3>Ammonium Sulphate  AR Grade  </h3>
-								<span>Chemical ID: 20190321341</span>
+							<td class="tittle-id ch-row-second" valign="middle">
+								<h3><?=$chem->chemical_name?></h3>
+								<span>Chemical ID: <?=$chem->chemId?></span>
 							</td> 
 							<td class="item-cat" valign="middle">
-								<span>(NH<sub>4</sub>)2SO<sub>3</sub></span>	
+								<span><?php echo html_entity_decode($chem->chemical_formula);?></span>	
 							</td>
 							<td class="item-cat">
-								<span>77.08</span>	
+								<span><?=$chem->mol_wt?></span>	
 							</td>
 							<td>
-								<span>98%</span>
+								<span><?=$chem->assay?>%</span>
 							</td>
 							<td class="price-loc">								
-								<h3>250 g</h3>
+								<h3><?=$chem->quantity?> g</h3>
 								<div class="qStat"></div>
 							</td>
 							<td class="date-pub">								
-								<h4 style="margin-bottom: 10px;">Dec. 13, 2020</h4>
+								<h4 style="margin-bottom: 10px;"><?php echo date("M. d, Y", strtotime($chem->expiry_date)) ?></h4>
 							</td>
 							<td class="item-cat">
-								<span>UNIVAR</span>
+								<span><?=$chem->brand?></span>
 							</td>
 							<td class="action-btn">
 								<span class="eye"><i class="fal fa-eye"></i></span>
@@ -84,7 +85,7 @@
 								<span class="trash"><i class="fal fa-trash"></i></span>
 							</td>
 						</tr>
-						<?php endfor; ?>
+						<?php endforeach; ?>
 					</tbody>
 				</table>
 			</div><!-- End of Table Design -->

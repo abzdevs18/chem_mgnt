@@ -38,7 +38,7 @@ body {
 }
 main {
   padding-left: 60px;
-  overflow: hidden;
+  /* overflow: hidden; */
   display: flex;
   flex-direction: column;
 }
@@ -51,6 +51,7 @@ main {
   float: right;
   position: sticky;
   top: 0;
+  background: #f3f3f3;
 }
 #add-post {
   /* float: right; */
@@ -950,6 +951,8 @@ thead tr th {
 .content-head > h2 {
   background: #2b2f3e !important;
   color: #fff !important;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 thead tr th:first-child {
   border-top-left-radius: 5px;
@@ -959,12 +962,15 @@ thead tr th:last-child {
 }
 tbody tr {
   font: var(--font-quick-500-14);
-  transition: all 0.5s ease-in-out;
-  border-bottom: 1px solid var(--dark-font);
+  /* transition: all 0.5s ease-in-out; */
+  border-bottom: 1px solid #e6e9ef;
 }
 tbody tr:hover {
-  box-shadow: var(--box-shadow);
-  background: #3333330a;
+  /* box-shadow: var(--box-shadow);
+  background: #3333330a; */
+  
+  box-shadow: inset 0 0 0 1px #99d4ff;
+  background-color: #e5f4ff;
 }
 /*.ch-selection-item-action:before {
   content: "";
@@ -985,11 +991,12 @@ tbody tr td {
   width: 8px;
   position: absolute;
   padding: 0;
-  height: 100%;
+  height: calc( 100% - 1px);
   top: 0;
   cursor: pointer;
   z-index: 9;
   overflow: hidden;
+  border-bottom: 1px solid #e5f4ff;
   background: var(--hover-dark-font);
   transition: all .3s ease-in-out;
   transform: translate3d(0, 0, 0);

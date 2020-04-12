@@ -1,4 +1,7 @@
-.cus-drop {
+.smart-drop-wrapper {
+    width: 100%;
+}
+.cusDrop {
   color: #666;
   outline: none;
   height: 40px;
@@ -19,27 +22,74 @@
   font-family: quicksand;
   transition: all 0.5s;
 }
+/* .cusDrop:focus + .options-wrapper {
+    display: inline-block;
+} */
+.smart-drop-wrapper-show {
+    display: inline-block !important;
+}
 .options-wrapper {
     display: flex;
     flex-direction: column;
     position: absolute;
     right: 0;
     left: 0;
-    /* display: none; */
+    top: 40px;
+    z-index: 999;
+    display: none;
     overflow-y: hidden;
+    box-shadow: var(--box-shadow);
+    background: #f5f6f8;
+    transition: all .5s ease-in-out;
 }
+.smart-drop-add {
+    padding: 0 !important;
+}
+.smart-drop-add input[type="text"] {
+    outline: none;
+    border: none;
+    font-size: 13px;
+    height: 34px;
+    border-radius: 0px;
+}
+.smart-drop-add input:focus {
+    box-shadow: inset 0 0 0 1px #99d4ff !important;
+}
+
+/* .smart-drop-add > input:focus + .smart-drop-add-btn {
+    display: inline-block;
+} */
+.smart-drop-add-btn {
+    background: var(--back-light-green);
+    color: #fff;
+    padding: 9px 15px !important;
+    cursor: pointer;
+    display: none;
+}
+.smart-drop-add input::-webkit-input-placeholder { /* Edge */
+    color: #999;;
+}
+  
+.smart-drop-add input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    olor: #999;;
+}
+
+.smart-drop-add input::placeholder {
+    color: #999;;
+}
+
 .options {
     display: flex;
     flex-direction: column;
 }
-.options a {
+.options-item {
     display: inline-block;
     transition: all 0.2s;
     font-size: 14px;
     font-family: quicksand;
     font-weight: 600;
     color: #333333;
-    padding: 10px 5px;
+    padding: 8px 5px;
     background: #f4f6f8;
     margin-bottom: 1px;
     border-bottom: 1px solid #e6e9ef;
@@ -47,12 +97,15 @@
 
 .options-item span{
     padding: 5px 5px 5px 11px;
+    font-family: 'Roboto';
+    font-size: 13px;
+    font-weight: 400;
 }
 .options-item:hover{
     box-shadow: inset 0 0 0 1px #99d4ff;
     background-color: #e5f4ff;
 }
-.options-item:hover .brand-name::after {
+.options-item:hover .edit-smart-option {
     display: inline-block;
 }
 .brand-name {
@@ -61,11 +114,19 @@
 .brand-name:hover {
     border: 1px dashed;
 }
-.brand-name:hover::after{    
+.edit-smart-option:hover {    
     background-color: #e0e0e0;
+    color: #333;
+    cursor: pointer;
 }
-.brand-name::after {
-    content: "\f303";
+.hidden-container {
+    border: 1px dashed !important;
+    margin: 4px 6px;
+    width: calc( 100% - 12px) !important;
+    height: 26px !important;
+}
+.edit-smart-option {
+    /* content: "\f303"; */
     font-family: "Font Awesome 5 Pro";
     font-weight: 400;
     display: none;
@@ -79,4 +140,10 @@
     border-radius: 2px;
     color: #888888;
     -webkit-font-smoothing: antialiased;
+}
+.temp-remover {
+    display: flex !important;
+}
+.remove-term {
+    background: var(--ch-request-decline);
 }

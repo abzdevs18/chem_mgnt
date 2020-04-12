@@ -72,7 +72,7 @@ class Admin extends Controller
 		$this->view('admin/update-prof');
 	}
 
-	public function posted(){
+	public function request(){
 		$data = [
 			"one" => $this->breadcrump()
 		];
@@ -95,13 +95,18 @@ class Admin extends Controller
 	}
 
 	public function chemical(){
+		$chem = $this->chemModel->getChemicals();
+
+		$data = [
+			'chem' => $chem
+		];
 		
 		// no other solution this is for the Left sidebar navigation
 		// the active state is dependent to this SESSION we are setting.
 		unset($_SESSION['menu_active']);
 		$_SESSION['menu_active'] = "chemicals";
 
-		$this->view('admin/chemical');
+		$this->view('admin/chemical',$data);
 	}
 
 	public function student(){
@@ -153,7 +158,37 @@ class Admin extends Controller
 			"category" => $category
 		];
 
-		$this->view('admin/under_development', $data);
+		$this->view('admin/form', $data);
+	}
+	
+	public function chemCatReload(){
+		$category = $this->chemModel->getCategory();
+
+		$data = [
+			"category" => $category
+		];
+
+		$this->view('admin/templates/chemCatMeta', $data);
+	}
+
+
+	public function chemMeta(){
+		if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {		
+			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+			$action = trim($_POST['action']);
+
+			$data = [
+				'status'=> '',
+				'name'=>trim($_POST['name']),
+				'value'=>trim($_POST['value'])
+			];
+			if($action == 'remove'){
+				$this->chemModel->removeChemMeta($data);
+
+			}else if($action == 'add'){
+				$this->chemModel->addChemMeta($data);
+			}
+		}
 	}
 
 	public function add(){

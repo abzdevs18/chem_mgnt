@@ -15,26 +15,50 @@ var URL_ROOT = "";
 $(document).on("click", ".save-btn", function (e) {
   e.preventDefault();
   var data = $("#chemicalAdd").serializeArray();
-  var b = '<p>H<sub>2</sub><span id=\"_mce_caret\" data-mce-bogus=\"1\" data-mce-type=\"format-caret\">O</span><br></p>';
+  var chemicalFormula = $("#chemicalFormula").val();
+  let category = $('.meta-selected-category').attr('data-index');
+  let brand = $('.meta-selected-brand').attr('data-index');
+
+  // Change value after serializing the form
+  // user htmlDecode() method to decode OR php html_entity_decode() method. 
+
+  data.find(item => item.name === 'mytextarea').value = htmlEncode(chemicalFormula);
+  data.find(item => item.name === 'category').value = htmlEncode(category);
+  data.find(item => item.name === 'chemBrand').value = htmlEncode(brand);
 
   $.ajax({
     url: URL_ROOT + "/admin/add",
     type: "POST",
-    data: {
-      mytextarea: b
+    data: $.param(data),
+    beforeSend: function(){
+      $("#save-form").show(100);
     },
-    contentType: "application/json; charset=utf-8",
-    dataType: "json",
     success: function (data) {
-      console.log(data);
+      setTimeout(function(){
+        window.location.href ="/admin/form"
+      }, 3000);
     },
     error: function (e) {
       console.log(e);
     }
   });
-  console.log(data);
+  // console.log(decoded);
 });
+function htmlEncode(value) {
+  if (value) {
+    return jQuery('<div />').text(value).html();
+  } else {
+    return '';
+  }
+}
 
+function htmlDecode(value) {
+  if (value) {
+    return $('<div />').html(value).text();
+  } else {
+    return '';
+  }
+}
 $(document).on("click", ".setup-btn", function () {
   var form = $(this).attr("data-form");
   var link = $(this).attr("data-link");

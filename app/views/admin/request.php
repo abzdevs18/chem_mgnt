@@ -49,7 +49,7 @@
 					<tbody id="filter-job-container">
 						<!-- if job is close add row with class name "sold" -->
 						<?php for($i = 0; $i < 5; $i++) : ?>
-						<tr class="req_logs_">
+						<tr class="req_logs_" data-rowId="<?php echo '#contentId'.$i;?>">
 							<td style="text-align: center;" class="ch-selection-item-action">
 								<div class="ch-checkbox-item" data-checked></div>
 								<!-- <input type="checkbox" name=""> -->
@@ -81,6 +81,42 @@
 								<span class="eye" data-jId="<?=$job->jId;?>"><i class="fal fa-eye"></i></span>
 								<span class="pencil" data-jId="<?=$job->jId;?>"><i class="fal fa-pencil-alt"></i></span>
 								<span class="trash" data-jId="<?=$job->jId;?>"><i class="fal fa-trash"></i></span>
+							</td>
+						</tr>
+						<tr id="<?='contentId'.$i?>" class="containerCollapse collapse">
+							<td colspan="7">
+								<div class="offices-msgs">
+								</div>
+								<div class="alerts-notif">
+									<div class="alert-content no-fixed-height">
+										<div class="content-head">
+											<h2>Disposal Guideles</h2>
+										</div>
+										<div class="changepass-holder" style="display:flex;flex-direction:column;">
+											<div class="form-group">
+												<!-- <input type="text" name="emFirst" placeholder="First Name*" class="form-control"> -->
+												<textarea name="note" id="note" cols="30" rows="40" class="form-control"
+													style="resize: vertical;height: 200px;"></textarea>
+												<label for="note">Guidelines</label>
+											</div>
+										</div>
+										<div class="request_icon_wrapper guide_icons caution_note_label" style="display:none;">
+											<div class="req_icon warning_icon">
+												<!-- <span>IV</span> -->
+												<img id="precaution_icon" src="/img/icons/safety/precaution.png" alt=""
+													style="width:100%;margin:10px;">
+											</div>
+											<div class="m_notif_content warning_content">
+												<b id="precaution_label">Proceed with Caution</b>
+												<!-- <b>Warning</b> -->
+												<h3 id="precaution_content">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas
+													commodi incidunt similique corporis recusandae esse veritatis quam adipisci, molestias
+													cupiditate earum placeat mollitia excepturi, error quidem odio fugiat quaerat quo.</h3>
+												<!-- <time datetime="2017-08-08">01 Day Ago</time> -->
+											</div>
+										</div>
+									</div>
+								</div>
 							</td>
 						</tr>
 						<?php endfor; ?>

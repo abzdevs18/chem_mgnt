@@ -4,9 +4,9 @@
 		<h1>Chemical</h1>
 	</section> -->
 <form id="chemicalAdd">
-    <section class="offices-msgs">
+    <section class="offices-msgs" id="step1">
         <div class="alerts-notif" style="width: 66.66%;">
-            <div class="alert-content no-fixed-height" style="display: flex;flex-direction: column;overflow:unset;">
+            <div class="alert-content no-fixed-height form-holder" style="display: flex;flex-direction: column;overflow:unset;">
                 <div class="content-head">
                     <h2>Chemical Details</h2>
                 </div>
@@ -15,15 +15,25 @@
 				</div> -->
                 <div class="changepass-holder half-row" style="margin-top: 30px;">
                     <div class="form-group half-form-group">
-                        <!-- <input type="text" name="title" class="form-control"> -->
-                        <select style="width: 100%;" name="category">
-                            <optgroup>
-                                <?php foreach ($data['category'] as $category) : ?>
-                                <option value="<?=$category->id;?>"><?=$category->name;?></option>
-                                <?php endforeach; ?>
-                            </optgroup>
-                        </select>
-                        <label for="category">Category</label>
+                        <div class="smart-drop-wrapper" id="chemCat">
+                            <input type="text" name="category" class="cusDrop meta-selected-category" placeholder="Select category" value="" data-name="category">
+                            <div class="options-wrapper wrapper-category">
+                                <div class="options">
+                                    <?php foreach ($data['category'] as $category) : ?>
+                                        <div class="options-item temp-remover" id="content-wrap-<?=$category->id?>" data-meta="category" data-id="<?=$category->id?>" data-name="<?=$category->name?>">                                        
+                                            <input type="text" name="" class="hidden-container" data-id="<?=$category->id?>" value="<?=$category->name;?>" style="display:none;"/>
+                                            <span class="smart-drop-add-btn remove-term" data-item="category" data-id="<?=$category->id;?>">Delete</span>
+                                            <span class="brand-name" value="<?=$category->id;?>"><?=$category->name;?>  <i class="fas fa-pencil-alt edit-smart-option" data-id="<?=$category->id?>"></i></span>
+                                        </div>
+                                    <?php endforeach; ?>
+                                    <div class="options-item smart-drop-add top-form-add" style="display:flex;justify-content:end;">
+                                        <input type="text" name="" class="add-meta-value-category" placeholder="+ add"/>
+                                        <span class="smart-drop-add-btn add-term" data-item="category">Add</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <label for="chemCat">Category</label>
                     </div>
                     <div class="form-group half-form-group">
                         <!-- <input type="text" name="title" class="form-control"> -->
@@ -73,23 +83,21 @@
                         <label for="chemExpiration">Expiration</label>
                     </div>
                     <div class="form-group half-form-group">
-                        <div style="width: 100%;" id="chemBrand">
-                            <input type="text" name="chemBrand" class="cusDrop" value="BrandX">
-                            <div class="options-wrapper">
+                        <div class="smart-drop-wrapper" id="chemBrand">
+                            <input type="text" name="chemBrand" class="cusDrop meta-selected-brand" value="" placeholder="Select brand" data-name="brand">
+                            <div class="options-wrapper wrapper-brand">
                                 <div class="options">
-                                    <a href="#" class="options-item">
-                                    <!-- <span class="brand-name">Brand X</span> -->
-                                    <input type="text" name="" id="" value="Brand"/>
-                                    </a>
-                                    <a href="#" class="options-item">
-                                        <span class="brand-name">Brand X</span>
-                                    </a>
-                                    <a href="#" class="options-item">
-                                        <span class="brand-name">Brand X</span>
-                                    </a>
-                                    <a href="#" class="options-item">
-                                        <span class="brand-name">Brand X</span>
-                                    </a>
+                                    <?php foreach ($data['brand'] as $brand) : ?>
+                                        <div class="options-item temp-remover" id="content-wrap-<?=$brand->id?>" data-meta="brand" data-id="<?=$brand->id?>" data-name="<?=$brand->name?>">                                        
+                                            <input type="text" name="" class="hidden-container" data-id="<?=$brand->id?>" value="<?=$brand->name;?>" style="display:none;"/>
+                                            <span class="smart-drop-add-btn remove-term" data-item="brand" data-id="<?=$brand->id;?>">Delete</span>
+                                            <span class="brand-name" value="<?=$brand->id;?>"><?=$brand->name;?>  <i class="fas fa-pencil-alt edit-smart-option" data-id="<?=$brand->id?>"></i></span>
+                                        </div>
+                                    <?php endforeach; ?>
+                                    <div class="options-item smart-drop-add top-form-add" style="display:flex;">
+                                        <input type="text" name="" class="add-meta-value-brand" placeholder="+ add"/>
+                                        <span class="smart-drop-add-btn add-term" data-item="brand">Add</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -98,13 +106,35 @@
                 </div>
                 <div class="prof-container">
                     <div>
-                        <button class="tg-btn save-btn" type="submit">Save</button>
+                        <button class="tg-btn save-btn" type="submit">Save <img src="/img/gif/save.gif" style="width: 20px;position: absolute;top: 25%;bottom: 0;right: 5px;display:none;" id="save-form"></button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="alerts-notif">
-            <div class="alert-content no-fixed-height">
+        <div class="alerts-notif note-wrapper" style="position:relative;">
+
+            <div class="alert-content no-fixed-height xpandable-note" style="position:relative;overflow:unset;">                                
+                <div class="note-path">
+                    <span>
+                        <i class="fal fa-angle-left caret-left caret"></i>
+                        <i class="fal fa-angle-right caret-right caret"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="67" viewBox="0 0 20 67">
+                            <metadata>
+                                <!--?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d"?-->
+                                <x:xmpmeta xmlns:x="adobe:ns:meta/"
+                                    x:xmptk="Adobe XMP Core 5.6-c138 79.159824, 2016/09/14-01:09:01">
+                                    <rdf:rdf xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+                                        <rdf:description rdf:about=""></rdf:description>
+                                    </rdf:rdf>
+                                </x:xmpmeta>
+                                <!--?xpacket end="w"?-->
+                            </metadata>
+                            <path id="bg" class="cls-1"
+                                d="M20,27.652V39.4C20,52.007,0,54.728,0,67.265,0,106.515.026-39.528,0-.216-0.008,12.32,20,15.042,20,27.652Z">
+                            </path>
+                        </svg>
+                    </span>
+                </div>
                 <div class="content-head">
                     <h2>Disposal Guideles</h2>
                 </div>

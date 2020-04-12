@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="stylesheet" type="text/css" href="/css/drop_down.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="/lib/css/jquery.mCustomScrollbar.css">
@@ -18,6 +19,9 @@
     <script src="https://cdn.tiny.cloud/1/hhu3aczt7p034dcjnizjwnns5faj5u4s14e894midesztea0/tinymce/5/tinymce.min.js"
         referrerpolicy="origin"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/intro.js@2.9.3/intro.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intro.js@2.9.3/introjs.min.css">
 
     <style>
     @import url("/css/static-style.css");
@@ -72,7 +76,7 @@
     </script>
 </head>
 
-<body style="position:relative;">
+<body style="position:relative;" >
     <!-- <img style="position:absolute;z-index:-1;" src="/css/svg/header.svg" alt="" class="src"> -->
     <!-- Modal: For adding chemicals. First Plan -->
     <div id="modal"
@@ -290,7 +294,7 @@
                                 <i class="fal fa-cog"></i>
                                 <a href="#"> Profile settings</a>
                             </li>
-                            <li data-link="/admin/posted"
+                            <li data-link="/admin/request"
                                 class="<?=($_SESSION['menu_active']=="request") ? 'menu-active' : ''; ?>">
                                 <i class="fal fa-cubes"></i>
                                 <a href="#"> Requests</a>

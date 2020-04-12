@@ -38,7 +38,8 @@ body {
 }
 main {
   padding-left: 60px;
-  /* overflow: hidden; */
+  /* If not overflow hidden, it shows scroll bar like stupid */
+  overflow: hidden; 
   display: flex;
   flex-direction: column;
 }

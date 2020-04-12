@@ -11,14 +11,17 @@
 					<h2>User Photo</h2>
 				</div>
 				<div class="prof-container admin-prof new_user_photo_set" style="display:none;">
-					<div style="margin-bottom:0px;background:url('<?=URL_ROOT?>/img/default/kalen-emsley-Bkci_8qcdvQ-unsplash.jpg');background-position: center;background-size: cover;background-repeat: no-repeat;border: none;box-shadow: var(--box-shadow);width: 50%;border-radius: 50%;margin: 20px auto 0px;">
+					<div id="profContainer" style="margin-bottom:0px;background-position: center;background-size: cover;background-repeat: no-repeat;border: none;box-shadow: var(--box-shadow);width: 50%;border-radius: 50%;margin: 20px auto 0px;">
 					</div>
 				</div>
 				<div class="prof-container admin-prof">
 					<div>
 						<p>Drop files anywhere to upload</p>
 						<p>Or</p>
-						<button class="tg-btn open_file_ex" type="button">Select Files</button>
+						<div style="position: relative;text-align: center;">
+							<input type="file" name="" id="user-photo" style="background: red;width: 100%;position: absolute;z-index: 99;height: 100%;border-radius: 35px;opacity: 0;">
+							<button class="tg-btn open_file_ex" type="button">Select Files</button>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -30,38 +33,36 @@
 				</div>
 				<div class="changepass-holder">
 					<div class="form-group">
-						<select style="width: 100%;" name="chemBrand">
+						<select style="width: 100%;" name="gender" id="add-user-gender">
 							<optgroup>
-								<?php foreach ($data['brand'] as $brand) : ?>
-									<option value="<?=$brand->id;?>"><?=$brand->name;?></option>
-								<?php endforeach; ?>
+									<option value="1">Male</option>
+									<option value="0">Female</option>
 							</optgroup>
 						</select>
 						<label for="chemBrand">Gender</label>
 					</div>
 					<div class="form-group">
-						<select style="width: 100%;" name="chemBrand">
+						<select style="width: 100%;" name="chemBrand" id="add-user-type">
 							<optgroup>
-								<?php foreach ($data['brand'] as $brand) : ?>
-									<option value="<?=$brand->id;?>"><?=$brand->name;?></option>
-								<?php endforeach; ?>
+									<option value="0">Administrator</option>
+									<option value="1">Attendant</option>
 							</optgroup>
 						</select>
 						<label for="chemBrand">User Privilege level</label>
 					</div>
 					<div class="form-group">
-						<input type="text" name="password" placeholder="Username" class="form-control">
+						<input type="text" placeholder="Username" class="form-control" id="add-user-uname">
 					</div>
 					<div class="form-group">
-						<input type="email" name="password" placeholder="Email*" class="form-control">
+						<input type="email" placeholder="Email*" class="form-control" id="add-user-email">
 					</div>
 					<div class="form-group">
-						<input type="text" name="password" placeholder="First Name*" class="form-control">
+						<input type="text" placeholder="First Name*" class="form-control" id="add-user-name">
 					</div>
 					<div class="form-group">
-						<input type="text" name="password" placeholder="Phone Number*" class="form-control">
+						<input type="text" placeholder="Phone Number*" class="form-control" id="add-user-phone">
 					</div>
-					<button class="tg-btn" type="button">Save</button>
+					<button class="tg-btn add-user-save-btn" type="button">Save</button>
 				</div>
 			</div>
 		</div>

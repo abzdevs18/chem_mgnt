@@ -140,7 +140,13 @@ class Admin extends Controller
 	}
 
 	public function add_student(){
-		$this->view('admin/add_student');
+		$dept = $this->chemModel->getDepartment();
+
+		$data = [
+			"dept" => $dept
+		];
+
+		$this->view('admin/add_student', $data);
 	}
 
 	public function add_user_ad(){
@@ -222,6 +228,56 @@ class Admin extends Controller
 			// echo "D";
 		}else {
 			echo "not";
+		}
+	}
+
+	public function userStudentAdd(){
+		if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {		
+			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+			$data = [
+				/*check this first form*/
+				"status" => "",
+				"gender" => trim($_POST['gender']),
+				"studId" => trim($_POST['studId']),
+				"department" => trim($_POST['department']),
+				"birth" => trim($_POST['birth']),
+				"name" => trim($_POST['name'])
+			];
+			$res = $this->adminModel->addUserStudent($data);
+			if($res){
+
+			}
+		}
+	}
+
+
+	public function userAdminAdd(){
+		if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {		
+			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+			$data = [
+				/*check this first form*/
+				"status" => "",
+				"gender" => trim($_POST['gender']),
+				"type" => trim($_POST['type']),
+				"uname" => trim($_POST['uname']),
+				"email" => trim($_POST['email']),
+				"name" => trim($_POST['name']),
+				"phone" => trim($_POST['phone']),
+				"photo" => $_FILES['photo']['name']
+			];
+
+			if($_FILES['photo']['name']){
+				$target = $_SERVER['DOCUMENT_ROOT'] . "/public/img/users/" . basename($_FILES['photo']['name']);
+				
+				if (move_uploaded_file($_FILES["photo"]["tmp_name"], $target)) {
+
+					$res = $this->adminModel->addUserAdmin($data);
+					echo '$res';
+				}
+			}else{
+				$res = $this->adminModel->addUserAdmin($data);
+				echo "dd";
+			}
 		}
 	}
 

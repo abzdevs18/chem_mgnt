@@ -431,7 +431,7 @@ $(document).on("click", "#add_record", function () {
     Push.Permission.request(onGranted, onDenied);
     // alert();
   } else {
-    alert(Push.Permission.has());
+    // alert(Push.Permission.has());
   }
   // Push.Permission.request(onGranted, onDenied);
   // Push.Permission.DENIED; // 'denied'

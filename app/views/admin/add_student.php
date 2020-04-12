@@ -12,35 +12,45 @@
 				</div>
 				<div class="changepass-holder half-row">
 					<div class="form-group half-form-group">
-						<input type="text" name="chemWt" class="form-control">
+						<input type="text" name="chemWt" class="form-control" id="student-name">
 						<label for="chemWt">Firstname</label>
 					</div>
 					<div class="form-group half-form-group">
-						<input type="text" name="chemAssay" class="form-control">
+						<input type="text" name="chemAssay" class="form-control" id="student-id">
 						<label for="chemAssay">Student No.</label>
 					</div>
 				</div>
 				<div class="changepass-holder third-row">
 					<div class="form-group half-form-group">
-						<input type="date" name="chemExpiration" class="form-control">
+						<input type="date" name="chemExpiration" class="form-control" id="student-birth">
 						<label for="chemExpiration">Birth date</label>
 					</div>
 					<div class="form-group half-form-group">
-						<select style="width: 100%;" name="chemBrand">
-							<optgroup>
-								<?php foreach ($data['brand'] as $brand) : ?>
-									<option value="<?=$brand->id;?>"><?=$brand->name;?></option>
-								<?php endforeach; ?>
-							</optgroup>
-						</select>
-						<label for="chemBrand">Department</label>
+                        <div class="smart-drop-wrapper" id="studentDepartment">
+                            <input type="text" name="chemBrand" class="cusDrop meta-selected-department" id="student-department" value="" placeholder="Select department" data-name="department">
+                            <div class="options-wrapper wrapper-department">
+                                <div class="options">
+                                    <?php foreach ($data['dept'] as $dept) : ?>
+                                        <div class="options-item temp-remover" id="content-wrap-<?=$dept->id?>" data-meta="department" data-id="<?=$dept->id?>" data-name="<?=$dept->name?>">                                        
+                                            <input type="text" name="" class="hidden-container" data-id="<?=$dept->id?>" value="<?=$dept->name;?>" style="display:none;"/>
+                                            <span class="smart-drop-add-btn remove-term" data-item="department" data-id="<?=$dept->id;?>">Delete</span>
+                                            <span class="brand-name" value="<?=$dept->id;?>"><?=$dept->name;?>  <i class="fas fa-pencil-alt edit-smart-option" data-id="<?=$dept->id?>"></i></span>
+                                        </div>
+                                    <?php endforeach; ?>
+                                    <div class="options-item smart-drop-add top-form-add" style="display:flex;">
+                                        <input type="text" name="" class="add-meta-value-department" placeholder="+ add"/>
+                                        <span class="smart-drop-add-btn add-term" data-item="department">Add</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <label for="studentDepartment">Department</label>
 					</div>
 					<div class="form-group half-form-group">
-						<select style="width: 100%;" name="chemBrand">
+						<select style="width: 100%;" name="chemBrand" id="student-gender">
 							<optgroup>
-								<?php foreach ($data['brand'] as $brand) : ?>
-									<option value="<?=$brand->id;?>"><?=$brand->name;?></option>
-								<?php endforeach; ?>
+									<option value="1">Male</option>
+									<option value="0">Female</option>
 							</optgroup>
 						</select>
 						<label for="chemBrand">Gender</label>
@@ -48,7 +58,7 @@
 				</div>
 				<div class="prof-container">
 					<div>
-						<button class="tg-btn save-btn" type="button">Save</button>
+						<button class="tg-btn save-btn student-save" type="button">Save</button>
 					</div>
 				</div>
 			</div>

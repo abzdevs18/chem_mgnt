@@ -85,6 +85,16 @@ class chemModel
 		}
 	}
 
+	public function getDepartment(){
+		$this->db->query("SELECT * FROM department");
+		$row = $this->db->resultSet();
+		if ($row) {
+			return $row;
+		}else {
+			return false;
+		}
+	}
+
 	public function getCategory(){
 		$this->db->query("SELECT * FROM category");
 		$row = $this->db->resultSet();

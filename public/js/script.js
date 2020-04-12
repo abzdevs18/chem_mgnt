@@ -125,5 +125,87 @@ function chemMeta(action,name, value) {
 			console.log(e);
 		}
 	});
-	console.log(value);
 }
+
+// User adding
+$(".add-user-save-btn").click(function(){
+	let gender = $("#add-user-gender").val();
+	let type = $("#add-user-type").val();
+	let uname = $("#add-user-uname").val();
+	let email = $("#add-user-email").val();
+	let name = $("#add-user-name").val();
+	let phone = $("#add-user-phone").val();
+	let photo = $("#user-photo").prop('files')[0];
+
+	let fd = new FormData();
+	fd.append('gender',gender);
+	fd.append('type',type);
+	fd.append('uname',uname);
+	fd.append('email',email);
+	fd.append('name',name);
+	fd.append('phone',phone);
+	fd.append('photo',photo);
+
+	$.ajax({
+		url: "/admin/userAdminAdd",
+		method: "POST",
+		processData: false, // important
+		contentType: false, // important
+		data: fd,
+		success: function (data) {
+			window.location.href ="/admin/add_user_ad";
+			// console.log(data);
+		},
+		error: function (e) {
+			console.log(e);
+		}
+	});
+});
+
+// Savving student
+$(".student-save").click(function(){
+	let name = $("#student-name").val();
+	let studId = $("#student-id").val();
+	let gender = $("#student-gender").val();
+	let department = $("#student-department").attr("data-index");
+	let birth = $("#student-birth").val();
+
+	$.ajax({
+		url: "/admin/userStudentAdd",
+		method: "POST",
+		data: {name,studId,gender,department,birth},
+		success: function (data) {
+			window.location.href ="/admin/add_student";
+			// console.log(data);
+		},
+		error: function (e) {
+			console.log(e);
+		}
+	});
+
+})
+
+	// Multiple images preview in browser
+	function read(input) {
+
+		if (input.files && input.files[0]) {
+
+			var reader = new FileReader();
+	
+			reader.onload = function(e) {
+				$('#profContainer').attr(
+				  "style",
+				  "background-image: url(" +
+					e.target.result +
+					");margin-bottom:0px;background-position: center;background-size: cover;background-repeat: no-repeat;border: none;box-shadow: var(--box-shadow);width: 50%;border-radius: 50%;margin: 20px auto 0px;"
+				);
+			}
+	
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+  
+	$("#user-photo").on("change", function() {
+	  $(".new_user_photo_set").show(100);
+	  read(this);
+	});

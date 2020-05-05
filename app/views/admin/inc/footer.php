@@ -20,18 +20,18 @@
 var notif = new Audio('/media/audio/notif.mp3');
 socket.emit("message", "Hello");
 socket.on("notif", function(data) {
-    // $("#notif-counter").text(data);
+    $("#notif-counter").text(data);
     // notif.play();
-    // $.ajax({
-    //     url: "/admin/notification",
-    //     success: function(data) {
-    //         $(".notif-holder > div > div:first-child").append(data);
-    //         console.log(data);
-    //     },
-    //     error: function(err) {
-    //         console.log(err);
-    //     }
-    // });
+    $.ajax({
+        url: "/admin/notification",
+        success: function(data) {
+            $(".notif-holder > div > div:first-child").append(data);
+            console.log(data);
+        },
+        error: function(err) {
+            console.log(err);
+        }
+    });
     let date = moment.utc().format();
    	console.log(date + "=>" + moment(date).fromNow());
    	console.log(timeago().format('2016-06-12', 'en_US'));

@@ -2,7 +2,7 @@ let express = require("express");
 let moment = require("moment");
 let chalk = require("chalk");
 let app = express();
-let port = 3000;
+let port = 80;
 
 let server = require("http").createServer(app);
 let io = require("socket.io")(server);

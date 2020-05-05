@@ -1,22 +1,22 @@
 
-			<?php
-			// DB params
+<?php
+// DB params
 
-			define('DB_HOST', 'localhost');
-			define('DB_USER', 'root');
-			define('DB_PASS', 'D3b1an!?');
-			define('DB_NAME', 'ch_mgnt');
+define('DB_HOST', 'localhost');
+define('DB_USER', 'root');
+define('DB_PASS', 'D3b1an!?');
+define('DB_NAME', 'ch_mgnt');
 
-			//APP ROOT
-			define('APP_ROOT', dirname(dirname(__FILE__)));
+//APP ROOT
+define('APP_ROOT', dirname(dirname(__FILE__)));
 
-			//URL ROOT
-			define('URL_ROOT', '');
+//URL ROOT
+define('URL_ROOT', '');
 
-			//SITE NAME
-			define('SITE_NAME', 'Chem Mngt. System');
+//SITE NAME
+define('SITE_NAME', 'Chem Mngt. System');
 
-			//SALT
-			define('SECURE_SALT', 'k<UL?Gxr%6bTv[IX5h>s)vaEurK]4Sn');
+//SALT
+define('SECURE_SALT', 'k<UL?Gxr%6bTv[IX5h>s)vaEurK]4Sn');
 
-			?>
+?>

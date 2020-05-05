@@ -14,10 +14,9 @@
 					<span>Sort by:</span>
 					<select>
 						<optgroup>
-							<option selected>Geology Department</option>
-							<option>Most Recent</option>
-							<option>Most Recent</option>
-							<option>Most Recent</option>
+							<?php foreach ($data['dept'] as $dept) : ?>
+								<option><?php echo $dept->name;?></option>
+							<?php endforeach; ?>
 						</optgroup>
 					</select>
 				</div>
@@ -30,8 +29,8 @@
 				<table>
 					<thead>
 						<tr>
-							<th style="text-align: center;"><input type="checkbox" name=""></th>
-							<th>Name</th>
+							<!-- <th style="text-align: center;"><input type="checkbox" name=""></th> -->
+							<th colspan="2" style="width: 220px;">Name</th>
 							<!-- <th>User Type</th> -->
 							<th>Department</th>
 							<th>Student No.</th>
@@ -40,19 +39,20 @@
 					</thead>
 					<tbody id="data-container">
 						<!-- if job is close add row with class name "sold" -->
-						<?php for($i = 0; $i < 3; $i++) : ?>
-						<tr>
-							<td style="text-align: center;" class="ch-check-box">
+						<?php foreach($data['student'] as $student): ?>
+						<tr class="req_logs_">
+							<td style="text-align: center;" class="ch-selection-item-action">
+								<div class="ch-checkbox-item" data-checked></div>
 								<!-- <input type="checkbox" name=""> -->
 							</td>
-							<td>
+							<td class="ch-row-second">
 								<div class="request_icon_wrapper">
 									<div class="req_icon">
-										<span>C</span>
+										<span><?=$student->student_name[0];?></span>
 									</div>
-									<div style="margin:5px;margin-top:0px;">
-										<h3>Clint Anthony Abueva</h3>
-										<p>Student No: <span>02131011</span></p>
+									<div class="cc-name" style="margin:5px;margin-top:0px;">
+										<h3><?=$student->student_name;?></h3>
+										<time datetime="2017-08-08">01 Day Ago</time>
 									</div>
 								</div>
 							</td>
@@ -60,48 +60,18 @@
 								<h3>Student</h3>
 							</td> -->
 							<td class="tittle-id">
-								<h3>Geology Department</h3>
+								<h3><?=$student->department;?> Department</h3>
 							</td>
 							<td>
-								<span>02131011</span>
+								<span><?=$student->student_id;?></span>
 							</td>
 							<td class="action-btn">
-								<span class="eye" data-jId="<?=$job->jId;?>"><i class="fal fa-eye"></i></span>
-								<span class="pencil" data-jId="<?=$job->jId;?>"><i class="fal fa-pencil-alt"></i></span>
-								<span class="trash" data-jId="<?=$job->jId;?>"><i class="fal fa-trash"></i></span>
+								<span class="eye" data-jId="<?=$student->student_id;?>"><i class="fal fa-eye"></i></span>
+								<span class="pencil" data-jId="<?=$student->student_id;?>"><i class="fal fa-pencil-alt"></i></span>
+								<span class="trash" data-jId="<?=$student->student_id;?>"><i class="fal fa-trash"></i></span>
 							</td>
 						</tr>
-						<tr>
-							<td style="text-align: center;">
-								<input type="checkbox" name="">
-							</td>
-							<td>
-								<div class="request_icon_wrapper">
-									<div class="req_icon">
-										<img src="<?=URL_ROOT?>/img/prof.png" alt="">
-									</div>
-									<div style="margin:5px;margin-top:0px;">
-										<h3>Clint Anthony Abueva</h3>
-										<p>Student No: <span>02131011</span></p>
-									</div>
-								</div>
-							</td>
-							<!-- <td class="tittle-id">
-								<h3>Student</h3>
-							</td> -->
-							<td class="tittle-id">
-								<h3>Geology Department</h3>
-							</td>
-							<td>
-								<span>02131011</span>
-							</td>
-							<td class="action-btn">
-								<span class="eye" data-jId="<?=$job->jId;?>"><i class="fal fa-eye"></i></span>
-								<span class="pencil" data-jId="<?=$job->jId;?>"><i class="fal fa-pencil-alt"></i></span>
-								<span class="trash" data-jId="<?=$job->jId;?>"><i class="fal fa-trash"></i></span>
-							</td>
-						</tr>
-						<?php endfor; ?>
+						<?php endforeach; ?>
 					</tbody>
 					<div id="pagination-container"></div>
 				</table>

@@ -7,9 +7,9 @@
 // });
 
 //For scrollBar
-$(".content").mCustomScrollbar({
-  autoHideScrollbar: true
-});
+// $(".content").mCustomScrollbar({
+//   autoHideScrollbar: true
+// });
 /*ENd ScrollBar*/
 var URL_ROOT = "";
 $(document).on("click", ".save-btn", function (e) {

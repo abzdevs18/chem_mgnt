@@ -23,8 +23,8 @@ $(document).ready(function () {
 
 $(".req_logs_").click(function () {
 	let rowId = $(this).attr("data-rowId");
-	$(".collapse").css("display", "none");
 	$(rowId).slideToggle("slow");
+	$(".containerCollapse").not(rowId).slideUp("slow");
 });
 
 $('.note-path').click(function () {

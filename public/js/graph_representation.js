@@ -101,9 +101,9 @@ $(document).on("click", ".graphDetails", function(e) {
   var status = $(this).attr("data-status");
   if (!status) {
     $(this).attr("data-status", "open");
-    $(".dataGraph").show();
+    $(".dataGraph").slideToggle("slow");
   } else {
     $(this).attr("data-status", "");
-    $(".dataGraph").hide();
+    $(".dataGraph").slideToggle("slow");
   }
 });

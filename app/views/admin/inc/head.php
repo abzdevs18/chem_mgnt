@@ -6,7 +6,7 @@
     <link rel="icon" type="image/x-icon" href="/img/logo_icon/lab.ico">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto|Quicksand:400,500&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://fontawesome.azureedge.net/fontawesome/fa/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/lib/css/fa/css/all.min.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="stylesheet" type="text/css" href="/css/drop_down.css">
@@ -54,7 +54,7 @@
     });
     </script>
     <script>
-    // var socket = io.connect('http://192.168.0.16:3000');
+    var socket = io.connect('https://chemlabdept.herokuapp.com');
 
     tinymce.init({
         selector: 'textarea#chemicalFormula',

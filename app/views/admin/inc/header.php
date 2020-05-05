@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/ico" href="/img/cap.ico">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://fontawesome.azureedge.net/fontawesome/fa/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/lib/css/fa/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="/css/admin_style.css">
     <link rel="stylesheet" type="text/css" href="/css/jquery.mCustomScrollbar.css">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"

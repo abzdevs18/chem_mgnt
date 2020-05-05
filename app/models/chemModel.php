@@ -95,6 +95,16 @@ class chemModel
 		}
 	}
 
+	public function getStudent(){
+		$this->db->query("SELECT student.*, department.name AS department FROM student LEFT JOIN department ON department.id = student.dept_id");
+		$row = $this->db->resultSet();
+		if ($row) {
+			return $row;
+		}else {
+			return false;
+		}
+	}
+
 	public function getCategory(){
 		$this->db->query("SELECT * FROM category");
 		$row = $this->db->resultSet();

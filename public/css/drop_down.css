@@ -110,6 +110,7 @@
 }
 .brand-name {
     position: relative;
+    border: 1px solid #f4f6f8;
 }
 .brand-name:hover {
     border: 1px dashed;

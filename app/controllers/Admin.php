@@ -110,6 +110,13 @@ class Admin extends Controller
 	}
 
 	public function student(){
+		$student = $this->chemModel->getStudent();
+		$dept = $this->chemModel->getDepartment();
+
+		$data = [
+			'student' => $student,
+			"dept" => $dept
+		];
 
 		
 		// no other solution this is for the Left sidebar navigation
@@ -117,7 +124,7 @@ class Admin extends Controller
 		unset($_SESSION['menu_active']);
 		$_SESSION['menu_active'] = "student";
 
-		$this->view('admin/student');
+		$this->view('admin/student', $data);
 	}
 
 	public function privacy(){

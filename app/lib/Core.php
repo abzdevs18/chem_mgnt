@@ -7,7 +7,8 @@
 
 class Core
 {	
-	protected $currentController = 'Pages';
+	// Change the currentController to what folder you want to set the default
+	protected $currentController = 'Admin';
 	protected $currentMethod = 'index';
 	protected $params = [];
 

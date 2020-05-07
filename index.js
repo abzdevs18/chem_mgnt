@@ -1,20 +1,20 @@
-let app = require("express")();
+let app = require("express");
 // let moment = require("moment");
 let chalk = require("chalk");
-// let app = express();
-// const cors = require('cors');
-// app.use(cors({
-//   origin: 'http://chemlab.cf'
-// }));
+let app = express();
+const cors = require('cors');
+app.use(cors());
+
 let port = process.env.PORT || 3000;
 
-let server = app.listen(port);
+// let server = app.listen(port);
 // let server = require("http").createServer(express);
-let io = require("socket.io").listen(server);
+let server = require("socket.io");
+let io = new server();
 
-// server.listen(port, function () {
-//   console.log(chalk.green("Server running on: " + port));
-// });
+app.listen(port, function () {
+  console.log(chalk.green("Server running on: " + port));
+});
 // express.get("/", (req, res) => {
 //   res.send("Chat Server is running on port " + port);
 // });

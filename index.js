@@ -6,7 +6,7 @@ let chalk = require("chalk");
 // app.use(cors({
 //   origin: 'http://chemlab.cf'
 // }));
-let port = process.env.PORT || 3000;
+let port = process.env.PORT;
 
 let server = require("http").createServer(express);
 let io = require("socket.io")(server);

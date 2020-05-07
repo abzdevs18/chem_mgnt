@@ -6,7 +6,7 @@ let chalk = require("chalk");
 // app.use(cors({
 //   origin: 'http://chemlab.cf'
 // }));
-let port = 3000;
+let port = process.env.PORT || 3000;
 
 let server = require("http").createServer(express);
 let io = require("socket.io")(server);
@@ -18,7 +18,7 @@ express.get("/", (req, res) => {
   res.send("Chat Server is running on port " + port);
 });
 server.listen(port, function() {
-  console.log("j");
+  console.log("Chat Server is running on port " + port);
 });
 
 io.on("connection", function (socket) {

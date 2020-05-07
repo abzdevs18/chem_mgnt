@@ -2,6 +2,10 @@ let express = require("express");
 let moment = require("moment");
 let chalk = require("chalk");
 let app = express();
+const cors = require('cors');
+app.use(cors({
+  origin: 'http://chemlab.cf:3000'
+}));
 let port = 3000;
 
 let server = require("http").createServer(app);

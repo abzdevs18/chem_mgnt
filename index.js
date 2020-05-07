@@ -8,9 +8,9 @@ app.use(cors());
 let port = process.env.PORT || 3389;
 
 // let server = app.listen(port);
-// let server = require("http").createServer(express);
-let server = require("socket.io");
-let io = new server();
+let server = require("http").createServer(express);
+let io = require("socket.io")(server, { origins: '*:*'});
+// let io = new server();
 
 app.listen(port, function () {
   console.log(chalk.green("Server running on: " + port));

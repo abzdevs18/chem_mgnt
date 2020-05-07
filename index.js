@@ -4,7 +4,7 @@ let chalk = require("chalk");
 let app = express();
 const cors = require('cors');
 app.use(cors({
-  origin: 'http://chemlab.cf:3000'
+  origin: 'http://chemlab.cf'
 }));
 let port = 3000;
 

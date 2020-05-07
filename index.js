@@ -2,8 +2,6 @@ let express = require("express");
 // let moment = require("moment");
 let chalk = require("chalk");
 let app = express();
-// const cors = require('cors');
-// app.use(cors());
 
 let port = process.env.PORT || 3389;
 
@@ -15,12 +13,6 @@ let io = require("socket.io")(http);
 http.listen(port, function () {
   console.log(chalk.green("Server running on: " + port));
 });
-// express.get("/", (req, res) => {
-//   res.send("Chat Server is running on port " + port);
-// });
-// server.listen(port, function() {
-//   console.log("Chat Server is running on port " + port);
-// });
 
 io.on("connection", function (socket) {
   console.log("connected");

@@ -1,12 +1,12 @@
 let express = require("express");
 // let moment = require("moment");
 let chalk = require("chalk");
-let app = express();
+let server = express();
 
 let port = process.env.PORT || 3389;
 
 // let server = app.listen(port);
-let http = require("http").createServer(app);
+let http = require("https").createServer(server);
 let io = require("socket.io")(http);
 // let io = new server();
 

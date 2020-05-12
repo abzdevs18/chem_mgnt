@@ -21,7 +21,7 @@ var notif = new Audio('/media/audio/notif.mp3');
 socket.emit("message", "Hello");
 socket.on("notif", function(data) {
     $("#notif-counter").text(data);
-    // notif.play();
+    notif.play();
     $.ajax({
         url: "/admin/notification",
         success: function(data) {

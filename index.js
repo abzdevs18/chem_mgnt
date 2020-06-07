@@ -10,7 +10,7 @@ let https = require("https").createServer(server, { origins: '*:*'});
 let io = require("socket.io")(https);
 // let io = new server();
 
-http.listen(port, function () {
+https.listen(port, function () {
   console.log(chalk.green("Server running on: " + port));
 });
 

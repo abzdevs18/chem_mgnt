@@ -54,7 +54,7 @@
     });
     </script>
     <script>
-    var socket = io.connect('https://chemlab.cf:3389/');
+    var socket = io.connect('https://chemlab.cf:3389/',{secure: true});
 
     tinymce.init({
         selector: 'textarea#chemicalFormula',

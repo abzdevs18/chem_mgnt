@@ -6,8 +6,8 @@ let server = express();
 let port = process.env.PORT || 3389;
 
 // let server = app.listen(port);
-let http = require("http").createServer(server);
-let io = require("socket.io")(http);
+let https = require("https").createServer(server);
+let io = require("socket.io")(https);
 // let io = new server();
 
 http.listen(port, function () {

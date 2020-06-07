@@ -6,12 +6,11 @@ let server = express();
 
 let port = process.env.PORT || 3389;
 
-const privateKey = fs.readFileSync(process.env.PRIVATE_KEY, 'utf8')
-const certificate = fs.readFileSync(process.env.CERTIFICATE, 'utf8')
+const privateKey = fs.readFileSync('/etc/letsencrypt/live/chemlab.cf/privkey.pem');
+const certificate = fs.readFileSync('/etc/letsencrypt/live/chemlab.cf/cert.pem');
 const credentials = {
     key: privateKey, 
-    cert: certificate, 
-    passphrase: process.env.PASSPHRASE
+    cert: certificate
 }
 // let server = app.listen(port);
 let http = require("https").createServer(credentials, server);

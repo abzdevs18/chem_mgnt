@@ -5,12 +5,19 @@ let server = express();
 
 let port = process.env.PORT || 3389;
 
+const privateKey = fs.readFileSync(process.env.PRIVATE_KEY, 'utf8')
+const certificate = fs.readFileSync(process.env.CERTIFICATE, 'utf8')
+const credentials = {
+    key: privateKey, 
+    cert: certificate, 
+    passphrase: process.env.PASSPHRASE
+}
 // let server = app.listen(port);
-let https = require("https").createServer(server, { origins: '*:*'});
-let io = require("socket.io")(https);
+let http = require("http").createServer(credentials, server);
+let io = require("socket.io")(http);
 // let io = new server();
 
-https.listen(port, function () {
+http.listen(port, function () {
   console.log(chalk.green("Server running on: " + port));
 });
 

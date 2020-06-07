@@ -6,7 +6,7 @@ let server = express();
 let port = process.env.PORT || 3389;
 
 // let server = app.listen(port);
-let https = require("https").createServer(server);
+let https = require("https").createServer(server, { origins: '*:*'});
 let io = require("socket.io")(https);
 // let io = new server();
 

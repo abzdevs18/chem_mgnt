@@ -8,6 +8,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
+    "https": "^1.0.0",
     "intro.js": "^2.9.3",
     "js-base64": "^2.5.2",
     "moment": "^2.24.0",

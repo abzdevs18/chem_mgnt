@@ -14,7 +14,7 @@ const credentials = {
     passphrase: process.env.PASSPHRASE
 }
 // let server = app.listen(port);
-let http = require("http").createServer(credentials, server);
+let http = require("https").createServer(credentials, server);
 let io = require("socket.io")(http);
 // let io = new server();
 

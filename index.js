@@ -36,5 +36,6 @@ io.on("connection", function (socket) {
 
   socket.on("new_login", function (data) {
     io.emit("new_login", data);
+    console.log(data);
   });
 });

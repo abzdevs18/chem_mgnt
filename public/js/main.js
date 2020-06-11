@@ -434,12 +434,12 @@ $(document).on("click", "#add_record", function () {
   } else {
     // alert(Push.Permission.has());
   }
-  // Push.Permission.request(onGranted, onDenied);
+  Push.Permission.request(onGranted, onDenied);
   // Push.Permission.DENIED; // 'denied'
 
   console.log(Push.Permission.has());
   demo();
-  $(".m_notification").print();
+  // $(".m_notification").print();
   return false;
 });
 // setInterval(function(){demo()},5000);

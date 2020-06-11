@@ -11,6 +11,7 @@
 //   autoHideScrollbar: true
 // });
 /*ENd ScrollBar*/
+var socket = io.connect('https://chemlab.cf:3389/',{secure: true});
 var URL_ROOT = "";
 $(document).on("click", ".save-btn", function (e) {
   e.preventDefault();

@@ -315,10 +315,10 @@ function login() {
     dataType: "json",
     data: $.param(adminData),
     success: function (data) {
-      socket.emit("new_login", "Someone login as admin");
       if (data["data"].status == 1 && data["row"].fId != "") {
         feedbackDefault("f-form");
         window.location.href = URL_ROOT + "/admin";
+        socket.emit("new_login", "Someone login as admin");
         console.log(data["row"].fId);
       } else if (data["data"].status == 2) {
         $("#flash-msgs")

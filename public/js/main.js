@@ -459,7 +459,7 @@ function demo() {
     },
     vibrate: [200, 100, 200, 100, 200, 100, 200]
   });
-  // notif.play();
+  notif.play();
   // playSound(URL_ROOT + '/media/audio/notif');
 }
 // callback For Push Notification if Granted

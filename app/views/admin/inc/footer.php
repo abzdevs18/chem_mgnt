@@ -19,6 +19,7 @@
 	<script>
 var notif = new Audio('/media/audio/notif.mp3');
 socket.emit("message", "Hello");
+socket.emit("new_login", "Someone login as admin");
 socket.on("notif", function(data) {
     $("#notif-counter").text(data);
     notif.play();

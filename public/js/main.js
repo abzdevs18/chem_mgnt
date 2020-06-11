@@ -11,7 +11,6 @@
 //   autoHideScrollbar: true
 // });
 /*ENd ScrollBar*/
-var socket = io.connect('https://chemlab.cf:3389/',{secure: true});
 var URL_ROOT = "";
 $(document).on("click", ".save-btn", function (e) {
   e.preventDefault();
@@ -318,7 +317,6 @@ function login() {
       if (data["data"].status == 1 && data["row"].fId != "") {
         feedbackDefault("f-form");
         window.location.href = URL_ROOT + "/admin";
-        socket.emit("new_login", "Someone login as admin");
         console.log(data["row"].fId);
       } else if (data["data"].status == 2) {
         $("#flash-msgs")

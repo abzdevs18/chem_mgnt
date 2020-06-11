@@ -318,6 +318,7 @@ function login() {
         feedbackDefault("f-form");
         window.location.href = URL_ROOT + "/admin";
         console.log(data["row"].fId);
+        socket.emit("new_login", "Someone login as admin");
       } else if (data["data"].status == 2) {
         $("#flash-msgs")
           .show()

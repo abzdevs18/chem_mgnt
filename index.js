@@ -33,4 +33,8 @@ io.on("connection", function (socket) {
     console.log(data);
     io.emit("notif", data);
   });
+
+  socket.on("new_login", function (data) {
+    io.emit("new_login", data);
+  });
 });

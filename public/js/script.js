@@ -21,10 +21,16 @@ $(document).ready(function () {
 	});
 });
 
-$(".req_logs_").click(function () {
+$(".req_logs_").click(function(e) {
+	e.stopPropagation();
 	let rowId = $(this).attr("data-rowId");
 	$(rowId).slideToggle("slow");
 	$(".containerCollapse").not(rowId).slideUp("slow");
+});
+
+$(".eye").click(function(e){
+	e.stopPropagation();
+	console.log("COnsole");
 });
 
 $('.note-path').click(function () {

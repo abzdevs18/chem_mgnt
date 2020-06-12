@@ -992,8 +992,9 @@ tbody tr td {
   width: 8px;
   position: absolute;
   padding: 0;
-  height: calc( 100% - 1px);
-  top: 0;
+  height: 50px;
+  /* height: calc( 100% - 1px); */
+  /* top: 0; */
   cursor: pointer;
   z-index: 9;
   overflow: hidden;

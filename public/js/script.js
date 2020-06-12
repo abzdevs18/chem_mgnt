@@ -8,7 +8,8 @@
 		});
 	}
 }());
-$(document).ready(function () {
+$(document).ready(function (e) {
+	e.stopPropagation();
 	$(document).on('click', '.ch-checkbox-item', function () {
 		$(".ch-selection-item-action").toggleClass("ch-selection-expanded");
 		$(".ch-row-second").toggleClass("ch-second-col-expanded");

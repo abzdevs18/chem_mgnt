@@ -9,7 +9,7 @@
 	}
 }());
 $(document).ready(function() {
-	$(document).on('click', '.ch-checkbox-item', function(e) {
+	$(document).on('click', '.ch-selection-item-action', function(e) {
 		e.stopPropagation();
 		$(".ch-selection-item-action").toggleClass("ch-selection-expanded");
 		$(".ch-row-second").toggleClass("ch-second-col-expanded");

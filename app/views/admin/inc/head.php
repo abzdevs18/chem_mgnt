@@ -16,7 +16,7 @@
     <link rel="stylesheet" type="text/css" href="/lib/css/jquery.mCustomScrollbar.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
-    <script src="https://cdn.tiny.cloud/1/hhu3aczt7p034dcjnizjwnns5faj5u4s14e894midesztea0/tinymce/5/tinymce.min.js"
+    <script src="https://cdn.tiny.cloud/1/lfnph5l20f8g9uy5tmuwru7xu7a2egw7rq58pmwxgalo4r80/tinymce/5/tinymce.min.js"
         referrerpolicy="origin"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
 

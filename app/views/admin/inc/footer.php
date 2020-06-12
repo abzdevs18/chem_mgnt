@@ -37,9 +37,9 @@ socket.on("notif", function(data) {
    	console.log(date + "=>" + moment(date).fromNow());
    	console.log(timeago().format('2016-06-12', 'en_US'));
 });
-socket.on("new_login", function(data){
-	notif.play();
-})
+// socket.on("new_login", function(data){
+// 	notif.play();
+// })
 	</script>
 	</body>
 

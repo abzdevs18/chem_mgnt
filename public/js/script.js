@@ -1,4 +1,13 @@
-console.log(moment("Sun Mar 28 2020 18:40:54 GMT+0800").fromNow());
+// console.log(moment("Sun Mar 28 2020 18:40:54 GMT+0800").fromNow());
+(function(){
+	// Firefox 1.0+
+	var isFirefox = typeof InstallTrigger !== 'undefined';
+	if(isFirefox){
+		$(".ch-selection-item-action").css({
+			"top":"0"
+		});
+	}
+}());
 $(document).ready(function () {
 	$(document).on('click', '.ch-checkbox-item', function () {
 		$(".ch-selection-item-action").toggleClass("ch-selection-expanded");

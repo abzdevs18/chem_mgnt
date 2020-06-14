@@ -80,7 +80,6 @@ $(".edit-smart-option").click(function (e) {
 	$(itemId + " > .hidden-container").show(100);
 	$(itemId + " > .remove-term").show(100);
 	$('.hidden-container').focus();
-
 });
 
 $(document).on('focusout','.hidden-container',function(e){
@@ -96,6 +95,7 @@ $(document).on('focusout','.hidden-container',function(e){
 });
 
 $(document).on('click','.options-item', function(e){
+	e.stopPropagation();
 	let index = $(this).attr('data-id');
 	let textValue = $(this).attr('data-name');
 
@@ -104,7 +104,7 @@ $(document).on('click','.options-item', function(e){
 	$('.meta-selected-'+metaItem).attr('value',textValue);
 	$('.meta-selected-'+metaItem).attr('data-index',index);
 
-
+	// $(".options-wrapper").hide(100);
 });
 // $('.form-holder').click(function(e){
 // 	e.stopPropagation();
@@ -225,3 +225,31 @@ $(".student-save").click(function(){
 	  $(".new_user_photo_set").show(100);
 	  read(this);
 	});
+$(document).on("click","#add-note-modal", function(){
+	let state = $(this).attr("data-click");
+	if(state == "false"){
+		$(".x-note-container").css({
+			"left":"calc( -100% - 10px )",
+			"box-shadow":"var(--box-shadow)"
+		});
+		$(".note-path").css({
+			"left":"calc( -107% - 3px )",
+			"display":"inline-block"
+		});
+		$("#icon-holder .caret-right").hide(50);
+		$("#icon-holder .caret-left").show(100);
+		$(this).attr("data-click","true");
+	}else{
+		$(".x-note-container").css({
+			"left":"0",
+			"box-shadow":"unset"
+		});
+		$(".note-path").css({
+			"left":"-20px",
+			"display":"none"
+		});
+		$("#icon-holder .caret-left").hide(50);
+		$("#icon-holder .caret-right").show(100);
+		$(this).attr("data-click","false");
+	}
+});

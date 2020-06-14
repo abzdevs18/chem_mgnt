@@ -113,9 +113,10 @@
         </div>
         <div class="alerts-notif note-wrapper" style="position:relative;">
 
-            <div class="alert-content no-fixed-height xpandable-note" style="position:relative;overflow:unset;">                                
-                <div class="note-path">
-                    <span>
+            <div class="alert-content no-fixed-height xpandable-note" style="position:relative;overflow:unset;">      
+                <div class="x-note-container"></div>                          
+                <div class="note-path" id="add-note-modal" data-click="false">
+                    <span id="icon-holder">
                         <i class="fal fa-angle-left caret-left caret"></i>
                         <i class="fal fa-angle-right caret-right caret"></i>
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="67" viewBox="0 0 20 67">
@@ -138,7 +139,7 @@
                 <div class="content-head">
                     <h2>Disposal Guideles</h2>
                 </div>
-                <div class="changepass-holder" style="display:flex;flex-direction:column;">
+                <div class="changepass-holder x-border-left" style="display:flex;flex-direction:column;">
                     <div class="form-group">
                         <!-- <input type="text" name="emFirst" placeholder="First Name*" class="form-control"> -->
                         <textarea name="note" id="note" cols="30" rows="40" class="form-control"

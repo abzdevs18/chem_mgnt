@@ -6,7 +6,8 @@
     <link rel="icon" type="image/x-icon" href="/img/logo_icon/lab.ico">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto|Quicksand:400,500&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/lib/css/fa/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://1914282112.rsc.cdn77.org/css/all.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="/lib/css/fa/css/all.min.css"> -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="stylesheet" type="text/css" href="/css/drop_down.css">
@@ -134,6 +135,31 @@
                 </div>
             </section>
         </form>
+    </div>
+    <!-- End Modal -->
+    <!-- Modal: For adding chemicals. First Plan -->
+    <div style="display:none;width: 100%;height: 100vh;background: rgba(51, 51, 51, 0.37);z-index: 999999;position: fixed;">
+        <div style="min-width: 300px;width: 50%;margin: 0 auto;">
+            <section class="offices-msgs" style="flex-direction: column;width: 100%;background: #fff;border-radius: 5px;">
+                <div class="alerts-notif" style="width: 100%;margin: 0 auto;position: relative;padding: 0;">
+                    <span class="modal-close"
+                        style="position: absolute;color: #fff;z-index: 9;right: 0px;padding: 5px 7px 10px;border-radius: 3px;width: 15px;height: 15px;text-align: center;line-height: 20px;font-size: 20px;border: 1px solid #fff;margin: 14px;"><i
+                            class="fal fa-times"></i></span>
+                    <div class="alert-content no-fixed-height" style="display: flex;flex-direction: column;">
+                        <div class="content-head">
+                            <h2>Job Details</h2>
+                        </div>
+                    </div>
+                </div>
+                <section class="alert-content">
+                    <p class="alert-message">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum odio vero aperiam assumenda quos rerum animi nostrum, sint ratione provident necessitatibus, quaerat, commodi asperiores dolorem! Itaque reiciendis mollitia quod repudiandae!</p>
+                </section>
+                <section class="alert-actions">
+                    <button style="background:var(--proceed-with-caution-label);">Delete</button>
+                    <button style="background: var(--green);">Cancel</button>
+                </section>
+            </section>
+        </div>
     </div>
     <!-- End Modal -->
 

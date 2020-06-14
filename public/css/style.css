@@ -1612,3 +1612,26 @@ Sold Row
 .privacy_settings {
   width: 41.66666667% !important;
 }
+
+/* Modal stylling */
+.alert-actions {
+  padding: 10px 20px;
+  border-top: 0.11em solid var(--light-dark);
+  text-align: right;
+}
+.alert-actions button {
+  font-family: var(--font-normal);
+  
+  border: none;
+  padding: 10px 15px;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 3px;
+}
+.alert-message {
+  font-family: 'Quicksand';
+  font-weight: 500;
+  padding: 20px;
+  font-size: 17px;
+  text-align: justify;
+}

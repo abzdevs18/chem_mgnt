@@ -10,19 +10,11 @@
 .note-path {
     position: absolute;
     left: -20px;
+    /* left: calc( 107% - 3px ); Change on click */
     transform: rotate(180deg);
     top: 150px;
     display: none;
     transition: all .3s ease-in-out;
-}
-.xpandable-note:hover {
-    border-left: 2px solid #2b2f3e;
-}
-.xpandable-note:hover .note-path {
-    display: inline-block;
-}
-.xpandable-note:hover .content-head {
-    border-radius: 5px;
 }
 .note-path span i {
     position: absolute;
@@ -41,4 +33,25 @@
 }
 .note-path span svg {
     fill: #2b2f3e;
+}
+.x-note-container {
+    width: calc( 100% - 2px );
+    min-height: 100%;
+    position: absolute;
+    background-color: #fff;
+    border-radius: 5px;
+    z-index: -1;
+    /* box-shadow: var(--box-shadow); */
+    border-left: 2px solid #2b2f3e;
+    transition: all .3s ease-in-out;
+}
+.xpandable-note:hover .note-path {
+    display: inline-block !important;
+}
+.xpandable-note:hover .content-head {
+    
+}
+.xpandable-note:hover .x-note-container {
+    left: -2px !important;
+    /* left: calc( -100% - 10px );click */
 }

@@ -7,11 +7,11 @@
 	<section class="main-tbl-container">
 		<div class="tbl-wrap">
 			<div class="content-head">
-				<h2>Registered Students<?php print_r($data['one']);?></h2>
+				<h2>System logs</h2>
 			</div>
 			<div class="sortby filter-category">
 				<div id="sort-drop">
-					<span>Sort by:</span>
+					<span>Sort event:</span>
 					<select>
 						<optgroup>
 							<?php foreach ($data['dept'] as $dept) : ?>
@@ -32,9 +32,10 @@
 							<!-- <th style="text-align: center;"><input type="checkbox" name=""></th> -->
 							<th colspan="2" style="width: 220px;">Name</th>
 							<!-- <th>User Type</th> -->
-							<th>Department</th>
-							<th>Student No.</th>
-							<th>Actions</th>
+							<th>Event</th>
+							<th>Date</th>
+							<th>Time</th>
+							<th>Status</th>
 						</tr>
 					</thead>
 					<tbody id="data-container">
@@ -65,10 +66,8 @@
 							<td>
 								<span><?=$student->student_id;?></span>
 							</td>
-							<td class="action-btn">
-								<span class="eye" data-jId="<?=$student->student_id;?>"><i class="fal fa-eye"></i></span>
-								<span class="pencil" data-jId="<?=$student->student_id;?>"><i class="fal fa-pencil-alt"></i></span>
-								<span class="trash" data-jId="<?=$student->student_id;?>"><i class="fal fa-trash"></i></span>
+							<td>
+								<span><?=$student->student_id;?></span>
 							</td>
 						</tr>
 						<?php endforeach; ?>

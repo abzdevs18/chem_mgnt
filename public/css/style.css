@@ -1580,7 +1580,8 @@ Sold Row
   flex-direction: column;
   position: fixed;
   z-index: 999999;
-  opacity: 0;
+  /* opacity: 0; */
+  display: none;
   transition: all 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 .add_m {
@@ -1634,4 +1635,47 @@ Sold Row
   padding: 20px;
   font-size: 17px;
   text-align: justify;
+}
+
+.cc-pagination-footer {
+  font-family: 'Quicksand';
+  font-size: 15px;
+  padding: 20px 15px;
+  background: var(--dark-font);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  color: #fff;
+}
+.cc-pagination-footer div:first-child{
+  float: right;
+}
+.cc-pagination-footer div:first-child button {
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0px 10px;
+  font-size: 16px;
+  font-family: 'Quicksand';
+  margin-top: 3px;
+}
+.color_page {
+  font-size: 17px;
+  text-decoration: underline;
+}
+.cc-pagination-footer div:first-child button:hover {
+  text-decoration: underline;
+}
+.cc-pagination-footer select{
+  display: inline-block;
+  box-sizing: border-box;
+  width: 85px;
+  padding: 3px;
+  height: auto;
+}
+.cc-pagination-footer span {
+  font-family: 'Quicksand';
+  font-size: 15px;
+  color: #fff;
+  padding-left: 10px;
 }

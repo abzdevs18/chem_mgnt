@@ -62,7 +62,7 @@
 					<div class="form-group">
 						<input type="text" placeholder="Phone Number*" class="form-control" id="add-user-phone">
 					</div>
-					<button class="tg-btn add-user-save-btn" type="button">Save</button>
+					<button class="tg-btn add-user-save-btn" type="button" style="padding:0px 40px;border-radius:3px;">Save <img src="/img/gif/save.gif" style="width: 20px;position: absolute;top: 25%;bottom: 0;right: 5px;display:none;" id="save-form"></button>
 				</div>
 			</div>
 		</div>

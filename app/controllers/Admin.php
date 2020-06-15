@@ -128,14 +128,32 @@ class Admin extends Controller
 	}
 
 	public function privacy(){
+		$users = $this->chemModel->getUsers();
+		$category = $this->chemModel->getCategory();
+
+		$data = [
+			'user' => $users,
+			'category' => $category
+		];
 		
 		// no other solution this is for the Left sidebar navigation
 		// the active state is dependent to this SESSION we are setting.
 		unset($_SESSION['menu_active']);
 		$_SESSION['menu_active'] = "privacy";
 
-		$this->view('admin/privacy');
+		$this->view('admin/privacy', $data);
 	}
+
+	public function logs(){
+		
+		// no other solution this is for the Left sidebar navigation
+		// the active state is dependent to this SESSION we are setting.
+		unset($_SESSION['menu_active']);
+		$_SESSION['menu_active'] = "logs";
+
+		$this->view('admin/logs');
+	}
+
 
 	public function logout(){
 		
@@ -172,6 +190,20 @@ class Admin extends Controller
 		];
 
 		$this->view('admin/form', $data);
+	}
+
+	public function ajaxAddCat()
+	{
+		$brand = $this->chemModel->getBrand();
+		// $label = $this->chemModel->getLabel();
+		$category = $this->chemModel->getCategory();
+
+		$data = [
+			"brand" => $brand,
+			// "label" => $label,
+			"category" => $category
+		];
+		echo json_encode($category);
 	}
 	
 	public function chemCatReload(){
@@ -254,6 +286,22 @@ class Admin extends Controller
 			if($res){
 
 			}
+		}
+	}
+
+
+	public function delUser(){
+		if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {		
+			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+			$data = [
+				/*check this first form*/
+				"status" => "",
+				"reason" => trim($_POST['reason']),
+				"desc" => trim($_POST['desc']),
+				"user" => trim($_POST['user'])
+			];
+			$res = $this->chemModel->delUser($data);
+			return $res;
 		}
 	}
 

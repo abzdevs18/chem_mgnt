@@ -33,7 +33,7 @@
 					<i class="fal fa-search"></i>
 				</div>
 			</div><!-- End of Sorting -->
-			<div class="job-list-tables">
+			<div class="job-list-tables cc_tbl_pagination">
 				<table>
 					<thead>
 						<tr>
@@ -91,6 +91,7 @@
 					</tbody>
 				</table>
 			</div><!-- End of Table Design -->
+			<div class="box cc-pagination-footer index_native"></div>
 		</div>
 	</section>
 

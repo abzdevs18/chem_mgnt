@@ -47,4 +47,28 @@
   background-color: #fff;
   background: linear-gradient(to right,#1d1b1b3d,#56505014 1px,#9a999c29 1px,#91919236);
   /*background: linear-gradient(to right,#201c29,#201c29 1px,#100e17 1px,#100e17);*/
-}*/
+
+/* Flash Messages */
+
+
+.float-alert p {
+padding: 10px;
+background: #ff000014;
+color: #fff;
+}
+.float-alert {
+	display: none;
+    font-family: "quicksand";
+    position: fixed;
+    z-index: 99999;
+    min-width: 300px;
+    right: 0;
+    top: 0;
+    width: auto;
+    background: var(--ch-request-done);
+    border: var(--back-light-green);
+    margin: 3px;
+    box-shadow: var(--box-shadow);
+	border-radius: 3px;
+	transition: all .5s ease-in-out;
+} 

@@ -26,7 +26,7 @@
     display: inline-block;
 } */
 .smart-drop-wrapper-show {
-    display: inline-block !important;
+    display: inline-block;
 }
 .options-wrapper {
     display: flex;

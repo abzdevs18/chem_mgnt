@@ -6,7 +6,7 @@
 <form id="chemicalAdd">
     <section class="offices-msgs" id="step1">
         <div class="alerts-notif" style="width: 66.66%;">
-            <div class="alert-content no-fixed-height form-holder" style="display: flex;flex-direction: column;overflow:unset;">
+            <div class="alert-content no-fixed-height form-holder cc-main-form" style="display: flex;flex-direction: column;overflow:unset;">
                 <div class="content-head">
                     <h2>Chemical Details</h2>
                 </div>
@@ -16,9 +16,10 @@
                 <div class="changepass-holder half-row" style="margin-top: 30px;">
                     <div class="form-group half-form-group">
                         <div class="smart-drop-wrapper" id="chemCat">
-                            <input type="text" name="category" class="cusDrop meta-selected-category" placeholder="Select category" value="" data-name="category">
+                            <input type="text" name="category" class="cusDrop meta-selected-category" placeholder="Select category" value="" data-name="category" data-filled="false">
                             <div class="options-wrapper wrapper-category">
                                 <div class="options">
+                                    <div class="mCustomScrollbar cc-ajax-wrap" data-mcs-theme="inset-2-dark" style="max-height: 300px;overflow: hidden;">
                                     <?php foreach ($data['category'] as $category) : ?>
                                         <div class="options-item temp-remover" id="content-wrap-<?=$category->id?>" data-meta="category" data-id="<?=$category->id?>" data-name="<?=$category->name?>">                                        
                                             <input type="text" name="" class="hidden-container" data-id="<?=$category->id?>" value="<?=$category->name;?>" style="display:none;"/>
@@ -26,6 +27,7 @@
                                             <span class="brand-name" value="<?=$category->id;?>"><?=$category->name;?>  <i class="fas fa-pencil-alt edit-smart-option" data-id="<?=$category->id?>"></i></span>
                                         </div>
                                     <?php endforeach; ?>
+                                    </div>
                                     <div class="options-item smart-drop-add top-form-add" style="display:flex;justify-content:end;">
                                         <input type="text" name="" class="add-meta-value-category" placeholder="+ add"/>
                                         <span class="smart-drop-add-btn add-term" data-item="category">Add</span>

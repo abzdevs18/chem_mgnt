@@ -58,7 +58,7 @@
 				</div>
 				<div class="prof-container">
 					<div>
-						<button class="tg-btn save-btn student-save" type="button">Save <img src="/img/gif/save.gif" style="width: 20px;position: absolute;top: 25%;bottom: 0;right: 5px;display:none;" id="save-form"></button>
+						<button class="tg-btn save-btn student-save" type="button">Save</button>
 					</div>
 				</div>
 			</div>

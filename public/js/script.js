@@ -8,6 +8,9 @@
 		});
 	}
 }());
+$(".content").mCustomScrollbar({
+  autoHideScrollbar: true
+});
 $(document).ready(function() {
 	$(document).on('click', '.ch-selection-item-action', function(e) {
 		e.stopPropagation();
@@ -43,15 +46,26 @@ $(".eye").click(function(e){
 	console.log("COnsole");
 });
 
+$(".trash").click(function(e){
+	e.stopPropagation();
+	// $("#cc-modal").show(50);
+	// $(".modal-notification").slideDown(100);
+	console.log("COnsole");
+});
+$(".notif-cc-close").show(50);
+
 $('.note-path').click(function () {
 	$('.notes_list').show(100);
 })
 
-$(".cusDrop").focus(function () {
+$(document).on("click",".cusDrop",function(){	
+	let field = $(this).attr("data-name");
 	let metaName = $(this).attr("data-name");
 
 	$(".wrapper-"+metaName).addClass('smart-drop-wrapper-show');
+	$(".wrapper-"+field).slideDown();
 });
+
 $(".smart-drop-add > input").focus(function () {
 	$(".add-term").addClass('smart-drop-wrapper-show');
 });
@@ -64,7 +78,7 @@ $(document).on('click', '.add-term', function () {
 });
 
 let contentId = null;
-$(".edit-smart-option").click(function (e) {
+$(document).on("click", ".edit-smart-option", function(e){	
 	e.stopPropagation();
 	$('.temp-remover').removeClass('smart-drop-add');
 	$('.hidden-container').hide(50);
@@ -96,6 +110,8 @@ $(document).on('focusout','.hidden-container',function(e){
 
 $(document).on('click','.options-item', function(e){
 	e.stopPropagation();
+	// $(".options-wrapper").removeClass("smart-drop-wrapper-show")
+	$(".meta-selected-category").attr("data-filled","true");
 	let index = $(this).attr('data-id');
 	let textValue = $(this).attr('data-name');
 
@@ -103,9 +119,12 @@ $(document).on('click','.options-item', function(e){
 
 	$('.meta-selected-'+metaItem).attr('value',textValue);
 	$('.meta-selected-'+metaItem).attr('data-index',index);
-
-	// $(".options-wrapper").hide(100);
+	$(".wrapper-"+metaItem).slideUp();
 });
+// $(document).on("click","html", function(e){
+// 	e.stopPropagation();
+// 	$(".options-wrapper").hide(100);
+// });
 // $('.form-holder').click(function(e){
 // 	e.stopPropagation();
 // 	$(".options-wrapper").removeClass('smart-drop-wrapper-show');
@@ -135,7 +154,30 @@ function chemMeta(action,name, value) {
 			value
 		},
 		success: function (data) {
-			console.log(data);
+			$.ajax({
+				url:"/admin/ajaxAddCat",
+				method: "POST",
+				dataType: "json",
+				success: function(data){
+					let res="";
+					for(let i = 0; i < data.length; i++){
+						res += `<div class="options-item temp-remover" id="content-wrap-`+data[i]["id"]+`" data-meta="category" data-id="`+data[i]["id"]+`" data-name="`+data[i]["name"]+`">                                        
+						<input type="text" name="" class="hidden-container" data-id="`+data[i]["id"]+`" value="`+data[i]["name"]+`" style="display:none;"/>
+						<span class="smart-drop-add-btn remove-term" data-item="category" data-id="`+data[i]["id"]+`">Delete</span>
+						<span class="brand-name" value="`+data[i]["id"]+`">`+data[i]["name"]+`  <i class="fas fa-pencil-alt edit-smart-option" data-id="`+data[i]["id"]+`"></i></span>
+					</div>`;
+					}
+					$(".cc-ajax-wrap #mCSB_8_container").html(res);    
+					(function($){
+						// $(window).on("load",function(){
+							$(".cc-ajax-wrap").mCustomScrollbar({								
+								autoHideScrollbar: true,
+								setTop: "-100%"
+							});
+						// });
+					})(jQuery);
+				}
+			});
 		},
 		error: function (e) {
 			console.log(e);
@@ -168,8 +210,16 @@ $(".add-user-save-btn").click(function(){
 		processData: false, // important
 		contentType: false, // important
 		data: fd,
+		beforeSend: function(){
+		  $("#save-form").show(100);
+		},
 		success: function (data) {
-			window.location.href ="/admin/add_user_ad";
+			setTimeout(function(){
+			//   window.location.href ="/admin/form"
+			showAlertFloat("","Wrong");
+			$("#save-form").hide(100);
+			}, 3000);
+			// window.location.href ="/admin/add_user_ad";
 			// console.log(data);
 		},
 		error: function (e) {
@@ -177,6 +227,44 @@ $(".add-user-save-btn").click(function(){
 		}
 	});
 });
+$(".deleteUser").click(function(e){
+	e.preventDefault();
+	let reason = $(".meta-selected-deleteUser").val();
+	let user = $(".selected-user").val();
+	let desc = $(".deleteDesc").text();
+
+	$.ajax({
+		url: "/admin/delUser",
+		method: "POST",
+		data: {
+			reason:reason,
+			desc:desc,
+			user:user
+		},
+		beforeSend: function(){
+		  $("#save-form").show(100);
+		},
+		success: function (data) {
+			setTimeout(function(){
+				showAlertFloat("","User DELETED!");
+				$("#save-form").hide(100);
+			}, 3000);
+			console.log(data);
+		},
+		error: function (e) {
+			console.log(e);
+		}
+	});
+});
+
+function showAlertFloat(color,msg){
+	$(".float-alert p").text(msg);
+	$(".float-alert").css({
+		"display":"inline",
+		"right":"0",
+		"background":color
+	}).delay(4000).fadeOut(100);
+}
 
 // Savving student
 $(".student-save").click(function(){
@@ -239,6 +327,7 @@ $(document).on("click","#add-note-modal", function(){
 		$("#icon-holder .caret-right").hide(50);
 		$("#icon-holder .caret-left").show(100);
 		$(this).attr("data-click","true");
+		$(".cc-main-form").css({"z-index":"-2"});
 	}else{
 		$(".x-note-container").css({
 			"left":"0",
@@ -251,5 +340,12 @@ $(document).on("click","#add-note-modal", function(){
 		$("#icon-holder .caret-left").hide(50);
 		$("#icon-holder .caret-right").show(100);
 		$(this).attr("data-click","false");
+		$(".cc-main-form").css({"z-index":"1"});
 	}
+});
+paginator({
+    table: document.getElementsByClassName("cc_tbl_pagination")[0].getElementsByTagName("table")[0],
+    box: document.getElementsByClassName("index_native")[0],
+	active_class: "color_page",
+	rows_per_page: 3	
 });

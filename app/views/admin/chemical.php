@@ -9,14 +9,11 @@
 			<div class="content-head">
 				<h2>Chemicals</h2>
 			</div>
-			<!-- <div class="filter-category">
+			<div class="filter-category">
 				<ul id="job-filters">
 					<li class="active-filter">All Chemicals <span>(10)</span></li>
-					<li>Payment Cat_1 <span>(10)</span></li>
-					<li>Payment Cat_2 <span>(10)</span></li>
-					<li>Payment Cat_3 <span>(10)</span></li>
 				</ul>
-			</div> -->
+			</div>
 			<div class="sortby filter-category">
 				<div id="sort-drop">
 					<span>Sort by:</span>
@@ -34,7 +31,7 @@
 					<i class="fal fa-search"></i>
 				</div>
 			</div><!-- End of Sorting -->
-			<div class="job-list-tables">
+			<div class="job-list-tables cc_tbl_pagination">
 				<table>
 					<thead>
 						<tr>
@@ -49,7 +46,7 @@
 							<th>Actions</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody id="cc-list-chem">
 						<?php foreach($data['chem'] AS $chem) : ?>
 						<tr class="chemRows req_logs_">
 							<td style="text-align: center;" class="ch-selection-item-action">
@@ -89,6 +86,7 @@
 					</tbody>
 				</table>
 			</div><!-- End of Table Design -->
+			<div class="box cc-pagination-footer index_native"></div>
 		</div>
 	</section>
 

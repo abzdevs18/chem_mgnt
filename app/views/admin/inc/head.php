@@ -23,7 +23,9 @@
 
     <script src="https://cdn.jsdelivr.net/npm/intro.js@2.9.3/intro.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intro.js@2.9.3/introjs.min.css">
-
+    <script type="text/javascript" src="/lib/js/jquery.simplePagination.js"></script>
+    <script type="text/javascript" src="/lib/js/paginator.js"></script>
+    <link type="text/css" rel="stylesheet" href="/lib/css/simplePagination.css"/>
     <style>
     @import url("/css/static-style.css");
 
@@ -138,12 +140,11 @@
     </div>
     <!-- End Modal -->
     <!-- Modal: For adding chemicals. First Plan -->
-    <div style="display:none;width: 100%;height: 100vh;background: rgba(51, 51, 51, 0.37);z-index: 999999;position: fixed;">
-        <div style="min-width: 300px;width: 50%;margin: 0 auto;">
+    <div id="cc-modal" style="display:none;width: 100%;height: 100vh;z-index: 999999;position: fixed;">
+        <div style="min-width: 300px;width: 50%;margin: 0 auto;" class="modal-notification" >
             <section class="offices-msgs" style="flex-direction: column;width: 100%;background: #fff;border-radius: 5px;">
                 <div class="alerts-notif" style="width: 100%;margin: 0 auto;position: relative;padding: 0;">
-                    <span class="modal-close"
-                        style="position: absolute;color: #fff;z-index: 9;right: 0px;padding: 5px 7px 10px;border-radius: 3px;width: 15px;height: 15px;text-align: center;line-height: 20px;font-size: 20px;border: 1px solid #fff;margin: 14px;"><i
+                    <span class="modal-close notif-cc-close" style="position: absolute;color: #fff;z-index: 9;right: 0px;padding: 5px 7px 10px;border-radius: 3px;width: 15px;height: 15px;text-align: center;line-height: 20px;font-size: 20px;border: 1px solid #fff;margin: 14px;"><i
                             class="fal fa-times"></i></span>
                     <div class="alert-content no-fixed-height" style="display: flex;flex-direction: column;">
                         <div class="content-head">
@@ -162,7 +163,11 @@
         </div>
     </div>
     <!-- End Modal -->
-
+    <!-- Float Alert -->    
+    <div class="float-alert">
+        <p>Wrong username/password</p>
+    </div>
+    <!-- Float alert end -->
     <!-- Right Sidebar -->
     <div class="request_side">
         <span><i class="fal fa-times"></i></span>
@@ -344,6 +349,11 @@
                                 class="<?=($_SESSION['menu_active']=="privacy") ? 'menu-active' : ''; ?>">
                                 <i class="fal fa-shield-check"></i>
                                 <a href="#"> Privacy settings</a>
+                            </li>
+                            <li data-link="/admin/logs"
+                                class="<?=($_SESSION['menu_active']=="logs") ? 'menu-active' : ''; ?>">
+                                <i class="fal fa-clipboard"></i>
+                                <a href="#"> System Logs</a>
                             </li>
                             <li data-link="/users/signout">
                                 <i class="fal fa-sign-out"></i>

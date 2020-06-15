@@ -75,6 +75,16 @@ class chemModel
 		}
 	}
 
+	public function getUsers(){
+		$this->db->query("SELECT * FROM user");
+		$row = $this->db->resultSet();
+		if ($row) {
+			return $row;
+		}else {
+			return false;
+		}
+	}
+
 	public function getChemicals(){
 		$this->db->query("SELECT chemicals.*,brand.name AS brand FROM chemicals LEFT JOIN brand ON chemicals.brand_id = brand.id");
 		$row = $this->db->resultSet();
@@ -133,5 +143,35 @@ class chemModel
 		$res = $this->db->execute();
 		
 		return $res;
+	}
+
+	public function delUser($data){
+		try {
+			$this->db->beginTransaction();
+			$user = $data['user'];
+			$desc = $data['desc'];
+			$reason = $data['reason'];
+			$date = date("M. d, Y");
+			$time = date("h:i a");
+			
+			$this->db->query("SELECT * FROM user WHERE id = $user");
+			$row = $this->db->resultSet();
+
+			$this->db->query("INSERT INTO `delete_user`(`firstname`, `lastname`, `date`) VALUES (:fname,:lname,:date)");
+			$this->db->bind(":fname", $row[0]->firstname);
+			$this->db->bind(":lname", $row[0]->lastname);
+			$this->db->bind(":date", $date . ' at ' . $time);
+			$res = $this->db->execute();
+
+			$this->db->query("DELETE FROM `user` WHERE `id` = $user");
+			$res = $this->db->execute();
+
+			$this->db->commit();
+			return true;
+
+		} catch (Exception $e) {
+			$this->db->rollBack();
+			return false;
+		}
 	}
 }

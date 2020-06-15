@@ -18,6 +18,7 @@ $(document).on("click", ".save-btn", function (e) {
   var chemicalFormula = $("#chemicalFormula").val();
   let category = $('.meta-selected-category').attr('data-index');
   let brand = $('.meta-selected-brand').attr('data-index');
+  let note = $("#note").val();
 
   // Change value after serializing the form
   // user htmlDecode() method to decode OR php html_entity_decode() method. 
@@ -25,7 +26,7 @@ $(document).on("click", ".save-btn", function (e) {
   data.find(item => item.name === 'mytextarea').value = htmlEncode(chemicalFormula);
   data.find(item => item.name === 'category').value = htmlEncode(category);
   data.find(item => item.name === 'chemBrand').value = htmlEncode(brand);
-
+  data.push({name: 'note', value: note});
   $.ajax({
     url: URL_ROOT + "/admin/add",
     type: "POST",
@@ -426,7 +427,7 @@ $(document).on("click", "#notif-icon", function () {
 });
 
 $(document).on("click", "#add_record", function () {
-  $(".m_add_hidden").toggleClass("add_m");
+  $(".m_add_hidden").css({"display":"flex"});
   if (!Push.Permission.has()) {
     Push.Permission.request(onGranted, onDenied);
     // alert();
@@ -472,12 +473,12 @@ function onDenied() { }
 //   var embedSource = '<embed hidden="true" autostart="true" loop="false" src="' + filename +'.mp3">';
 //   document.getElementById("sound").innerHTML='<audio autoplay="autoplay">' + mp3Source + oggSource + embedSource + '</audio>';
 // }
-$("#tinymce").submit(function (e) {
-  e.preventDefault();
-  // var name = $('#mytextarea').val();
+// $("#tinymce").submit(function (e) {
+//   e.preventDefault();
+//   // var name = $('#mytextarea').val();
 
-  console.log($("#chemicalFormula").val());
-});
+//   console.log($("#chemicalFormula").val());
+// });
 
 // Precaution Selection
 $(document).on("change", "#pre_warning_label", function () {

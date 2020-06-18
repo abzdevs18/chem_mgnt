@@ -1,4 +1,4 @@
-import { log, showAlertFloat } from 'modules';
+import { log, showAlertFloat } from './modules.js';
 
 var URL_ROOT = "";
 $(document).on("click", ".save-btn", function (e) {

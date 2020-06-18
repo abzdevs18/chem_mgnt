@@ -12,21 +12,18 @@
 			<div class="sortby filter-category">
 				<div id="sort-drop">
 					<span>Sort by:</span>
-					<select>
+					<select id="student-filter-id">
 						<optgroup>
-							<?php foreach ($data['dept'] as $dept) : ?>
-								<option><?php echo $dept->name;?></option>
-							<?php endforeach; ?>
 						</optgroup>
 					</select>
 				</div>
 				<div id="search-sort">
-					<input type="text" name="search" placeholder="Search Here">
+					<input type="text" name="search" placeholder="Search Here" id="student-search-filter">
 					<i class="fal fa-search"></i>
 				</div>
 			</div><!-- End of Sorting -->
 			<div class="job-list-tables cc_tbl_pagination">
-				<table>
+				<table id="student-filter-table">
 					<thead>
 						<tr>
 							<!-- <th style="text-align: center;"><input type="checkbox" name=""></th> -->
@@ -60,7 +57,7 @@
 								<h3>Student</h3>
 							</td> -->
 							<td class="tittle-id">
-								<h3><?=$student->department;?> Department</h3>
+								<h3><?=$student->department;?></h3>
 							</td>
 							<td>
 								<span><?=$student->student_id;?></span>
@@ -75,7 +72,7 @@
 					</tbody>
 				</table>
 			</div><!-- End of Table Design -->
-			<div class="box cc-pagination-footer index_native"></div>
+			<div class="box cc-pagination-footer index_native" data-rows="5"></div>
 		</div>
 	</section>
 

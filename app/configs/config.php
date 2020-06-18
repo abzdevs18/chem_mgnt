@@ -2,6 +2,9 @@
 <?php
 // DB params
 
+//timezone is set to manila
+date_default_timezone_set('Asia/Manila');
+
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', 'D3b1an!?');

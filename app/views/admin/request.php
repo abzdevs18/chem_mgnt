@@ -91,7 +91,7 @@
 					</tbody>
 				</table>
 			</div><!-- End of Table Design -->
-			<div class="box cc-pagination-footer index_native"></div>
+			<div class="box cc-pagination-footer index_native" data-rows="10"></div>
 		</div>
 	</section>
 

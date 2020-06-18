@@ -1,4 +1,5 @@
 // console.log(moment("Sun Mar 28 2020 18:40:54 GMT+0800").fromNow());
+import { log, showAlertFloat, filterDropDown } from './modules.js';
 (function(){
 	// Firefox 1.0+
 	var isFirefox = typeof InstallTrigger !== 'undefined';
@@ -48,11 +49,18 @@ $(".eye").click(function(e){
 
 $(".trash").click(function(e){
 	e.stopPropagation();
-	// $("#cc-modal").show(50);
-	// $(".modal-notification").slideDown(100);
-	console.log("COnsole");
+	$("#cc-modal").show(50);
+	$(".modal-notification").css({
+		"margin-top":"100px",
+	});
 });
-$(".notif-cc-close").show(50);
+
+$(document).on('click','.notif-cc-close', function(){
+	$("#cc-modal").hide(50);
+	$(".modal-notification").css({
+		"margin-top":"-100%",
+	});
+});
 
 $('.note-path').click(function () {
 	$('.notes_list').show(100);
@@ -187,6 +195,7 @@ function chemMeta(action,name, value) {
 
 // User adding
 $(".add-user-save-btn").click(function(){
+	let context = $(this);
 	let gender = $("#add-user-gender").val();
 	let type = $("#add-user-type").val();
 	let uname = $("#add-user-uname").val();
@@ -211,14 +220,17 @@ $(".add-user-save-btn").click(function(){
 		contentType: false, // important
 		data: fd,
 		beforeSend: function(){
+			$(context).css({"color":"#00cc67 !important"});
 		  $("#save-form").show(100);
 		},
 		success: function (data) {
 			setTimeout(function(){
-			//   window.location.href ="/admin/form"
-			showAlertFloat("","Wrong");
-			$("#save-form").hide(100);
+				//   window.location.href ="/admin/form"
+				showAlertFloat("","Wrong");
+				$(context).css({"color":"#fff !important"});
+				$("#save-form").hide(100);
 			}, 3000);
+				log(1,"Add User",1)
 			// window.location.href ="/admin/add_user_ad";
 			// console.log(data);
 		},
@@ -229,6 +241,7 @@ $(".add-user-save-btn").click(function(){
 });
 $(".deleteUser").click(function(e){
 	e.preventDefault();
+	let context = $(this);
 	let reason = $(".meta-selected-deleteUser").val();
 	let user = $(".selected-user").val();
 	let desc = $(".deleteDesc").text();
@@ -242,13 +255,16 @@ $(".deleteUser").click(function(e){
 			user:user
 		},
 		beforeSend: function(){
+			$(context).css({"color":"#d9534f !important"});
 		  $("#save-form").show(100);
 		},
 		success: function (data) {
 			setTimeout(function(){
-				showAlertFloat("","User DELETED!");
+				showAlertFloat("","User DELETED!"+data);
+				$(context).css({"color":"#fff !important"});
 				$("#save-form").hide(100);
 			}, 3000);
+			log(1,"Delted User", 1);
 			console.log(data);
 		},
 		error: function (e) {
@@ -256,15 +272,6 @@ $(".deleteUser").click(function(e){
 		}
 	});
 });
-
-function showAlertFloat(color,msg){
-	$(".float-alert p").text(msg);
-	$(".float-alert").css({
-		"display":"inline",
-		"right":"0",
-		"background":color
-	}).delay(4000).fadeOut(100);
-}
 
 // Savving student
 $(".student-save").click(function(){
@@ -343,9 +350,17 @@ $(document).on("click","#add-note-modal", function(){
 		$(".cc-main-form").css({"z-index":"1"});
 	}
 });
+let currentPage = window.location.pathname;
+if(currentPage == '/admin/student'){
+	filterDropDown("student-filter-table","3","student-filter-id","student-search-filter");
+}else if(currentPage == '/admin/logs'){
+	filterDropDown("log-filter-table","4","event-filter-id","event-search-filter");
+}else if(currentPage == '/admin/chemical'){
+	filterDropDown("chemical-filter-table","8","brand-filter-table","input-search-filter");
+}
 paginator({
     table: document.getElementsByClassName("cc_tbl_pagination")[0].getElementsByTagName("table")[0],
     box: document.getElementsByClassName("index_native")[0],
 	active_class: "color_page",
-	rows_per_page: 3	
+	rows_per_page: document.getElementsByClassName("index_native")[0].getAttribute("data-rows")	
 });

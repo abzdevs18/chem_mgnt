@@ -17,22 +17,18 @@
 			<div class="sortby filter-category">
 				<div id="sort-drop">
 					<span>Sort by:</span>
-					<select>
+					<select id="brand-filter-table">
 						<optgroup>
-							<option selected>HIMEDIA</option>
-							<option>Most Recent</option>
-							<option>Most Recent</option>
-							<option>Most Recent</option>
 						</optgroup>
 					</select>
 				</div>
 				<div id="search-sort">
-					<input type="text" name="search" placeholder="Search Here">
+					<input type="text" name="search" placeholder="Search Here" id="input-search-filter">
 					<i class="fal fa-search"></i>
 				</div>
 			</div><!-- End of Sorting -->
 			<div class="job-list-tables cc_tbl_pagination">
-				<table>
+				<table id="chemical-filter-table">
 					<thead>
 						<tr>
 							<!-- <th><input type="checkbox" name=""></th> -->
@@ -86,7 +82,7 @@
 					</tbody>
 				</table>
 			</div><!-- End of Table Design -->
-			<div class="box cc-pagination-footer index_native"></div>
+			<div class="box cc-pagination-footer index_native" data-rows="5"></div>
 		</div>
 	</section>
 

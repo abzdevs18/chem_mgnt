@@ -130,9 +130,11 @@ class Admin extends Controller
 	public function privacy(){
 		$users = $this->chemModel->getUsers();
 		$category = $this->chemModel->getCategory();
+		$config = $this->chemModel->getConfigSecurity();
 
 		$data = [
 			'user' => $users,
+			'config' => $config,
 			'category' => $category
 		];
 		
@@ -145,13 +147,18 @@ class Admin extends Controller
 	}
 
 	public function logs(){
+		$logs = $this->chemModel->getSysLogs();
+
+		$data = [
+			'logs' => $logs
+		];
 		
 		// no other solution this is for the Left sidebar navigation
 		// the active state is dependent to this SESSION we are setting.
 		unset($_SESSION['menu_active']);
 		$_SESSION['menu_active'] = "logs";
 
-		$this->view('admin/logs');
+		$this->view('admin/logs', $data);
 	}
 
 
@@ -214,6 +221,20 @@ class Admin extends Controller
 		];
 
 		$this->view('admin/templates/chemCatMeta', $data);
+	}
+
+	public function syslog(){
+		if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {		
+			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+			$action = trim($_POST['action']);
+
+			$data = [
+				'user'=> trim($_POST['user']),
+				'action'=>trim($_POST['action']),
+				'status'=>trim($_POST['status'])
+			];
+			$this->chemModel->syslog($data);
+		}
 	}
 
 
@@ -301,7 +322,13 @@ class Admin extends Controller
 				"user" => trim($_POST['user'])
 			];
 			$res = $this->chemModel->delUser($data);
-			return $res;
+			if($res){
+				$data['status'] = 1;
+				echo json_encode($data);
+			}else{
+				$data['status'] = 0;
+				echo json_encode($data);
+			}
 		}
 	}
 

@@ -140,8 +140,8 @@
     </div>
     <!-- End Modal -->
     <!-- Modal: For adding chemicals. First Plan -->
-    <div id="cc-modal" style="display:none;width: 100%;height: 100vh;z-index: 999999;position: fixed;">
-        <div style="min-width: 300px;width: 50%;margin: 0 auto;" class="modal-notification" >
+    <div id="cc-modal" style="display:none;width: 100%; height: 100vh; z-index: 999999; position: fixed;background: rgba(3,3,3,0.2);transition: all .5s ease-in-out;">
+        <div style="min-width: 300px;width: 50%;margin: 0 auto;margin-top: -100%;transition: all .5s ease-in-out;" class="modal-notification" >
             <section class="offices-msgs" style="flex-direction: column;width: 100%;background: #fff;border-radius: 5px;">
                 <div class="alerts-notif" style="width: 100%;margin: 0 auto;position: relative;padding: 0;">
                     <span class="modal-close notif-cc-close" style="position: absolute;color: #fff;z-index: 9;right: 0px;padding: 5px 7px 10px;border-radius: 3px;width: 15px;height: 15px;text-align: center;line-height: 20px;font-size: 20px;border: 1px solid #fff;margin: 14px;"><i

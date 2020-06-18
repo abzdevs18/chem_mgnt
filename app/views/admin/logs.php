@@ -11,8 +11,8 @@
 			</div>
 			<div class="sortby filter-category">
 				<div id="sort-drop">
-					<span>Sort event:</span>
-					<select>
+					<span>Filter event:</span>
+					<select id="event-filter-id">
 						<optgroup>
 							<?php foreach ($data['dept'] as $dept) : ?>
 								<option><?php echo $dept->name;?></option>
@@ -21,17 +21,17 @@
 					</select>
 				</div>
 				<div id="search-sort">
-					<input type="text" name="search" placeholder="Search Here">
+					<input type="text" name="search" placeholder="Search Here name, event or date" id="event-search-filter">
 					<i class="fal fa-search"></i>
 				</div>
 			</div><!-- End of Sorting -->
 			<div class="job-list-tables cc_tbl_pagination">
-				<table>
+				<table id="log-filter-table">
 					<thead>
 						<tr>
 							<!-- <th style="text-align: center;"><input type="checkbox" name=""></th> -->
-							<th colspan="2" style="width: 220px;">Name</th>
-							<!-- <th>User Type</th> -->
+							<th colspan="2" style="width: 120px;">Name</th>
+							<th>User Type</th>
 							<th>Event</th>
 							<th>Date</th>
 							<th>Time</th>
@@ -40,42 +40,46 @@
 					</thead>
 					<tbody id="data-container">
 						<!-- if job is close add row with class name "sold" -->
-						<?php foreach($data['student'] as $student): ?>
-						<tr class="req_logs_">
-							<td style="text-align: center;" class="ch-selection-item-action">
-								<div class="ch-checkbox-item" data-checked></div>
+						<?php foreach($data['logs'] as $log): ?>
+						<tr class="req_logs_ log_td" style="background:<?=($log->status) ? "#0080001a" : "#ff00001a"?>">
+							<td style="text-align: center;width: 0px;background: var(--hover-dark-font);">
 								<!-- <input type="checkbox" name=""> -->
 							</td>
-							<td class="ch-row-second">
-								<div class="request_icon_wrapper">
-									<div class="req_icon">
-										<span><?=$student->student_name[0];?></span>
-									</div>
-									<div class="cc-name" style="margin:5px;margin-top:0px;">
-										<h3><?=$student->student_name;?></h3>
-										<time datetime="2017-08-08">01 Day Ago</time>
-									</div>
-								</div>
+							<td>
+								<span><?=$log->name;?></span>
 							</td>
-							<!-- <td class="tittle-id">
-								<h3>Student</h3>
-							</td> -->
 							<td class="tittle-id">
-								<h3><?=$student->department;?> Department</h3>
+								<?php if($log->userType == 0): ?>
+									<span>Admin</span>
+								<?php elseif($log->userType == 1): ?>
+									<span>Admin</span>
+								<?php else: ?>
+									<span>Student</span>
+								<?php endif;?>
+							</td>
+							<td class="tittle-id">
+								<h3><?=$log->event;?></h3>
 							</td>
 							<td>
-								<span><?=$student->student_id;?></span>
+								<span><?=$log->date;?></span>
 							</td>
 							<td>
-								<span><?=$student->student_id;?></span>
+								<span><?=$log->time;?></span>
+							</td>
+							<td>
+								<?php if($log->status == 1): ?>
+									<span class="log_suc">Success</span>
+								<?php else: ?>
+									<span class="log_err">Failed</span>
+								<?php endif;?>
 							</td>
 						</tr>
 						<?php endforeach; ?>
 					</tbody>
 				</table>
 			</div><!-- End of Table Design -->
-			<div class="box cc-pagination-footer index_native"></div>
-		</div>
+			<div class="box cc-pagination-footer index_native" data-rows="5"></div>
+		</div> 
 	</section>
 
 <?php require_once APP_ROOT . '/views/admin/inc/footer.php'; ?>

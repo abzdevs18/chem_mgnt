@@ -65,6 +65,17 @@ class chemModel
 		}
 	}
 
+	public function getConfigSecurity(){
+		$this->db->query("SELECT * FROM admin_config");
+		$row = $this->db->resultSet();
+		if ($row) {
+			return $row;
+		}else {
+			return false;
+		}
+	}
+
+
 	public function getLabel(){
 		$this->db->query("SELECT * FROM chem_label");
 		$row = $this->db->resultSet();
@@ -76,7 +87,7 @@ class chemModel
 	}
 
 	public function getUsers(){
-		$this->db->query("SELECT * FROM user");
+		$this->db->query("SELECT * FROM user WHERE user_type = 0");
 		$row = $this->db->resultSet();
 		if ($row) {
 			return $row;
@@ -135,6 +146,16 @@ class chemModel
 		return $res;
 	}
 
+	public function getSysLogs(){
+		$this->db->query("SELECT * FROM system_log");
+		$row = $this->db->resultSet();
+		if ($row) {
+			return $row;
+		}else {
+			return false;
+		}
+	}
+
 	public function removeChemMeta($data){
 		$name = $data['name'];
 		$value = $data['value'];
@@ -143,6 +164,36 @@ class chemModel
 		$res = $this->db->execute();
 		
 		return $res;
+	}
+
+	public function syslog($data){	
+		try {
+			$this->db->beginTransaction();
+			$user = $data['user'];
+			$action = $data['action'];
+			$status = $data['status'];
+			$date = date("M. d, Y");
+			$time = date("h:i a");
+			
+			$this->db->query("SELECT * FROM user WHERE id = $user");
+			$row = $this->db->resultSet();
+
+			$this->db->query("INSERT INTO `system_log`(`name`, `userType`, `event`, `date`, `time`, `status`) VALUES (:name,:type,:event,:date,:time,:status)");
+			$this->db->bind(":name", $row[0]->username);
+			$this->db->bind(":type", $row[0]->user_type);
+			$this->db->bind(":event", $action);
+			$this->db->bind(":date", $date);
+			$this->db->bind(":time", $time);
+			$this->db->bind(":status", $status);
+			$res = $this->db->execute();
+
+			$this->db->commit();
+			return true;
+
+		} catch (Exception $e) {
+			$this->db->rollBack();
+			return false;
+		}
 	}
 
 	public function delUser($data){

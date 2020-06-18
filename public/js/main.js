@@ -1,5 +1,4 @@
 /* FIeld form design*/
-
 // $(document).ready(function(){
 // 	$('.form-group input').focus(function(){
 // 		$('.form-group label').addClass('focus-label');
@@ -11,6 +10,8 @@
 //   autoHideScrollbar: true
 // });
 /*ENd ScrollBar*/
+import { log, showAlertFloat } from './modules.js';
+
 var URL_ROOT = "";
 $(document).on("click", ".save-btn", function (e) {
   e.preventDefault();
@@ -35,9 +36,13 @@ $(document).on("click", ".save-btn", function (e) {
       $("#save-form").show(100);
     },
     success: function (data) {
-      setTimeout(function(){
-        window.location.href ="/admin/form"
-      }, 3000);
+			setTimeout(function(){
+			//   window.location.href ="/admin/form"
+			  showAlertFloat("","Chemical is Addedd");
+			  $("#save-form").hide(100);
+			}, 3000);
+      
+      log(1,"Add chemical",1);
     },
     error: function (e) {
       console.log(e);
@@ -52,7 +57,6 @@ function htmlEncode(value) {
     return '';
   }
 }
-
 function htmlDecode(value) {
   if (value) {
     return $('<div />').html(value).text();

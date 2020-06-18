@@ -75,7 +75,7 @@ main {
 #add-post a {
   font: var(--font-quick-500-16);
   text-decoration: none;
-  border-radius: 35px;
+  border-radius: 5px;
   background-color: var(--green);
   padding: 0px 30px;
   color: #fff;
@@ -797,6 +797,7 @@ input[type="color"]:focus,
   background: #00cc67;
   border: none;
   outline: none;
+  transition: all cubic-bezier(0.6, -0.28, 0.735, 0.045) ease-in-out;
 }
 .save-btn {
   margin: 20px;
@@ -966,7 +967,7 @@ tbody tr {
   /* transition: all 0.5s ease-in-out; */
   border-bottom: 1px solid #e6e9ef;
 }
-tbody tr:hover {
+tbody tr.req_logs_:hover {
   /* box-shadow: var(--box-shadow);
   background: #3333330a; */
   
@@ -1030,6 +1031,15 @@ tbody tr td {
 }
 .req_logs_ td {
   vertical-align: middle !important;
+}
+.log_td td {
+  padding: 5px;
+}
+.log_td td .log_err {
+  color: red;
+}
+.log_td td .log_suc {
+  color: green;
 }
 .ch-selection-expanded {
   width: 35px;
@@ -1385,7 +1395,7 @@ Sold Row
   position: relative;
 }
 .search-dash > #search-sort > input {
-  border-radius: 35px;
+  /* border-radius: 35px; */
 }
 .dash-result {
   width: 80%;
@@ -1678,4 +1688,10 @@ Sold Row
   font-size: 15px;
   color: #fff;
   padding-left: 10px;
+}
+#save-form {
+  left: 0;
+  right: 0 !important;
+  margin-left: auto;
+  margin-right: auto;
 }

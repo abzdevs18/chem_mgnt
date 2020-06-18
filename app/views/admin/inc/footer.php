@@ -9,6 +9,7 @@
 	<!-- <div id="sound"></div> -->
 	<script src="/lib/js/jquery.mCustomScrollbar.concat.min.js"></script>
 	<script src="/lib/js/push.min.js"></script>
+	<script type="module" src="/js/modules.js"></script>
 	<script type="module" src="/js/main.js"></script>
 	<script src="/js/admin_script.js"></script>
 	<script src="/js/graph_representation.js"></script>

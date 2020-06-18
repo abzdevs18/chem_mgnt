@@ -1,15 +1,3 @@
-/* FIeld form design*/
-// $(document).ready(function(){
-// 	$('.form-group input').focus(function(){
-// 		$('.form-group label').addClass('focus-label');
-// 	});
-// });
-
-//For scrollBar
-// $(".content").mCustomScrollbar({
-//   autoHideScrollbar: true
-// });
-/*ENd ScrollBar*/
 import { log, showAlertFloat } from './modules.js';
 
 var URL_ROOT = "";

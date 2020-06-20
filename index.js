@@ -1,60 +1,81 @@
-const
-    http = require("http"),
-    express = require("express"),
-    socketio = require("socket.io");
+let express = require("express");
 
-const SERVER_PORT = 3000;
+let fs = require("fs");
 
-let nextVisitorNumber = 1;
-let onlineClients = new Set();
+// let moment = require("moment");
 
-function generateRandomNumber() {
-    return (Math.floor(Math.random() * 1000)).toString();
+let chalk = require("chalk");
+
+let server = express();
+
+
+
+let port = process.env.PORT || 3389;
+
+
+
+const privateKey = fs.readFileSync('/etc/letsencrypt/live/chemlab.cf/privkey.pem');
+
+const certificate = fs.readFileSync('/etc/letsencrypt/live/chemlab.cf/cert.pem');
+
+const credentials = {
+
+    key: privateKey, 
+
+    cert: certificate
+
 }
 
-function onNewWebsocketConnection(socket) {
-    console.info(`Socket ${socket.id} has connected.`);
-    onlineClients.add(socket.id);
+// let server = app.listen(port);
 
-    socket.on("disconnect", () => {
-        onlineClients.delete(socket.id);
-        console.info(`Socket ${socket.id} has disconnected.`);
-    });
+let http = require("https").createServer(credentials, server);
 
-    // echoes on the terminal every "hello" message this socket sends
-    socket.on("hello", helloMsg => console.info(`Socket ${socket.id} says: "${helloMsg}"`));
+let io = require("socket.io")(http);
 
-    // will send a message only to this socket (different than using `io.emit()`, which would broadcast it)
-    socket.emit("welcome", `Welcome! You are visitor number ${nextVisitorNumber++}`);
-}
+// let io = new server();
 
-function startServer() {
-    // create a new express app
-    const app = express();
-    // create http server and wrap the express app
-    const server = http.createServer(app);
-    // bind socket.io to that server
-    const io = socketio(server);
 
-    // example on how to serve a simple API
-    app.get("/random", (req, res) => res.send(generateRandomNumber()));
 
-    // example on how to serve static files from a given folder
-    app.use(express.static("public"));
+http.listen(port, function () {
 
-    // will fire for every new websocket connection
-    io.on("connection", onNewWebsocketConnection);
+  console.log(chalk.green("Server running on: " + port));
 
-    // important! must listen from `server`, not `app`, otherwise socket.io won't function correctly
-    server.listen(SERVER_PORT, () => console.info(`Listening on port ${SERVER_PORT}.`));
+});
 
-    // will send one message per second to all its clients
-    let secondsSinceServerStarted = 0;
-    setInterval(() => {
-        secondsSinceServerStarted++;
-        io.emit("seconds", secondsSinceServerStarted);
-        io.emit("online", onlineClients.size);
-    }, 1000);
-}
 
-startServer();
+
+io.on("connection", function (socket) {
+
+  console.log("connected");
+
+
+
+  socket.on("message", function (data) {
+
+    console.log(data);
+
+    io.emit("message", data);
+
+  });
+
+
+
+  socket.on("notif", function (data) {
+
+    console.log(data);
+
+    io.emit("notif", data);
+
+  });
+
+
+
+  socket.on("new_login", function (data) {
+
+    io.emit("new_login", data);
+
+    console.log(data);
+
+  });
+
+});

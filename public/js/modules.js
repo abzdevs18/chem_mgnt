@@ -79,4 +79,4 @@ function filterDropDown(elementId, columnIndex, filterId, filterSearch){
     return values
 }
 
-export { log, showAlertFloat, filterDropDown };
+export default { log, showAlertFloat, filterDropDown };

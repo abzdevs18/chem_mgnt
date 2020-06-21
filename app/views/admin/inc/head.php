@@ -58,7 +58,7 @@
     });
     </script>
     <script>
-    var socket = io.connect('http://34.71.32.229:3000/');
+    var socket = io.connect('https://34.71.32.229:3000/');
 
     // Connecting to secure socket
     // var socket = io.connect('https://chemlab.cf:3389/',{secure: true});

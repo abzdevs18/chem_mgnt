@@ -4,6 +4,7 @@
   "description": "To monitor the the inventory of the laboratory and create a socially interactive platform for students.",
   "main": "index.js",
   "dependencies": {
+    "@sendgrid/mail": "^7.2.0",
     "chalk": "^4.0.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",

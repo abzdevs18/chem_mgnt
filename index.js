@@ -1,6 +1,10 @@
 let express = require("express");
 
 let fs = require("fs");
+  
+// using SendGrid's Node.js Library - https://github.com/sendgrid/sendgrid-nodejs
+  var sendgrid = require("sendgrid")(process.env.SENDGRID_API_KEY);
+  var email = new sendgrid.Email();
 
 // let moment = require("moment");
 
@@ -46,8 +50,13 @@ http.listen(port, function () {
 io.on("connection", function (socket) {
 
   console.log("connected");
-
-
+  ​
+  email.addTo("hiyaj39656@tywmp.com");
+  email.setFrom("devscare@noreply.com");
+  email.setSubject("Sending with SendGrid is Fun");
+  email.setHtml("and easy to do anywhere, even with Node.js");
+  ​
+  sendgrid.send(email);
 
   socket.on("message", function (data) {
 

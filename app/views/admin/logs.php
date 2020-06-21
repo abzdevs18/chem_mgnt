@@ -42,7 +42,7 @@
 						<!-- if job is close add row with class name "sold" -->
 						<?php foreach($data['logs'] as $log): ?>
 						<tr class="req_logs_ log_td" style="background:<?=($log->status) ? "#0080001a" : "#ff00001a"?>">
-							<td style="text-align: center;width: 0px;background: var(--hover-dark-font);">
+							<td style="text-align: center;width: 1px;background: var(--hover-dark-font);">
 								<!-- <input type="checkbox" name=""> -->
 							</td>
 							<td>

@@ -8,8 +8,10 @@
     <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="/js/offline/jquery.js"></script>
     <script src="/js/jquery-ui.js"></script>
+    <script type="module" src="/js/main.js"></script>
 </head>
 
 <body>
@@ -48,8 +50,6 @@
             </div><!-- Admin Credential End -->
         </section>
     </main>
-    <script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="/js/main.js"></script>
 </body>
 
 </html>

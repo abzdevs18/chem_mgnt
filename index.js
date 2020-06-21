@@ -54,7 +54,7 @@ http.listen(port, function () {
 io.on("connection", function (socket) {
 
   console.log("connected");
-  sgMail.send(msg);
+  // sgMail.send(msg);
   socket.on("message", function (data) {
 
     console.log(data);

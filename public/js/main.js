@@ -1,4 +1,6 @@
+// require('./modules.js');
 import { log, showAlertFloat } from './modules.js';
+// import { log, showAlertFloat } from './modules';
 
 var URL_ROOT = "";
 $(document).on("click", ".save-btn", function (e) {

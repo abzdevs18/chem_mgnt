@@ -36,7 +36,7 @@ function filterDropDown(elementId, columnIndex, filterId, filterSearch){
     for(let i = 0; i < values.length; i++){
         filterOption.options.add( new Option(values[i],values[i]) )
     }
-    filterId:onchange = ()=>{
+    filterId:onchange = function(){
         let fv,tr,td,tbl,txtVal;
         fv=filterOption.options[filterOption.selectedIndex].value.toUpperCase();
         tbl = document.getElementById(elementId);
@@ -54,7 +54,7 @@ function filterDropDown(elementId, columnIndex, filterId, filterSearch){
         }
         console.log(fv)
     }
-    filterSearch:onkeyup = ()=>{
+    filterSearch:onkeyup = function(){
         let filterInput = document.getElementById(filterSearch);
         let fv,tr,td, td2,td1, tbl,txtVal;
         fv=filterInput.value.toUpperCase();

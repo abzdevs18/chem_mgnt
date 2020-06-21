@@ -3,7 +3,7 @@
 
 <head>
     <title><?=SITE_NAME;?></title>
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
     <link rel="icon" type="image/x-icon" href="/img/logo_icon/lab.ico">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto|Quicksand:400,500&display=swap"
         rel="stylesheet">

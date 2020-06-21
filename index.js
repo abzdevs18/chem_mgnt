@@ -2,10 +2,15 @@ let express = require("express");
 
 let fs = require("fs");
   
-// using SendGrid's Node.js Library - https://github.com/sendgrid/sendgrid-nodejs
-  var sendgrid = require("sendgrid")(process.env.SENDGRID_API_KEY);
-  var email = new sendgrid.Email();
-
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey("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");
+const msg = {
+  to: 'hiyaj39656@tywmp.com',
+  from: 'devscare@noreply.com',
+  subject: 'Sending with Twilio SendGrid is Fun',
+  text: 'and easy to do anywhere, even with Node.js',
+  html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+};
 // let moment = require("moment");
 
 let chalk = require("chalk");
@@ -27,7 +32,6 @@ const credentials = {
     key: privateKey, 
 
     cert: certificate
-
 }
 
 // let server = app.listen(port);
@@ -50,14 +54,7 @@ http.listen(port, function () {
 io.on("connection", function (socket) {
 
   console.log("connected");
-  ​
-  email.addTo("hiyaj39656@tywmp.com");
-  email.setFrom("devscare@noreply.com");
-  email.setSubject("Sending with SendGrid is Fun");
-  email.setHtml("and easy to do anywhere, even with Node.js");
-  ​
-  sendgrid.send(email);
-
+  sgMail.send(msg);
   socket.on("message", function (data) {
 
     console.log(data);

@@ -1,5 +1,4 @@
-// console.log(moment("Sun Mar 28 2020 18:40:54 GMT+0800").fromNow());
-import { log, showAlertFloat, filterDropDown } from './modules';
+import { log, showAlertFloat, filterDropDown } from './modules.js';
 (function(){
 	// Firefox 1.0+
 	var isFirefox = typeof InstallTrigger !== 'undefined';

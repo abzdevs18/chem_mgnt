@@ -218,20 +218,29 @@ $(".add-user-save-btn").click(function(){
 		processData: false, // important
 		contentType: false, // important
 		data: fd,
+		dataType:'json',
 		beforeSend: function(){
 			$(context).css({"color":"#00cc67 !important"});
 		  $("#save-form").show(100);
 		},
 		success: function (data) {
-			setTimeout(function(){
-				//   window.location.href ="/admin/form"
-				showAlertFloat("","Wrong");
-				$(context).css({"color":"#fff !important"});
-				$("#save-form").hide(100);
-			}, 3000);
-				log(1,"Add User",1)
-			// window.location.href ="/admin/add_user_ad";
-			// console.log(data);
+			if(data['status'] == 1){
+				log(1,"Add User",1);
+				socket.emit("userNotification", data);
+				setTimeout(function(){
+					//   window.location.href ="/admin/form"
+					showAlertFloat("","Wrong");
+					$(context).css({"color":"#fff !important"});
+					$("#save-form").hide(100);
+				}, 3000);
+			}else{
+				log(1,"Add User",0)
+				setTimeout(function(){
+					showAlertFloat("#c00",data['status']);
+					$(context).css({"color":"#fff !important"});
+					$("#save-form").hide(100);
+				}, 3000);
+			}
 		},
 		error: function (e) {
 			console.log(e);

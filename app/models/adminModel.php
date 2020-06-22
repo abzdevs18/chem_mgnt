@@ -50,7 +50,7 @@ class adminModel
 			$this->db->bind(":type", $data['type']);
 			$this->db->bind(":uname", $data['uname']);
 			$this->db->bind(":name", $data['name']);
-			$this->db->bind(":upass", "Temporary");
+			$this->db->bind(":upass", $data['hash']);
 
 			$this->db->execute();
 
@@ -85,8 +85,8 @@ class adminModel
 
 		} catch (Exception $e) {
 			$this->db->rollBack();
-			return $e->getMessage();
-			// return false;
+			// return $e->getMessage();
+			return false;
 		}
 	}
 

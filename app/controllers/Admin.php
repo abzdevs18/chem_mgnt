@@ -5,6 +5,7 @@
  */
 class Admin extends Controller
 {
+	private $salt = SECURE_SALT;
 	function __construct()
 	{
 
@@ -28,7 +29,9 @@ class Admin extends Controller
 	}
 
 	public function index(){
+		$logs = $this->chemModel->getSysLogs();
 		$data = [
+			"logs" => $logs,
 			"one" => $this->breadcrump('/')
 		];
 		// no other solution this is for the Left sidebar navigation
@@ -84,14 +87,19 @@ class Admin extends Controller
 		$this->view('admin/request',$data);
 	}
 
-	public function biddings(){
+	public function messages(){
+		$dept = $this->chemModel->getDepartment();
+
+		$data = [
+			"dept" => $dept
+		];
 		
 		// no other solution this is for the Left sidebar navigation
 		// the active state is dependent to this SESSION we are setting.
 		unset($_SESSION['menu_active']);
 		$_SESSION['menu_active'] = "messages";
 
-		$this->view('admin/messages');
+		$this->view('admin/messages',$data);
 	}
 
 	public function chemical(){
@@ -159,6 +167,11 @@ class Admin extends Controller
 		$_SESSION['menu_active'] = "logs";
 
 		$this->view('admin/logs', $data);
+	}
+	public function getJsonLogs()
+	{
+		$logs = $this->chemModel->getSysLogs();
+		echo json_encode($logs);
 	}
 
 
@@ -230,6 +243,7 @@ class Admin extends Controller
 
 			$data = [
 				'user'=> trim($_POST['user']),
+				'pos'=> trim($_POST['pos']),
 				'action'=>trim($_POST['action']),
 				'status'=>trim($_POST['status'])
 			];
@@ -336,6 +350,9 @@ class Admin extends Controller
 	public function userAdminAdd(){
 		if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {		
 			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+			$randomPass = rand(100000,999999);
+			$salted_pass = $this->salt . $randomPass;
+			$hashed = password_hash($salted_pass, PASSWORD_DEFAULT);
 			$data = [
 				/*check this first form*/
 				"status" => "",
@@ -345,7 +362,9 @@ class Admin extends Controller
 				"email" => trim($_POST['email']),
 				"name" => trim($_POST['name']),
 				"phone" => trim($_POST['phone']),
-				"photo" => $_FILES['photo']['name']
+				"photo" => $_FILES['photo']['name'],
+				"hash" => $hashed,
+				"secure_pass_temp" => $randomPass
 			];
 
 			if($_FILES['photo']['name']){
@@ -354,12 +373,24 @@ class Admin extends Controller
 				if (move_uploaded_file($_FILES["photo"]["tmp_name"], $target)) {
 
 					$res = $this->adminModel->addUserAdmin($data);
-					echo '$res';
+					if($res){
+						$data['status'] = 1;
+					}else {
+						$data['Problem Occur adding the user!'];
+					}
+				}else{
+					$data['status'] = "Problem uploading photo";
 				}
 			}else{
 				$res = $this->adminModel->addUserAdmin($data);
-				echo "dd";
+				if($res){
+					$data['status'] = 1;
+				}else {
+					$data['Problem Occur adding the user!'];
+				}
 			}
+
+			echo json_encode($data);
 		}
 	}
 

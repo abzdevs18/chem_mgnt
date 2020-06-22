@@ -5,7 +5,7 @@
 	</section>
 	<form id="chemicalAdd">
 	<section class="offices-msgs">
-		<div class="alerts-notif" style="width: 66.66%;">
+		<div class="alerts-notif" style="width: 66.66%;padding-bottom: 100px;">
 			<div class="alert-content no-fixed-height" style="display: flex;flex-direction: column;border:1px solid #d5d5d5;overflow: unset !important;">
 				<div class="content-head" style="margin-bottom:10px;">
 					<h2>Student Details</h2>

@@ -31,7 +31,7 @@
 						<tr>
 							<!-- <th style="text-align: center;"><input type="checkbox" name=""></th> -->
 							<th colspan="2" style="width: 120px;">Name</th>
-							<th>User Type</th>
+							<th>Request Origin</th>
 							<th>Event</th>
 							<th>Date</th>
 							<th>Time</th>
@@ -48,14 +48,17 @@
 							<td>
 								<span><?=$log->name;?></span>
 							</td>
-							<td class="tittle-id">
-								<?php if($log->userType == 0): ?>
+							<!-- <td class="tittle-id">
+								<?php //if($log->userType == 0): ?>
 									<span>Admin</span>
-								<?php elseif($log->userType == 1): ?>
+								<?php //elseif($log->userType == 1): ?>
 									<span>Admin</span>
-								<?php else: ?>
+								<?php// else: ?>
 									<span>Student</span>
-								<?php endif;?>
+								<?php// endif;?>
+							</td> -->
+							<td class="tittle-id">
+								<h3><?=$log->position;?></h3>
 							</td>
 							<td class="tittle-id">
 								<h3><?=$log->event;?></h3>

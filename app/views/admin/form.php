@@ -108,7 +108,7 @@
                 </div>
                 <div class="prof-container">
                     <div>
-                        <button class="tg-btn save-btn" type="submit">Save <img src="/img/gif/save.gif" style="width: 20px;position: absolute;top: 25%;bottom: 0;right: 5px;display:none;" id="save-form"></button>
+                        <button class="tg-btn save-btn" type="submit" data-usr="<?=$_SESSION['userName']?>">Save <img src="/img/gif/save.gif" style="width: 20px;position: absolute;top: 25%;bottom: 0;right: 5px;display:none;" id="save-form"></button>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 <?php require_once APP_ROOT . '/views/admin/inc/head.php'; ?>
-
+<script src="moment.js"></script>
 	<section class="tg-dash">
 		<h1>Dashboard</h1>
 	</section>
@@ -120,15 +120,12 @@
 				</div>
 				<div id="log">
 					<ul id="content-log-list" class="mCustomScrollbar content fluid light" data-mcs-theme="inset-2-dark" style="height: 400px;width: 100%;">
-						<?php for($i = 0; $i <= 10; $i++) :?>
-						<li style="display:flex;flex-direction:row;justify-content:space-between;">
-							<div>
-							<h3>You Posted A Chemical - Carpenter Required</h3>
-							<time>02 Minutes Ago</time>
-							</div>
-							<span class="tg-adverified"><i class="fal fa-atom" style="padding-right:5px;"></i> user identification</span>
-						</li>
-						<?php endfor;?>
+						<?php foreach($data['logs'] as $log): 
+								$i = 1;
+							?>
+						<?php 
+							$i++;
+							endforeach;?>
 					</ul>
 				</div>
 			</div>
@@ -142,14 +139,11 @@
 					<h2>Faculty Messages</h2>
 				</div>	
 				<div id="msgs-update-3-col">
-					<div class="msgs-3-col-item" style="display:none;">
-						<ul class="jobs-updates">
-							<li>Geology Department</li>
-							<li>Pharmacy Department</li>
-							<li>Chemistry Department</li>
-						</ul>
-					</div>
 					<div class="msgs-3-col-item" style="width:40.33%;">
+						<div id="search-sort" class="job-search-field" style="margin: 10px 15px;">
+							<input type="text" name="search" autocomplete="off" placeholder="Search Here" style="width: 100%;">
+							<i class="fal fa-search"></i>
+						</div>
 						<ul class="jobs-updates bidders">
 							<li>
 								<div>

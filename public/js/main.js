@@ -1,5 +1,30 @@
 // require('./modules.js');
 import { log, showAlertFloat } from './modules.js';
+// import moment from 'moment';
+
+// let m = moment('Jun 22 2020 10:11 AM', 'lll');
+// console.log(m.fromNow());
+$(document).ready(function(){
+  $.ajax({
+    url: '/admin/getJsonLogs',
+    type: 'POST',
+    dataType: 'json',
+    success: function(data){
+      for (var i = 0; i < data.length; i++) {
+      let time = moment(data[i].date + ' '+data[i].time,'lll');
+      let item = `
+            <li style="display:flex;flex-direction:row;justify-content:space-between;">
+              <div>
+              <h3><span style="text-transform:capitalize;font-weight:bold;">`+data[i].name+`</span> `+data[i].event+` - Req. Origin: `+data[i].position+`</h3>          
+              <time>`+time.fromNow()+`</time>
+              </div>
+              <span class="tg-adverified"><i class="fal fa-atom" style="padding-right:5px;"></i> user identification</span>
+            </li>`;
+        $('#mCSB_9_container').append(item);
+      }
+    }
+  })
+});
 // import { log, showAlertFloat } from './modules';
 
 var URL_ROOT = "";
@@ -10,7 +35,7 @@ $(document).on("click", ".save-btn", function (e) {
   let category = $('.meta-selected-category').attr('data-index');
   let brand = $('.meta-selected-brand').attr('data-index');
   let note = $("#note").val();
-
+  let usr = $(this).attr('data-usr');
   // Change value after serializing the form
   // user htmlDecode() method to decode OR php html_entity_decode() method. 
 
@@ -32,7 +57,7 @@ $(document).on("click", ".save-btn", function (e) {
 			  $("#save-form").hide(100);
 			}, 3000);
       
-      log(1,"Add chemical",1);
+      log("Der","130.23.23.123","Add chemical",1);
     },
     error: function (e) {
       console.log(e);
@@ -302,44 +327,60 @@ $("#loginCredentials").keypress(function (e) {
 });
 function login() {
   var adminData = $("#loginCredentials").serializeArray();
-
   $.ajax({
     url: URL_ROOT + "/init/adminLogin",
     type: "POST",
     dataType: "json",
     data: $.param(adminData),
     success: function (data) {
-      if (data["data"].status == 1 && data["row"].fId != "") {
-        feedbackDefault("f-form");
-        window.location.href = URL_ROOT + "/admin";
-        console.log(data["row"].fId);
-      } else if (data["data"].status == 2) {
-        $("#flash-msgs")
-          .show()
-          .effect("shake", { times: 4 }, 1000);
-      } else {
-        if (data["data"].adminUserName_err) {
-          /* Get the parent/container of the input field for firstname and */
-          feedbackShow("adminUVal", data["data"].adminUserName_err);
-        } else {
-          feedbackHide("adminUVal");
-        }
+      $.ajax({
+        url:'http://www.geoplugin.net/json.gp?jsoncallback=?',
+        type: 'POST',
+        dataType: 'json',
+        success: function(pos){
+          let state = 0;
+          let p = pos.geoplugin_request;
+          if (data["data"].status == 1 && data["row"].fId != "") {
+            feedbackDefault("f-form");
+            state = 1;
+            console.log(window.location.href)
+            window.location.href = URL_ROOT + "/admin";
+          } else if (data["data"].status == 2) {
+            console.log(data);
+            // log("Der","130.23.23.123","Add Login",1);
 
-        if (data["data"].adminUserPass_err) {
-          /* Get the parent/container of the input field for firstname and */
-          feedbackShow("adminPVal", data["data"].adminUserPass_err);
-        } else {
-          feedbackHide("adminPVal");
+            // log(data['data'].adminUserName,p,"SLogin attempt",1);
+            $("#flash-msgs")
+              .show();
+              // .effect("shake", { times: 4 }, 1000);
+          } else {
+            if (data["data"].adminUserName_err) {
+              // log(data['data'].adminUserName,p,"Login attempt",0);
+              /* Get the parent/container of the input field for firstname and */
+              feedbackShow("adminUVal", data["data"].adminUserName_err);
+            } else {
+              feedbackHide("adminUVal");
+            }
+    
+            if (data["data"].adminUserPass_err) {
+              // log(data['data'].adminUserName,pos.geoplugin_request,"Login attempt",0);
+              /* Get the parent/container of the input field for firstname and */
+              feedbackShow("adminPVal", data["data"].adminUserPass_err);
+            } else {
+              feedbackHide("adminPVal");
+            }
+          }
+            log(data['data'].adminUserName,p,"Login attempt",0);
         }
-      }
-      // console.log(data);
+      });
     },
     error: function (err) {
       console.log(err);
     }
   });
 }
-
+function getOrigin() {
+}
 function animate(current, next) {
   var left, opacity, scale;
   current.animate(

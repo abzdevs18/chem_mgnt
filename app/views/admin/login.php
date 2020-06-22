@@ -46,7 +46,7 @@
                         </div><!-- End Database Name Input -->
                     </form>
                 </div>
-                <button class="setup-btn login-admin">Login</button>
+                <button class="login-btn login-admin">Login</button>
             </div><!-- Admin Credential End -->
         </section>
     </main>

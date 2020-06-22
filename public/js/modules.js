@@ -1,9 +1,9 @@
-function log(user,action,status){
+function log(user,pos,action,status){
 	$.ajax({
-		url:"/admin/syslog",
-		method: "post",
+		url: "/admin/syslog",
+		method: "POST",
 		data:{
-			user, action, status
+			user, pos, action, status
 		},
 		success: function(data){
 			console.log(data)

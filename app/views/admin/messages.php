@@ -17,9 +17,9 @@
 							<i class="fal fa-search"></i>
 						</div>
 						<ul class="jobs-updates">
-							<li>Geology Department</li>
-							<li>Pharmacy Department</li>
-							<li>Chemistry Department</li>
+							<?php foreach ($data['dept'] as $department):?>
+								<li id="dept_<?php echo $department->id;?>"><?php echo $department->name;?> Department</li>
+							<?php endforeach;?>
 						</ul>
 					</div>
 					<div class="msgs-3-col-item">

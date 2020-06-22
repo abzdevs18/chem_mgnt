@@ -127,7 +127,7 @@ main {
   background-color: #7fd3bf;
 }
 
-.setup-btn {
+.setup-btn, .login-btn {
   padding: 5px 40px;
   background-color: #7fd3bf;
   border-radius: 5px;

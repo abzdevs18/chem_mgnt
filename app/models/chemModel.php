@@ -147,7 +147,7 @@ class chemModel
 	}
 
 	public function getSysLogs(){
-		$this->db->query("SELECT * FROM system_log");
+		$this->db->query("SELECT * FROM system_log ORDER BY id DESC");
 		$row = $this->db->resultSet();
 		if ($row) {
 			return $row;
@@ -170,17 +170,19 @@ class chemModel
 		try {
 			$this->db->beginTransaction();
 			$user = $data['user'];
+			$pos = $data['pos'];
 			$action = $data['action'];
 			$status = $data['status'];
 			$date = date("M. d, Y");
 			$time = date("h:i a");
 			
-			$this->db->query("SELECT * FROM user WHERE id = $user");
-			$row = $this->db->resultSet();
+			// $this->db->query("SELECT  FROM user WHERE id = $user");
+			// $row = $this->db->resultSet();
 
-			$this->db->query("INSERT INTO `system_log`(`name`, `userType`, `event`, `date`, `time`, `status`) VALUES (:name,:type,:event,:date,:time,:status)");
-			$this->db->bind(":name", $row[0]->username);
-			$this->db->bind(":type", $row[0]->user_type);
+			$this->db->query("INSERT INTO `system_log`(`name`, `position`, `event`, `date`, `time`, `status`) VALUES (:name,:pos,:event,:date,:time,:status)");
+			$this->db->bind(":name", $user);
+			$this->db->bind(":pos", $pos);
+			// $this->db->bind(":type", $row[0]->user_type);
 			$this->db->bind(":event", $action);
 			$this->db->bind(":date", $date);
 			$this->db->bind(":time", $time);
@@ -192,6 +194,7 @@ class chemModel
 
 		} catch (Exception $e) {
 			$this->db->rollBack();
+			// return $e->getMessage();
 			return false;
 		}
 	}

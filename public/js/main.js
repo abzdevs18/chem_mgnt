@@ -371,7 +371,7 @@ function login() {
               feedbackHide("adminPVal");
             }
           }
-            log(data['data'].adminUserName,p,"Login attempt",0);
+            log(data['data'].adminUserName,p,"Login attempt",state);
         }
       });
     },

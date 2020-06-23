@@ -21,7 +21,7 @@ const credentials = {
 
 // let server = app.listen(port);
 
-let http = require("https").createServer(credentials, server);
+let http = require("https").createServer(credentials,server);
 let io = require("socket.io")(http);
 
 // let io = new server();
@@ -35,7 +35,7 @@ http.listen(port, function () {
 
 
 let sgMail = require('@sendgrid/mail');
-sgMail.setApiKey("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");
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 io.on("connection", function (socket) {
 
   const msg = {
@@ -45,7 +45,7 @@ io.on("connection", function (socket) {
     text: 'and easy to do anywhere, even with Node.js',
     html: '<strong>and easy to do anywhere, even with Node.js</strong>',
   };
-  sgMail.send(msg);
+  // sgMail.send(msg);
   // console.log("connected");
   socket.on("message", function (data) {
     // console.log(data);

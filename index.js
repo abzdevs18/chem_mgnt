@@ -45,7 +45,7 @@ io.on("connection", function (socket) {
     text: 'and easy to do anywhere, even with Node.js',
     html: '<strong>and easy to do anywhere, even with Node.js</strong>',
   };
-  sgMail.send(msg);
+  //sgMail.send(msg);
   // console.log("connected");
   socket.on("message", function (data) {
     // console.log(data);

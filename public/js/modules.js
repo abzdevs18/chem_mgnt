@@ -1,6 +1,6 @@
 function log(user,pos,action,status){
 	$.ajax({
-		url: "/admin/syslog",
+		url: "/Init/syslog",
 		method: "POST",
 		data:{
 			user, pos, action, status

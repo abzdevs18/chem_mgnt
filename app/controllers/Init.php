@@ -99,6 +99,21 @@ class Init extends Controller
 		}
 	}
 
+	public function syslog(){
+		if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {		
+			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+			$action = trim($_POST['action']);
+
+			$data = [
+				'user'=> trim($_POST['user']),
+				'pos'=> trim($_POST['pos']),
+				'action'=>trim($_POST['action']),
+				'status'=>trim($_POST['status'])
+			];
+			$this->userModel->syslog($data);
+		}
+	}
+
 	/*This method is to check is there is an error in connecting to the DB*/
 	public function err(){
 		$data = [

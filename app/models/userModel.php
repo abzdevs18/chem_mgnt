@@ -32,6 +32,39 @@ class userModel
 
 	}
 
+	public function syslog($data){	
+		try {
+			$this->db->beginTransaction();
+			$user = $data['user'];
+			$pos = $data['pos'];
+			$action = $data['action'];
+			$status = $data['status'];
+			$date = date("M. d, Y");
+			$time = date("h:i a");
+			
+			// $this->db->query("SELECT  FROM user WHERE id = $user");
+			// $row = $this->db->resultSet();
+
+			$this->db->query("INSERT INTO `system_log`(`name`, `position`, `event`, `date`, `time`, `status`) VALUES (:name,:pos,:event,:date,:time,:status)");
+			$this->db->bind(":name", $user);
+			$this->db->bind(":pos", $pos);
+			// $this->db->bind(":type", $row[0]->user_type);
+			$this->db->bind(":event", $action);
+			$this->db->bind(":date", $date);
+			$this->db->bind(":time", $time);
+			$this->db->bind(":status", $status);
+			$res = $this->db->execute();
+
+			$this->db->commit();
+			return true;
+
+		} catch (Exception $e) {
+			$this->db->rollBack();
+			// return $e->getMessage();
+			return false;
+		}
+	}
+
 	public function findUserEmail($email){
 		$this->db->query("SELECT * FROM user_email WHERE email_add = :email_add");
 		$this->db->bind(':email_add', $email);

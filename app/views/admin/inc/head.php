@@ -26,7 +26,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intro.js@2.9.3/introjs.min.css">
     <script type="text/javascript" src="/lib/js/jquery.simplePagination.js"></script>
     <script type="text/javascript" src="/lib/js/paginator.js"></script>
-    <!-- <script src="moment.js"></script> -->
+    <script src="moment.js"></script>
+    <!-- <script src="/js/modules.js"></script> -->
     <link type="text/css" rel="stylesheet" href="/lib/css/simplePagination.css"/>
     <style>
     @import url("/css/static-style.css");

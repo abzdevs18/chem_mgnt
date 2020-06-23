@@ -236,21 +236,6 @@ class Admin extends Controller
 		$this->view('admin/templates/chemCatMeta', $data);
 	}
 
-	public function syslog(){
-		if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {		
-			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-			$action = trim($_POST['action']);
-
-			$data = [
-				'user'=> trim($_POST['user']),
-				'pos'=> trim($_POST['pos']),
-				'action'=>trim($_POST['action']),
-				'status'=>trim($_POST['status'])
-			];
-			$this->chemModel->syslog($data);
-		}
-	}
-
 
 	public function chemMeta(){
 		if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {		

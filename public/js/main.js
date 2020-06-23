@@ -347,12 +347,11 @@ function login() {
             console.log(window.location.href)
             window.location.href = URL_ROOT + "/admin";
           } else if (data["data"].status == 2) {
-            console.log(data);
+            console.log(data["data"].status);
             // log("Der","130.23.23.123","Add Login",1);
 
             // log(data['data'].adminUserName,p,"SLogin attempt",1);
-            $("#flash-msgs")
-              .show();
+            $("#flash-msgs").show();
               // .effect("shake", { times: 4 }, 1000);
           } else {
             if (data["data"].adminUserName_err) {

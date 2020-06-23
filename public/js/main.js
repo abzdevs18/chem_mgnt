@@ -334,7 +334,8 @@ function login() {
     data: $.param(adminData),
     success: function (data) {
       $.ajax({
-        url:'http://www.geoplugin.net/json.gp?jsoncallback=?',
+        url:'https://json.geoiplookup.io/api?callback=?',
+        // url:'http://www.geoplugin.net/json.gp?jsoncallback=?',
         type: 'POST',
         dataType: 'json',
         success: function(pos){

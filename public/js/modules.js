@@ -1,14 +1,22 @@
-function log(user,pos,action,status){
-	$.ajax({
-		url: "/Init/syslog",
-		method: "POST",
-		data:{
-			user, pos, action, status
-		},
-		success: function(data){
-			console.log(data)
-		}
-	});
+function log(user,action,status){    
+    $.ajax({
+        url:'https://ipapi.co/json/',
+        method:"POST",
+        dataType:"json",
+        success:function(pos){
+             let loc = pos.ip;
+            $.ajax({
+                url: "/Init/syslog",
+                method: "POST",
+                data:{
+                    user,pos:loc, action, status
+                },
+                success: function(data){
+                    console.log("YOU Rock!!!"+p);
+                }
+            });
+        }
+    });
 }
 
 function showAlertFloat(color,msg){

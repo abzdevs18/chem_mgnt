@@ -195,6 +195,7 @@ function chemMeta(action,name, value) {
 // User adding
 $(".add-user-save-btn").click(function(){
 	let context = $(this);
+	let usr = $(this).attr("data-usr");
 	let gender = $("#add-user-gender").val();
 	let type = $("#add-user-type").val();
 	let uname = $("#add-user-uname").val();
@@ -225,7 +226,7 @@ $(".add-user-save-btn").click(function(){
 		},
 		success: function (data) {
 			if(data['status'] == 1){
-				log(1,"Add User",1);
+				log(usr,"Add User",1);
 				socket.emit("userNotification", data);
 				setTimeout(function(){
 					//   window.location.href ="/admin/form"
@@ -234,7 +235,7 @@ $(".add-user-save-btn").click(function(){
 					$("#save-form").hide(100);
 				}, 3000);
 			}else{
-				log(1,"Add User",0)
+				log(usr,"Add User",0)
 				setTimeout(function(){
 					showAlertFloat("#c00",data['status']);
 					$(context).css({"color":"#fff !important"});
@@ -250,6 +251,7 @@ $(".add-user-save-btn").click(function(){
 $(".deleteUser").click(function(e){
 	e.preventDefault();
 	let context = $(this);
+	let adm = $(this).attr('data-usr');
 	let reason = $(".meta-selected-deleteUser").val();
 	let user = $(".selected-user").val();
 	let desc = $(".deleteDesc").text();
@@ -267,13 +269,12 @@ $(".deleteUser").click(function(e){
 		  $("#save-form").show(100);
 		},
 		success: function (data) {
+			log(adm,"Delted User", 1);
 			setTimeout(function(){
-				showAlertFloat("","User DELETED!"+data);
+				showAlertFloat("","User DELETED!");
 				$(context).css({"color":"#fff !important"});
 				$("#save-form").hide(100);
 			}, 3000);
-			log(1,"Delted User", 1);
-			console.log(data);
 		},
 		error: function (e) {
 			console.log(e);

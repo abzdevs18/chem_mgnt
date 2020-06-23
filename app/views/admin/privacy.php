@@ -68,7 +68,7 @@
                             </div>
                         </div>
                     </div>
-					<button class="tg-btn deleteUser" type="submit" style="margin-top:15px;background:#d9534f;padding:0px 40px;border-radius:3px;">Delete <img src="/img/gif/91.gif" style="width: 20px;position: absolute;top: 25%;bottom: 0;right: 5px;display:none;" id="save-form"></button>
+					<button class="tg-btn deleteUser" type="submit" data-usr="<?php echo $_SESSION['userName'];?>" style="margin-top:15px;background:#d9534f;padding:0px 40px;border-radius:3px;">Delete <img src="/img/gif/91.gif" style="width: 20px;position: absolute;top: 25%;bottom: 0;right: 5px;display:none;" id="save-form"></button>
 				</div>
 				</form>
 			</div>	

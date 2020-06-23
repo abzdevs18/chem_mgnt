@@ -334,13 +334,13 @@ function login() {
     data: $.param(adminData),
     success: function (data) {
       $.ajax({
-        url:'https://json.geoiplookup.io/api?callback=?',
+        url:'https://ipapi.co/json/',
         // url:'http://www.geoplugin.net/json.gp?jsoncallback=?',
         type: 'POST',
         dataType: 'json',
         success: function(pos){
           let state = 0;
-          let p = pos.geoplugin_request;
+          let p = pos.ip;
           if (data["data"].status == 1 && data["row"].fId != "") {
             feedbackDefault("f-form");
             state = 1;

@@ -1,0 +1,27 @@
+@host =http://sfchem.cf.local
+
+
+GET {{host}}/Api/api_request
+###
+POST {{host}}/Api/api_login HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+clientUserName=mikse@gmail.com
+&clientUserPass=AbuevZ091095?
+###
+POST {{host}}/Api/api_register HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+norsuId=2013039972
+&FirstName=Mike
+&LastName=Rods
+&clientEmail=miske@gmail.com
+&Pass=AbuevZ091095?
+&Department=2
+&account_type=3
+###
+POST {{host}}/Init/adminLogin HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+adminUserName=rjames
+&adminUserPass=AbuevZ091095?

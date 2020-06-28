@@ -173,6 +173,11 @@ class Admin extends Controller
 		$logs = $this->chemModel->getSysLogs();
 		echo json_encode($logs);
 	}
+	public function getSignupReqLogs()
+	{
+		$getSignupReq = $this->chemModel->getClientSignUpReq();
+		echo json_encode($getSignupReq);
+	}
 
 
 	public function logout(){

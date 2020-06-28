@@ -75,7 +75,6 @@ class chemModel
 		}
 	}
 
-
 	public function getLabel(){
 		$this->db->query("SELECT * FROM chem_label");
 		$row = $this->db->resultSet();
@@ -108,6 +107,17 @@ class chemModel
 
 	public function getDepartment(){
 		$this->db->query("SELECT * FROM department");
+		$row = $this->db->resultSet();
+		if ($row) {
+			return $row;
+		}else {
+			return false;
+		}
+	}
+
+	public function getClientSignUpReq()
+	{
+		$this->db->query("SELECT client_req_signup.id AS id, client_req_signup.firstname AS firstname, client_req_signup.lastname AS lastname, department.name AS department, date, time FROM client_req_signup LEFT JOIN department ON client_req_signup.department = department.id WHERE client_req_signup.status = 0 ORDER BY client_req_signup.id DESC");
 		$row = $this->db->resultSet();
 		if ($row) {
 			return $row;

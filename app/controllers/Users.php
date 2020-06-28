@@ -6,8 +6,7 @@
 class Users extends Controller
 {
 	
-	function __construct()
-	{
+	function __construct(){
 
 		if (file_exists( dirname(__FILE__) . '/../configs/config.php')) {
 			$this->userModel = $this->model('userModel');

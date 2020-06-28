@@ -667,6 +667,7 @@ input[type="color"],
   box-sizing: border-box;
   width: 100%;
   font-family: quicksand;
+  text-transform: lowercase !important;
   transition: all 0.5s;
 }
 .tg-checkbox input[type="checkbox"] + label::after {

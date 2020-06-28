@@ -98,17 +98,15 @@
 		<div class="alerts-notif" style="width:40%;">
 			<div class="alert-content">
 				<div class="content-head">
-					<h2>Recent Activity <sup><i class="fal fa-question-circle" style="font-size:12px;" title="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi est eaque laborum eum sit? Ipsa earum dolor velit non praesentium architecto hic cupiditate fugiat sed. Maiores quod repellendus aliquam commodi."></i></sup></h2>
+					<h2>Registration Request <sup><i class="fal fa-question-circle" style="font-size:12px;" title="Admin can approve the student registration in here. Account listed in here are not allowed to request anything. Red are Faculty"></i></sup></h2>
 				</div>
-				<div class="ad-log">
+				<div class="ad-log" style="padding:5px;">
 					<ul class="mCustomScrollbar content fluid light" data-mcs-theme="inset-2-dark" style="height: 400px;width: 100%;">
-						<?php for($i = 0; $i <= 10; $i++) :?>
-						<li>							
-							<span class="tg-adverified cat_chemical">Salt</span>
-							<h3>Sodium Orthophosphate</h3>
+					<!-- 	<li>							
+							<span class="tg-adverified cat_chemical">Department</span>
+							<h3>Clint Anthony Abueva</h3>
 							<time datetime="2017-08-08">01 Day Ago</time>									
-						</li>
-						<?php endfor;?>
+						</li> -->
 					</ul>
 				</div>
 			</div>
@@ -120,12 +118,6 @@
 				</div>
 				<div id="log">
 					<ul id="content-log-list" class="mCustomScrollbar content fluid light" data-mcs-theme="inset-2-dark" style="height: 400px;width: 100%;">
-						<?php foreach($data['logs'] as $log): 
-								$i = 1;
-							?>
-						<?php 
-							$i++;
-							endforeach;?>
 					</ul>
 				</div>
 			</div>

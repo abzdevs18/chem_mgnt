@@ -23,7 +23,25 @@ $(document).ready(function(){
         $('#mCSB_9_container').append(item);
       }
     }
-  })
+  });
+  // Get current request
+  $.ajax({
+    url: '/admin/getSignupReqLogs',
+    type: 'POST',
+    dataType: 'json',
+    success: function(data){
+      for (var i = 0; i < data.length; i++) {
+      let time = moment(data[i].date + ' ' +data[i].time,'lll');
+      let item = `
+        <li style="background: #ff00001f;padding: 10px;border-radius: 4px;margin-bottom: 4px;">							
+          <span class="tg-adverified cat_chemical" style="width:auto;display:inline-block;">`+data[i].department +` Department</span>
+          <h3>`+data[i].firstname +` `+data[i].lastname +`</h3>
+          <time datetime="2017-08-08">`+time.fromNow()+`</time>									
+        </li>`;
+        $('#mCSB_8_container').append(item);
+      }
+    }
+  });
 });
 // import { log, showAlertFloat } from './modules';
 

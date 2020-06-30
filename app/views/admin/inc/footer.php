@@ -5,7 +5,7 @@
 		<?php elseif($data['config'][5]->config_value == 1 && $data['user'][0]->user_type == 0):?>
 	    	<a href="/admin/add_student"><i class="far fa-user-tag"></i> Add Student</a>
         <?php endif;?>
-	</div data-intro="PLEA" data-step="5">
+	</div>
 		<div id="add_record">
 			<p><i class="far fa-plus"></i></p>
 		</div>

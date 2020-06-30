@@ -4,8 +4,6 @@ import { log, showAlertFloat } from './modules.js';
 
 // let m = moment('Jun 22 2020 10:11 AM', 'lll');
 // console.log(m.fromNow());
-introJs(".intro-manual").start();
-introJs().addHints();
 
 let currentPage = window.location.pathname;
 if(currentPage == '/admin/request'){
@@ -115,6 +113,8 @@ if(currentPage == '/admin/request'){
     }
   });
 }else{
+  introJs(".intro-manual").start();
+  introJs().addHints();
   $(document).ready(function(){
     $.ajax({
       url: '/admin/getJsonLogs',

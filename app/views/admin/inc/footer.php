@@ -5,14 +5,13 @@
 		<?php elseif($data['config'][5]->config_value == 1 && $data['user'][0]->user_type == 0):?>
 	    	<a href="/admin/add_student"><i class="far fa-user-tag"></i> Add Student</a>
         <?php endif;?>
-	</div>
+	</div data-intro="PLEA" data-step="5">
 		<div id="add_record">
 			<p><i class="far fa-plus"></i></p>
 		</div>
 	<!-- <div id="sound"></div> -->
 	<script src="/lib/js/jquery.mCustomScrollbar.concat.min.js"></script>
 	<script src="/lib/js/push.min.js"></script>
-	<script src="/lib/js/intro.js"></script>
 	<script type="module" src="/js/main.js"></script>
 	<script src="/js/admin_script.js"></script>
 	<script src="/js/graph_representation.js"></script>

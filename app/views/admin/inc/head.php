@@ -29,7 +29,9 @@
     <script src="moment.js"></script>
     <!-- <script src="/js/modules.js"></script> -->
     <link type="text/css" rel="stylesheet" href="/lib/css/simplePagination.css"/>
-    <link type="text/css" rel="stylesheet" href="/lib/css/intro.css"/>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/intro.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/introjs.min.css"/>
     <style>
     @import url("/css/static-style.css");
 

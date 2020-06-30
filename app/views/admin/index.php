@@ -61,7 +61,7 @@
 		</div>
 	</section>
 
-	<section class="offices-msgs dataGraph" style="display:none;">
+	<section class="offices-msgs dataGraph" style="display:none;" data-hint="Hello start with  this one">
 		<div class="alerts-notif">
 			<div class="alert-content" style="height:400px;">
 				<div class="content-head">

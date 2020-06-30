@@ -4,7 +4,7 @@ import { log, showAlertFloat } from './modules.js';
 
 // let m = moment('Jun 22 2020 10:11 AM', 'lll');
 // console.log(m.fromNow());
-
+introJs().addHints();
 
 let currentPage = window.location.pathname;
 if(currentPage == '/admin/request'){

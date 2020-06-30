@@ -1,6 +1,6 @@
 <?php require_once APP_ROOT . '/views/admin/inc/head.php'; ?>
 <script src="moment.js"></script>
-	<section class="tg-dash">
+	<section class="tg-dash intro-manual" data-step="1" data-hint="Hello start with  this one">
 		<h1>Dashboard</h1>
 	</section>
 
@@ -61,7 +61,7 @@
 		</div>
 	</section>
 
-	<section class="offices-msgs dataGraph" style="display:none;" data-hint="Hello start with  this one">
+	<section class="offices-msgs dataGraph" style="display:none;">
 		<div class="alerts-notif">
 			<div class="alert-content" style="height:400px;">
 				<div class="content-head">

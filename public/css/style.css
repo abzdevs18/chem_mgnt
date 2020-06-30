@@ -620,6 +620,19 @@ Ads Log
   transition: all 0.5s;
   display: flex;
 }
+.no-icon-prof {
+    color: #fff;
+    padding: 5px;
+    border-radius: 50px;
+    width: 30px;
+    height: 30px;
+    left: 15px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+    font-size: 20px;
+    margin-right: 5px;
+}
 .jobs-updates li:hover {
   background-color: #f7f7f7;
 }
@@ -996,7 +1009,7 @@ tbody tr td {
   padding: 0;
   height: 50px;
   /* height: calc( 100% - 1px); */
-  /* top: 0; */
+  top: 0;
   cursor: pointer;
   z-index: 9;
   overflow: hidden;

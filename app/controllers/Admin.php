@@ -30,8 +30,12 @@ class Admin extends Controller
 
 	public function index(){
 		$logs = $this->chemModel->getSysLogs();
+		$config = $this->chemModel->getConfigSecurity();
+		$currentUser = $this->chemModel->getCurrentUser($_SESSION['uId']);
 		$data = [
 			"logs" => $logs,
+			"config"=> $config,
+			"user"=> $currentUser,
 			"one" => $this->breadcrump('/')
 		];
 		// no other solution this is for the Left sidebar navigation
@@ -40,6 +44,25 @@ class Admin extends Controller
 		$_SESSION['menu_active'] = "home";
 
 		$this->view('admin/index',$data);
+	}
+
+	public function updateConfig(){
+		if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {		
+			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+			$val = $_POST['config'];
+			$data =[
+				"status"=>""
+			];
+			echo json_encode($this->adminModel->updateConfig($val));
+			// print_r($val[0]);
+			// if($this->adminModel->updateConfig($val)){
+			// 	$data['status']=1;
+			// 	echo json_encode($data);
+			// }else{
+			// 	$data['status']=0;
+			// 	echo json_encode($data);
+			// }
+		}
 	}
 
 	public function login(){
@@ -66,6 +89,9 @@ class Admin extends Controller
 	}
 
 	public function profile(){
+		$config = $this->chemModel->getConfigSecurity();
+		$currentUser = $this->chemModel->getCurrentUser($_SESSION['uId']);
+		
 		
 		// no other solution this is for the Left sidebar navigation
 		// the active state is dependent to this SESSION we are setting.
@@ -76,8 +102,9 @@ class Admin extends Controller
 	}
 
 	public function request(){
+		$getChemRequest = $this->chemModel->getRequest();
 		$data = [
-			"one" => $this->breadcrump()
+			"request"=>$getChemRequest
 		];
 		// no other solution this is for the Left sidebar navigation
 		// the active state is dependent to this SESSION we are setting.
@@ -89,9 +116,11 @@ class Admin extends Controller
 
 	public function messages(){
 		$dept = $this->chemModel->getDepartment();
+		$senderList = $this->chemModel->getMessageSenderList();
 
 		$data = [
-			"dept" => $dept
+			"dept" => $dept,
+			"list" => $senderList
 		];
 		
 		// no other solution this is for the Left sidebar navigation
@@ -173,12 +202,14 @@ class Admin extends Controller
 		$logs = $this->chemModel->getSysLogs();
 		echo json_encode($logs);
 	}
-	public function getSignupReqLogs()
-	{
+	public function getSignupReqLogs(){
 		$getSignupReq = $this->chemModel->getClientSignUpReq();
 		echo json_encode($getSignupReq);
 	}
-
+	public function getChemRequest(){
+		$getChemRequest = $this->chemModel->getRequest();
+		echo json_encode($getChemRequest);
+	}
 
 	public function logout(){
 		
@@ -314,7 +345,6 @@ class Admin extends Controller
 		}
 	}
 
-
 	public function delUser(){
 		if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {		
 			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -335,7 +365,6 @@ class Admin extends Controller
 			}
 		}
 	}
-
 
 	public function userAdminAdd(){
 		if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {		

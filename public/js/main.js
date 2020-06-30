@@ -4,45 +4,213 @@ import { log, showAlertFloat } from './modules.js';
 
 // let m = moment('Jun 22 2020 10:11 AM', 'lll');
 // console.log(m.fromNow());
-$(document).ready(function(){
+
+
+let currentPage = window.location.pathname;
+if(currentPage == '/admin/request'){
+  // Get Chemical request
   $.ajax({
-    url: '/admin/getJsonLogs',
+    url: '/admin/getChemRequest',
     type: 'POST',
     dataType: 'json',
     success: function(data){
       for (var i = 0; i < data.length; i++) {
-      let time = moment(data[i].date + ' '+data[i].time,'lll');
-      let item = `
-            <li style="display:flex;flex-direction:row;justify-content:space-between;">
-              <div>
-              <h3><span style="text-transform:capitalize;font-weight:bold;">`+data[i].name+`</span> `+data[i].event+` - Req. Origin: `+data[i].position+`</h3>          
-              <time>`+time.fromNow()+`</time>
-              </div>
-              <span class="tg-adverified"><i class="fal fa-atom" style="padding-right:5px;"></i> user identification</span>
-            </li>`;
-        $('#mCSB_9_container').append(item);
+      let time = moment(data[i].dateReq + ' ' +data[i].timeReq,'lll');
+      let isToday = time.isSame(new Date(),"day");
+      let eventTime = "";
+      if(isToday){
+        eventTime += time.fromNow();
+      }else{
+        eventTime += data[i].dateReq;
       }
+      let uType = "";
+      if(data[i].uType == 1){
+        uType += `<span class="ch-request-status" style="background: var(--ch-request-decline);color: #fff;">Faculty</span>`;
+      }else{
+        uType += `<span class="ch-request-status" style="background: var(--dispose-properly-label);color: #fff;">Student</span>`;
+      }
+      let item = `
+      <tr class="req_logs_" data-rowId="#contentId`+i+`">
+        <td style="text-align: center;" class="ch-selection-item-action">
+          <div class="ch-checkbox-item" data-checked></div>
+          <!-- <input type="checkbox" name=""> -->
+        </td>
+        <td class="ch-row-second" style="max-width: 150px;">
+          <div class="request_icon_wrapper">
+            <div class="req_icon">
+              <span>`+data[i].fname.charAt(0)+`</span>
+            </div>
+            <div class="cc-name" style="margin:5px;margin-top:0px;">
+              <h3>`+data[i].fname+` `+data[i].lname+`</h3>
+              <time datetime="2017-08-08">`+eventTime+`</time>
+            </div>
+          </div>
+        </td>
+        <td class="tittle-id">
+          <span class="ch-request-status" style="background:none;">`+uType+`</span>
+          <!-- <h3>Student</h3> -->
+        </td>
+        <td class="tittle-id">
+          <h3>`+data[i].department+` Department</h3>
+        </td>
+        <td>
+          <span>`+data[i].norsu_id+`</span>
+        </td>
+        <td>
+          <span class="ch-request-status">Pending</span>
+        </td>
+        <td class="action-btn">
+          <span class="eye" data-jId="`+data[i].req_id+`"><i class="fal fa-eye"></i></span>
+          <span class="pencil" data-jId="`+data[i].req_id+`"><i class="fal fa-pencil-alt"></i></span>
+          <span class="trash" data-jId="`+data[i].req_id+`"><i class="fal fa-trash"></i></span>
+        </td>
+      </tr>
+      <tr id="contentId`+i+`" class="containerCollapse collapse" style="background:#2B2F3E;">
+        <td colspan="2">
+          <div style="width:220px;">
+            <canvas class="dreData_`+i+`" width="110"></canvas>
+          </div>
+        </td>
+        <td colspan="5"></td>
+      </tr>`;
+        // Firefox 1.0+
+        var isFirefox = typeof InstallTrigger !== 'undefined';
+        if(isFirefox){
+          $(".ch-selection-item-action").css({
+            "top":"0"
+          });
+        }
+        $('.chem_req_dash').append(item);
+        let req_quantity = data[i].req_quantity;
+        let chem_quantity = data[i].chemical_quantity;
+        // And for a doughnut chart
+        var sd = document.getElementsByClassName("dreData_"+i+"")[0].getContext("2d");
+        var asd = new Chart(sd, {
+          type: "doughnut",
+          data: {
+            datasets: [
+              {
+                data: [req_quantity, chem_quantity-req_quantity],
+                backgroundColor: [
+                  "rgb(120, 146, 161)",
+                  "rgb(63, 75, 87)"
+                ],
+                borderColor: [
+                  "rgb(120, 146, 161)",
+                  "rgb(63, 75, 87)"
+                ],
+                borderWidth: 1
+              }
+            ]
+          }
+        });
+      }
+      paginator({
+          table: document.getElementsByClassName("cc_tbl_pagination")[0].getElementsByTagName("table")[0],
+          box: document.getElementsByClassName("index_native")[0],
+        active_class: "color_page",
+        rows_per_page: document.getElementsByClassName("index_native")[0].getAttribute("data-rows") 
+      });
     }
   });
-  // Get current request
-  $.ajax({
-    url: '/admin/getSignupReqLogs',
-    type: 'POST',
-    dataType: 'json',
-    success: function(data){
-      for (var i = 0; i < data.length; i++) {
-      let time = moment(data[i].date + ' ' +data[i].time,'lll');
-      let item = `
-        <li style="background: #ff00001f;padding: 10px;border-radius: 4px;margin-bottom: 4px;">							
-          <span class="tg-adverified cat_chemical" style="width:auto;display:inline-block;">`+data[i].department +` Department</span>
-          <h3>`+data[i].firstname +` `+data[i].lastname +`</h3>
-          <time datetime="2017-08-08">`+time.fromNow()+`</time>									
-        </li>`;
-        $('#mCSB_8_container').append(item);
+}else{
+  $(document).ready(function(){
+    $.ajax({
+      url: '/admin/getJsonLogs',
+      type: 'POST',
+      dataType: 'json',
+      success: function(data){
+        for (var i = 0; i < data.length; i++) {
+        let time = moment(data[i].date + ' '+data[i].time,'lll');
+        let isToday = time.isSame(new Date(),"day");
+        let eventTime = "";
+        if(isToday){
+          eventTime += time.fromNow();
+        }else{
+          eventTime += data[i].date;
+        }
+        let item = `
+              <li style="display:flex;flex-direction:row;justify-content:space-between;">
+                <div>
+                <h3><span style="text-transform:capitalize;font-weight:bold;">`+data[i].name+`</span> `+data[i].event+` - Req. Origin: `+data[i].position+`</h3>          
+                <time>`+eventTime+`</time>
+                </div>
+                <span class="tg-adverified"><i class="fal fa-atom" style="padding-right:5px;"></i> user identification</span>
+              </li>`;
+          $('#mCSB_9_container').append(item);
+        }
       }
-    }
+    });
+    // Get current request
+    $.ajax({
+      url: '/admin/getSignupReqLogs',
+      type: 'POST',
+      dataType: 'json',
+      success: function(data){
+        for (var i = 0; i < data.length; i++) {
+        let time = moment(data[i].date + ' ' +data[i].time,'lll');
+        let isToday = time.isSame(new Date(),"day");
+        let eventTime = "";
+        if(isToday){
+          eventTime += time.fromNow();
+        }else{
+          eventTime += data[i].date;
+        }
+        let item = `
+          <li style="background: #ff00001f;padding: 10px;border-radius: 4px;margin-bottom: 4px;">							
+            <span class="tg-adverified cat_chemical" style="width:auto;display:inline-block;">`+data[i].department +` Department</span>
+            <h3>`+data[i].firstname +` `+data[i].lastname +`</h3>
+            <time datetime="2017-08-08">`+eventTime+`</time>									
+          </li>`;
+          $('#mCSB_8_container').append(item);
+        }
+      }
+    });
+    // Get Chemical request
+    $.ajax({
+      url: '/admin/getChemRequest',
+      type: 'POST',
+      dataType: 'json',
+      success: function(data){
+        for (var i = 0; i < data.length; i++) {
+        let time = moment(data[i].dateReq + ' ' +data[i].timeReq,'lll');
+        let isToday = time.isSame(new Date(),"day");
+        let eventTime = "";
+        if(isToday){
+          eventTime += time.fromNow();
+        }else{
+          eventTime += data[i].dateReq;
+        }
+        let uType = "";
+        let backG = "";
+        if(data[i].uType == 1){
+          backG += "rgba(226, 68, 92, 0.21)";
+          uType += `<span class="tg-adverified" style="background: var(--ch-request-decline);color: #fff;"><i class="fal fa-atom" style="padding-right:5px;"></i> Faculty</span>`;
+        }else{
+          backG += "#004D4029";
+          uType += `<span class="tg-adverified" style="background: var(--dispose-properly-label);color: #fff;"><i class="fal fa-atom" style="padding-right:5px;"></i> Student</span>`;
+        }
+        let item = `
+              <li style="background: `+backG+`;padding: 10px;border-radius: 4px;margin-bottom: 4px;">`+uType+`
+                <div class="request_icon_wrapper">
+                  <div class="req_icon" style="margin-top:13px;">
+                    <span>`+data[i].fname.charAt(0)+`</span>
+                    <!-- <img src="/img/icons/danger.png" alt="" style="width:100%;"> -->
+                  </div>
+                  <div style="margin:5px;" class="m_notif_content">
+                    <b>`+data[i].fname+` `+data[i].lname+`</b>
+                    <h3 style="white-space: unset;margin-bottom: 5px;"><span style="text-transform:uppercase">`+data[i].chemName+`</span> <em class="req_formula_listing">(`+htmlDecode(data[i].chemFormula)+`)<em/> - `+data[i].reqPurpose+`</h3>
+                    <time datetime="2017-08-08">`+eventTime+`</time>
+                  </div>
+                </div>                  
+              </li>`;
+          $('#mCSB_10_container').append(item);
+        }
+      }
+    });
   });
-});
+  console.log(currentPage);
+}
 // import { log, showAlertFloat } from './modules';
 
 var URL_ROOT = "";

@@ -6,6 +6,8 @@
 class Api extends Controller
 {
 	private $salt = SECURE_SALT;
+	private $date = DEF_DATE;
+	private $time = DEF_TIME;
 	
 	function __construct() {
 		$this->userApi = $this->model('apiModel');
@@ -19,14 +21,14 @@ class Api extends Controller
 			$data = [
 				'status'=> '',
 				'adminUserName'=>trim($_POST['clientUserName']),
-				'adminUserPass'=>trim($_POST['clientUserPass']),
+				'adminUserPass'=>$this->$salt . trim($_POST['clientUserPass']),
 				'adminUserName_err'=>'',
 				'adminUserPass_err'=>''
 			];
 
 
 			// adminUserPass validation
-			if (empty($data['adminUserPass'])) {
+			if (empty(trim($_POST['clientUserPass']))) {
 				$data['adminUserPass_err'] = 'Please enter your password';
 			}else{
 				$data['adminUserPass'] = $this->$salt . trim($_POST['clientUserPass']);
@@ -76,14 +78,8 @@ class Api extends Controller
 		}	
 	}
 
-	public function api_request(){
-		echo json_encode($this->userApi->getApiUser());
-	}
-
 	public function api_register(){
 		if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {	
-			$date = date("M. d, Y");
-			$time = date("h:i a");
 			$salted_pass = $this->salt . trim($_POST['Pass']);
 			$hashed = password_hash($salted_pass, PASSWORD_DEFAULT);
 
@@ -95,8 +91,8 @@ class Api extends Controller
 				"LastName"=>trim($_POST['LastName']),
 				"clientEmail"=>trim($_POST['clientEmail']),
 				"client_pass"=>$hashed,
-				"date"=> $date,
-				"time"=>$time,
+				"date"=> $this->date,
+				"time"=> $this->time,
 				"Department"=>trim($_POST['Department']),
 				"Account_type"=>trim($_POST['account_type']),
 				"registrationMessage"=>"",
@@ -127,7 +123,69 @@ class Api extends Controller
 		// }
 	}
 
+	public function api_request(){
+		if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {		
+			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+			$data = [
+				"status"=>"",
+				"quantity"=>trim($_POST['quantity']),
+				"chem_id"=>trim($_POST['chem_id']),
+				"stud_id"=>trim($_POST['stud_id']),
+				"dateReq"=> $this->date,
+				"timeReq"=> $this->time,
+				"purpose"=>trim($_POST['purpose']),
+				"account_type"=>trim($_POST['account_type']),
+				// subject can be dynamic base on what will the admin will support
+				"subject"=>trim($_POST['subject'])
+			];
+
+			if($this->userApi->chemicalRequest($data)){
+				$data['status']=1;
+				echo json_encode($data);
+			}else{
+				$data['status']=0;
+				echo json_encode($data);
+			}
+		}
+	}
+
 	public function api_messaging(){
+		if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
+			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+			$data = [
+				"status" => "",
+				"sender" => trim($_POST['sender']),
+				"receiver" => trim($_POST['receiver']),
+				"message" => trim($_POST['message']),
+				"sendDate" => $this->date,
+				"sendTime" => $this->time
+			];
+			if($this->userApi->sendMessage($data)){
+				$data["status"] = 1;
+				echo json_encode($data);
+			}else{
+				$data["status"] = 0;
+				echo json_encode($data);
+			}
+		}
+	}
+
+	public function api_get_message(){
+		if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
+			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+			$message = $this->userApi->getMessagesForCurrentUser(trim($_POST['session_user']));
+			echo json_encode($message);
+		}
+	}
+
+	public function api_get_latest_message(){
+		if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
+			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+			$message = $this->userApi->getLatestMessages(trim($_POST['msg_receiver']),trim($_POST['msg_sender']));
+			echo json_encode($message);
+		}
 	}
 
 	public function api_account(){

@@ -6,19 +6,47 @@ GET {{host}}/Api/api_request
 POST {{host}}/Api/api_login HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
 
-clientUserName=mikse@gmail.com
+clientUserName=huya@gmail.com
 &clientUserPass=AbuevZ091095?
 ###
 POST {{host}}/Api/api_register HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
 
-norsuId=2013039972
-&FirstName=Mike
-&LastName=Rods
-&clientEmail=miske@gmail.com
+norsuId=20130423
+&FirstName=hyus
+&LastName=Kunns
+&clientEmail=huya@gmail.com
 &Pass=AbuevZ091095?
 &Department=2
 &account_type=3
+###
+POST {{host}}/Api/api_request HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+quantity=67
+&chem_id=65
+&stud_id=14
+&purpose=Test for validation
+&account_type=2
+&subject=2
+###
+POST {{host}}/Api/api_get_latest_message HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+msg_receiver=1
+&msg_sender=22
+###
+POST {{host}}/Api/api_get_message HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+session_user=42
+###
+POST {{host}}/Api/api_messaging HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+sender=22
+&receiver=1
+&message=OKay?
 ###
 POST {{host}}/Init/adminLogin HTTP/1.1
 Content-Type: application/x-www-form-urlencoded

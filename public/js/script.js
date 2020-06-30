@@ -8,6 +8,9 @@ import { log, showAlertFloat, filterDropDown } from './modules.js';
 		});
 	}
 }());
+$(".messaging").mCustomScrollbar({
+  autoHideScrollbar: true
+});
 $(".content").mCustomScrollbar({
   autoHideScrollbar: true
 });
@@ -34,11 +37,11 @@ $(document).ready(function() {
 	});
 });
 
-$(".req_logs_").click(function(e) {
+$(document).on("click",".req_logs_", function(e) {
 	e.stopPropagation();
 	let rowId = $(this).attr("data-rowId");
-	$(rowId).slideToggle("slow");
-	$(".containerCollapse").not(rowId).slideUp("slow");
+	$(rowId).slideToggle(400);
+	$(".containerCollapse").not(rowId).slideUp(100);
 });
 
 $(".eye").click(function(e){

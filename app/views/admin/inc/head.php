@@ -53,6 +53,9 @@
     .tox-statusbar__branding {
         display: none !important;
     }
+    .req_formula_listing > p {
+        display: inline-block;
+    }
     </style>
     <script>
     $(function() {
@@ -260,7 +263,11 @@
                     </div>
                 </div>
                 <div>
-                    <a href="/admin/form"><i class="fal fa-bookmark"></i> Store Chemical</a>
+                    <?php if($data['user'][0]->user_type == 1):?>
+                        <a href="/admin/form"><i class="fal fa-bookmark"></i> Store Chemical</a>
+                    <?php elseif($data['config'][6]->config_value == 1 && $data['user'][0]->user_type == 0):?>
+                        <a href="/admin/form"><i class="fal fa-bookmark"></i> Store Chemical</a>
+                    <?php endif;?>
                     <div id="notif-icon">
                         <button><i class="fal fa-bell"></i></button>
                         <span id="notif-counter">2</span>
@@ -351,11 +358,13 @@
                                 <i class="fal fa-users-class"></i>
                                 <a href="#"> Students</a>
                             </li>
+                            <?php if($data['user'][0]->user_type == 1):?>
                             <li data-link="/admin/privacy"
                                 class="<?=($_SESSION['menu_active']=="privacy") ? 'menu-active' : ''; ?>">
                                 <i class="fal fa-shield-check"></i>
                                 <a href="#"> Privacy settings</a>
                             </li>
+                            <?php endif;?>
                             <li data-link="/admin/logs"
                                 class="<?=($_SESSION['menu_active']=="logs") ? 'menu-active' : ''; ?>">
                                 <i class="fal fa-clipboard"></i>

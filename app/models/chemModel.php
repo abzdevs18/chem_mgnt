@@ -65,8 +65,28 @@ class chemModel
 		}
 	}
 
+	public function getRequest(){
+		$this->db->query("SELECT request.id AS req_id, user_profile.img_path AS profIcon,chemicals.chemical_name AS chemName, chemicals.chemical_formula AS chemFormula,request.quantity AS req_quantity, chemicals.quantity AS chemical_quantity, request.purpose AS reqPurpose, request.time AS timeReq, request.date AS dateReq,department.name AS department, client_users.firstname AS fname, client_users.norsu_id AS norsu_id, client_users.lastname AS lname, client_users.account_type AS uType FROM request LEFT JOIN user_profile on user_profile.user_id = request.student_id LEFT JOIN client_users ON client_users.id = request.student_id LEFT JOIN chemicals ON chemicals.id = request.chem_id LEFT JOIN department ON department.id = client_users.department ORDER BY request.id DESC");
+		$row = $this->db->resultSet();
+		if ($row) {
+			return $row;
+		}else {
+			return false;
+		}
+	}
+
 	public function getConfigSecurity(){
 		$this->db->query("SELECT * FROM admin_config");
+		$row = $this->db->resultSet();
+		if ($row) {
+			return $row;
+		}else {
+			return false;
+		}
+	}
+
+	public function getCurrentUser($id){
+		$this->db->query("SELECT * FROM user WHERE id = $id");
 		$row = $this->db->resultSet();
 		if ($row) {
 			return $row;
@@ -115,9 +135,31 @@ class chemModel
 		}
 	}
 
+	public function getMessageSenderList(){
+		$this->db->query("SELECT DISTINCT messages.user_sender_id AS userId, client_users.firstname AS fname, client_users.lastname AS lname, user_profile.img_path AS profile FROM messages LEFT JOIN client_users ON messages.user_sender_id = client_users.id LEFT JOIN user_profile ON user_profile.user_id = client_users.id AND user_profile.profile_status = 1 WHERE client_users.department = 4 ORDER BY messages.timestamp ASC");
+		$row = $this->db->resultSet();
+		if($row){
+			return $row;
+		}else{
+			return false;
+		}
+	}
+
+	public function getSenderMessage($receiver, $sender){
+		$this->db->query("SELECT messages.user_receiver_id AS userId, messages.user_receiver_id AS receiverId, messages.user_sender_id AS senderId, messages.msg_content as msgContent, messages.msg_date AS msgDate, user_profile.img_path AS sendIconImage FROM messages LEFT JOIN client_users ON client_users.id = messages.user_sender_id LEFT JOIN user_profile ON user_profile.user_id = messages.user_sender_id AND user_profile.profile_status = 1 WHERE (messages.user_receiver_id = :userReceiverId AND messages.user_sender_id = :userSenderId) OR (messages.user_receiver_id = :userSenderId AND messages.user_sender_id = :userReceiverId) ORDER BY messages.timestamp DESC");
+		$this->db->bind(":userReceiverId", $receiverId);
+		$this->db->bind(":userSenderId", $senderId);
+		$row = $this->db->resultSet();
+	   if ($row) {
+		   return $row;
+	   } else {
+		   return false;
+	   }
+	}
+
 	public function getClientSignUpReq()
 	{
-		$this->db->query("SELECT client_req_signup.id AS id, client_req_signup.firstname AS firstname, client_req_signup.lastname AS lastname, department.name AS department, date, time FROM client_req_signup LEFT JOIN department ON client_req_signup.department = department.id WHERE client_req_signup.status = 0 ORDER BY client_req_signup.id DESC");
+		$this->db->query("SELECT client_users.id AS id, client_users.firstname AS firstname, client_users.lastname AS lastname, department.name AS department, date, time FROM client_users LEFT JOIN department ON client_users.department = department.id WHERE client_users.status = 0 ORDER BY client_users.id DESC");
 		$row = $this->db->resultSet();
 		if ($row) {
 			return $row;

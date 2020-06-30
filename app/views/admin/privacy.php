@@ -13,13 +13,13 @@
 						<?php foreach($data['config'] AS $config) : ?>
                             <li class="privacy_items">            
                                 <div class="tg-checkbox">
-                                    <input id="tg-privacy-<?=$config->id?>" type="checkbox" name="privacy settings" value="yes" checked="<?=($config->config_value) ? "true" : "false";?>">
-                                    <label for="tg-privacy-<?=$config->id?>" style="margin-left:30px;"><?=$config->config_desc?></label>
+                                    <input id="tg-privacy-<?=$config->id?>" type="checkbox" name="privacy settings" <?php if($config->config_value == 1){echo "checked";}?>>
+                                    <label for="tg-privacy-<?=$config->id?>" class="label_privacy" data-privacy-id="<?=$config->id?>" style="margin-left:30px;"><?=$config->config_desc?></label>
                                 </div>
                             </li>
 						<?php endforeach; ?>
                     </ul>
-					<button class="tg-btn" type="button">Save</button>
+					<button class="tg-btn save-config" type="button">Save</button>
 				</div>
 			</div>
 		</div>

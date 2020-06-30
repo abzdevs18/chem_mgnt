@@ -127,3 +127,35 @@ $("#admin-search-field").keyup(function() {
     $(".dash-result").slideUp(100);
   }
 });
+
+let privacy = new Array();
+$(document).on('click','.label_privacy', function(){
+
+  let id = $(this).attr('data-privacy-id');
+  if(privacy.includes(id)){
+    let idx = privacy.indexOf(id,0);
+    if (idx > -1) {
+      privacy.splice(idx, 1);
+    }
+  }else{
+    privacy.push(id);
+  }
+});
+$(document).on('click','.save-config', function(){
+  $.ajax({
+    url:'/admin/updateConfig',
+    type: 'POST',
+    data:{
+      config:privacy
+    },
+    // dataType:'json',
+    success:function(data){
+      console.log(data);
+    },
+    error:function(err){
+      console.log(err);
+    }
+  });
+})
+
+

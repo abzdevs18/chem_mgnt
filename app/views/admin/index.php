@@ -201,24 +201,8 @@
 				<div class="content-head">
 					<h2>Request <sup><i class="fal fa-question-circle" style="font-size:12px;" title="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi est eaque laborum eum sit? Ipsa earum dolor velit non praesentium architecto hic cupiditate fugiat sed. Maiores quod repellendus aliquam commodi."></i></sup></h2>
 				</div>
-				<div class="ad-log">
+				<div class="ad-log" style="padding:5px;">
 					<ul class="mCustomScrollbar content fluid light" data-mcs-theme="inset-2-dark" style="height: 545px;width: 100%;">
-						<?php for($i = 0; $i <= 10; $i++) :?>
-						<li style="padding-bottom:10px;">							
-							<span class="tg-adverified"><i class="fal fa-atom" style="padding-right:5px;"></i> user identification</span>
-							<div class="request_icon_wrapper">
-								<div class="req_icon" style="margin-top:13px;">
-									<span>IV</span>
-									<!-- <img src="/img/icons/danger.png" alt="" style="width:100%;"> -->
-								</div>
-								<div style="margin:5px;" class="m_notif_content">
-									<b>Kate Saycon</b>
-									<h3>EDTA Disodium Salt dihydrate, crystal  </h3>
-									<time datetime="2017-08-08">01 Day Ago</time>
-								</div>
-							</div>									
-						</li>
-						<?php endfor;?>
 					</ul>
 				</div>
 			</div>	

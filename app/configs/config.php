@@ -4,6 +4,11 @@
 
 //timezone is set to manila
 date_default_timezone_set('Asia/Manila');
+$date = Date("M. d, Y");
+$time = date("h:i a");
+
+define('DEF_TIME', $time);
+define('DEF_DATE', $date);
 
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');

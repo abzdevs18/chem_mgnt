@@ -41,53 +41,13 @@
 							<th colspan="2" style="width: 220px;">Name</th>
 							<th>User Type</th>
 							<th>Department</th>
-							<th>Student No.</th>
+							<th>University No.</th>
 							<th>Status</th>
 							<th>Actions</th>
 						</tr>
 					</thead>
-					<tbody id="filter-job-container">
-						<!-- if job is close add row with class name "sold" -->
-						<?php for($i = 0; $i < 5; $i++) : ?>
-						<tr class="req_logs_" data-rowId="<?php echo '#contentId'.$i;?>">
-							<td style="text-align: center;" class="ch-selection-item-action">
-								<div class="ch-checkbox-item" data-checked></div>
-								<!-- <input type="checkbox" name=""> -->
-							</td>
-							<td class="ch-row-second">
-								<div class="request_icon_wrapper">
-									<div class="req_icon">
-										<span>C</span>
-									</div>
-									<div class="cc-name" style="margin:5px;margin-top:0px;">
-										<h3>Clint Anthony Abueva</h3>
-										<time datetime="2017-08-08">01 Day Ago</time>
-									</div>
-								</div>
-							</td>
-							<td class="tittle-id">
-								<h3>Student</h3>
-							</td>
-							<td class="tittle-id">
-								<h3>Department</h3>
-							</td>
-							<td>
-								<span>02131011</span>
-							</td>
-							<td>
-								<span class="ch-request-status">Pending</span>
-							</td>
-							<td class="action-btn">
-								<span class="eye" data-jId="<?=$job->jId;?>"><i class="fal fa-eye"></i></span>
-								<span class="pencil" data-jId="<?=$job->jId;?>"><i class="fal fa-pencil-alt"></i></span>
-								<span class="trash" data-jId="<?=$job->jId;?>"><i class="fal fa-trash"></i></span>
-							</td>
-						</tr>
-						<tr id="<?='contentId'.$i?>" class="containerCollapse collapse">
-							<td colspan="7">
-							</td>
-						</tr>
-						<?php endfor; ?>
+					<tbody id="filter-job-container" class="chem_req_dash">
+						<!-- Populate through ajax in main.js using class -->
 					</tbody>
 				</table>
 			</div><!-- End of Table Design -->

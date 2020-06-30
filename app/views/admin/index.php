@@ -94,7 +94,7 @@
 		</div>
 	</section>
 
-	<section class="offices-msgs" style="justify-content:left;">
+	<section class="offices-msgs" style="justify-content:left;"  data-step="2" data-hint="Number of request from idela users">
 		<div class="alerts-notif" style="width:40%;">
 			<div class="alert-content">
 				<div class="content-head">

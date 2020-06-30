@@ -22,7 +22,7 @@
 	<script src="//unpkg.com/timeago.js"></script>
 	<script>
 	
-	introJs(".intro-manual").start();
+	introJs().start();
 
 var notif = new Audio('/media/audio/notif.mp3');
 socket.emit("message", "Hello");

@@ -113,8 +113,6 @@ if(currentPage == '/admin/request'){
     }
   });
 }else{
-  introJs(".intro-manual").start();
-  introJs().addHints();
   $(document).ready(function(){
     $.ajax({
       url: '/admin/getJsonLogs',

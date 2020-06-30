@@ -12,7 +12,7 @@ function log(user,action,status){
                     user,pos:loc, action, status
                 },
                 success: function(data){
-                    console.log("YOU Rock!!!"+p);
+                    // console.log("YOU Rock!!!"+p);
                 }
             });
         }

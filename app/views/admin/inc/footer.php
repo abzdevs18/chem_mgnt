@@ -23,8 +23,7 @@
 	<script>
 	
 	introJs(".intro-manual").start();
-  introJs().addHints();
-  
+
 var notif = new Audio('/media/audio/notif.mp3');
 socket.emit("message", "Hello");
 socket.emit("new_login", "Someone login as admin");

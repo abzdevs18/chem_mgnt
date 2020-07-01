@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto|Quicksand:400,500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://1914282112.rsc.cdn77.org/css/all.min.css">
-    <!-- <link rel="stylesheet" type="text/css" href="/lib/css/fa/css/all.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="/lib/css/fa/css/all.min.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="stylesheet" type="text/css" href="/css/drop_down.css">

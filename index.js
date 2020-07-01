@@ -21,7 +21,7 @@ const credentials = {
     cert: certificate
 }
 
-let server = app.listen(port);
+// let server = app.listen(port);
 
 // let http = require("https").createServer(server);
 let http = require("https").createServer(credentials,server);

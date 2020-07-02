@@ -21,7 +21,7 @@
 	<script src="//unpkg.com/timeago.js"></script>
 	<script>  
 	// Start the intro
-	let host = "http://sfchem.cf.local";
+	let host = "https://chemlab.cf";
 	if(window.location.href == host+'/admin'){		  
 		introJs().setOption('doneLabel', 'Next page').start().oncomplete(function() {
           window.location.href = '/admin/profile';

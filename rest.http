@@ -1,4 +1,4 @@
-@host = http://sfchem.cf.local/
+@host = https://chemlab.cf/
 
 
 GET {{host}}/Api/api_get_chemicals

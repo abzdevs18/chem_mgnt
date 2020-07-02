@@ -158,4 +158,14 @@ FROM user LEFT JOIN user_profile ON user.id = user_profile.user_id AND user_prof
 			return false;
 		}
 	}
+
+	public function getDepartment(){
+		$this->db->query("SELECT * FROM department");
+		$row = $this->db->resultSet();
+		if ($row) {
+			return $row;
+		}else {
+			return false;
+		}
+	}
 }

@@ -21,7 +21,7 @@ class Api extends Controller
 			$data = [
 				'status'=> '',
 				'adminUserName'=>trim($_POST['clientUserName']),
-				'adminUserPass'=>$this->$salt . trim($_POST['clientUserPass']),
+				'adminUserPass'=>$this->salt . trim($_POST['clientUserPass']),
 				'adminUserName_err'=>'',
 				'adminUserPass_err'=>''
 			];
@@ -31,7 +31,7 @@ class Api extends Controller
 			if (empty(trim($_POST['clientUserPass']))) {
 				$data['adminUserPass_err'] = 'Please enter your password';
 			}else{
-				$data['adminUserPass'] = $this->$salt . trim($_POST['clientUserPass']);
+				$data['adminUserPass'] = $this->salt . trim($_POST['clientUserPass']);
 			}
 
 			// siteName validation
@@ -193,6 +193,13 @@ class Api extends Controller
 			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 			$message = $this->userApi->getLatestMessages(trim($_POST['msg_receiver']),trim($_POST['msg_sender']));
 			echo json_encode($message);
+		}
+	}
+
+	public function api_get_department(){
+		if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
+			$dept = $this->userApi->getDepartment();
+			echo json_encode($dept);
 		}
 	}
 

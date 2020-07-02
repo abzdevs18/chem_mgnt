@@ -5,8 +5,8 @@
 		<h1>Update Settings</h1>
 	</section>
 	<section class="offices-msgs">
-		<div class="alerts-notif">
-			<div class="alert-content no-fixed-height">
+		<div class="alerts-notif" data-step="13">
+			<div class="alert-content no-fixed-height" id="prof1" >
 				<div class="content-head">
 					<h2>Profile Photo</h2>
 				</div>
@@ -23,8 +23,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="alerts-notif">
-			<div class="alert-content no-fixed-height">
+		<div class="alerts-notif" data-step="14">
+			<div class="alert-content no-fixed-height" id="prof2" >
 				<div class="content-head">
 					<h2>Profile Details</h2>
 				</div>
@@ -75,8 +75,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="alerts-notif">
-			<div class="alert-content no-fixed-height">
+		<div class="alerts-notif" data-step="15">
+			<div class="alert-content no-fixed-height" id="prof3" >
 				<div class="content-head">
 					<h2>Change Password</h2>
 				</div>

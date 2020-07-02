@@ -86,7 +86,8 @@ class chemModel
 	}
 
 	public function getCurrentUser($id){
-		$this->db->query("SELECT * FROM user WHERE id = $id");
+		$this->db->query("SELECT * FROM user WHERE id = :id");
+		$this->db->bind(":id",$id);
 		$row = $this->db->resultSet();
 		if ($row) {
 			return $row;

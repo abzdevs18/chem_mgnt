@@ -22,8 +22,6 @@
         referrerpolicy="origin"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/intro.js@2.9.3/intro.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intro.js@2.9.3/introjs.min.css">
     <script type="text/javascript" src="/lib/js/jquery.simplePagination.js"></script>
     <script type="text/javascript" src="/lib/js/paginator.js"></script>
     <script src="moment.js"></script>
@@ -32,6 +30,9 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/intro.min.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/introjs.min.css"/>
+
+    <script src="https://cdn.jsdelivr.net/npm/intro.js@2.9.3/intro.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intro.js@2.9.3/introjs.min.css">
     <style>
     @import url("/css/static-style.css");
 
@@ -249,7 +250,7 @@
         <header class="dashboard-nav">
             <div id="add-post">
                 <div class="search-dash" style="margin-top: 5px;">
-                    <div id="search-sort" style="width: 80%;">
+                    <div id="search-sort" style="width: 80%;" data-intro='Type chemical name to search the <em>chemical availability</em>".' data-step="5">
                         <input type="text" name="search" placeholder="Search Here" style="width: 100%;"
                             id="admin-search-field">
                         <i class="fal fa-search"></i>
@@ -267,16 +268,16 @@
                 </div>
                 <div>
                     <?php if($data['user'][0]->user_type == 1):?>
-                        <a href="/admin/form"><i class="fal fa-bookmark"></i> Store Chemical</a>
+                        <a href="/admin/form" data-intro='To add new Chemicals, Click <em>Store Chemical</em>".' data-step="1"><i class="fal fa-bookmark"></i> Store Chemical</a>
                     <?php elseif($data['config'][6]->config_value == 1 && $data['user'][0]->user_type == 0):?>
-                        <a href="/admin/form"><i class="fal fa-bookmark"></i> Store Chemical</a>
+                        <a href="/admin/form" data-intro='To add new Chemicals, Click <em>Store Chemical</em>.' data-step="1"><i class="fal fa-bookmark"></i> Store Chemical</a>
                     <?php endif;?>
-                    <div id="notif-icon">
+                    <div id="notif-icon" data-intro="Here you'll see the <em>notification</em> of the system." data-step="2">
                         <button><i class="fal fa-bell"></i></button>
                         <span id="notif-counter">2</span>
                     </div>
                     <div
-                        style="display: flex;flex-direction: row;margin-left: 20px;vertical-align: middle;line-height: 45px;border-left: 2px solid #999;">
+                        style="display: flex;flex-direction: row;margin-left: 20px;vertical-align: middle;line-height: 45px;border-left: 2px solid #999;" data-intro='To view you account settings click <em>profile icon</em>."' data-step="3">
                         <span style="font-family: 'quicksand';font-weight: 600;padding-left: 10px;">Administrator</span>
                         <div
                             style="width: 46px;height: 46px;border: 1px solid #666;margin-left: 10px;border-radius: 50%;background: #f3f3f3;background-image: url('/img/prof.png');background-size: contain;background-repeat: no-repeat;background-position: center;">
@@ -330,7 +331,7 @@
                         </div>
                     </div>
                     <nav>
-                        <ul id="menus-nav">
+                        <ul id="menus-nav" data-intro='Navigate system functionality using this <em>Menus</em>".' data-step="6" style="z-index:99999;">
                             <li data-link="/admin"
                                 class="<?=($_SESSION['menu_active']=="home") ? 'menu-active' : ''; ?>">
                                 <i class="fal fa-chart-bar"></i>

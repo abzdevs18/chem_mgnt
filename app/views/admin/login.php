@@ -12,6 +12,9 @@
     <script src="/js/offline/jquery.js"></script>
     <script src="/js/jquery-ui.js"></script>
     <script type="module" src="/js/main.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/intro.js@2.9.3/intro.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intro.js@2.9.3/introjs.min.css">
 </head>
 
 <body>
@@ -32,24 +35,27 @@
                     <form id="loginCredentials">
                         <div class="group-control adminUVal">
                             <div class="form-group">
-                                <input type="text" name="adminUserName" class="form-control" autocomplete="off">
+                                <input type="text" name="adminUserName" class="form-control" autocomplete="off" data-intro='Use "admin" as username' data-step="1">
                                 <label for="adminUserName">Username</label>
                             </div>
                             <label class="invalid-feedback">Error reporting</label>
                         </div><!-- End Database Name Input -->
                         <div class="group-control adminPVal">
                             <div class="form-group">
-                                <input type="password" autocomplete="off" name="adminUserPass" class="form-control">
+                                <input type="password"  autocomplete="off" name="adminUserPass" class="form-control" data-intro="Your temporary password is: 779267" data-step="2">
                                 <label for="adminUserPass">Password</label>
                             </div>
                             <label class="invalid-feedback">Error reporting</label>
                         </div><!-- End Database Name Input -->
                     </form>
                 </div>
-                <button class="login-btn login-admin">Login</button>
+                <button class="login-btn login-admin" data-intro="Submit to login" data-step="3">Login</button>
             </div><!-- Admin Credential End -->
         </section>
     </main>
+	<script>
+    introJs().start();
+	</script>
 </body>
 
 </html>

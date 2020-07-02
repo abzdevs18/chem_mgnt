@@ -5,7 +5,7 @@
 	</section>
 
 	<section class="main-section mar-30">
-		<div class="row">
+		<div class="row" data-intro='Here you will see the graphical representation of <em>Monthly/Pending request, Chemicals in laboratory and number of Registered student</em>".' data-step="7">
 			<div class="col-4">
 				<sup><i class="fal fa-question-circle" style="font-size:12px;" title="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi est eaque laborum eum sit? Ipsa earum dolor velit non praesentium architecto hic cupiditate fugiat sed. Maiores quod repellendus aliquam commodi."></i></sup>
 				<div class="col-wrap pad-30">
@@ -13,9 +13,9 @@
 						<img src="/img/icons/col-1.png">				
 					</figure>
 					<div class="col-content">
-						<p>562</p>
+						<p>128</p>
 						<h3>Monthly Request</h3>
-						<a href="#" class="graphDetails">view details <i class="fal fa-angle-right"></i></a>						
+						<a href="#" class="graphDetails" data-intro='To check the statistics of the request click <em>view details</em>".' data-step="8">view details <i class="fal fa-angle-right"></i></a>						
 					</div>
 				</div>
 			</div>
@@ -26,7 +26,7 @@
 						<img src="/img/icons/clock.png">				
 					</figure>
 					<div class="col-content">
-						<p>562</p>
+						<p>34</p>
 						<h3>Pending Request</h3>
 						<a href="#">view details <i class="fal fa-angle-right"></i></a>
 					</div>
@@ -39,7 +39,7 @@
 						<img src="/img/icons/chemistry.png">				
 					</figure>
 					<div class="col-content">
-						<p>562</p>
+						<p>68</p>
 						<h3>Chemical in Lab</h3>
 						<a href="#">view details <i class="fal fa-angle-right"></i></a>
 					</div>
@@ -52,7 +52,7 @@
 						<img src="/img/icons/col-4.png">				
 					</figure>
 					<div class="col-content">
-						<p>562</p>
+						<p>43</p>
 						<h3>Registered Student</h3>
 						<a href="#">view details <i class="fal fa-angle-right"></i></a>
 					</div>
@@ -96,7 +96,7 @@
 
 	<section class="offices-msgs" style="justify-content:left;"  data-step="2" data-hint="Number of request from idela users">
 		<div class="alerts-notif" style="width:40%;">
-			<div class="alert-content">
+			<div class="alert-content" data-intro='Users needs to be verified before requesting chemicals. Here are the list of <em>Registration request</em>".' data-step="9">
 				<div class="content-head">
 					<h2>Registration Request <sup><i class="fal fa-question-circle" style="font-size:12px;" title="Admin can approve the student registration in here. Account listed in here are not allowed to request anything. Red are Faculty"></i></sup></h2>
 				</div>
@@ -112,7 +112,7 @@
 			</div>
 		</div>
 		<div class="alerts-notif" style="width:60%;">
-			<div class="alert-content">
+			<div class="alert-content" data-intro='Any attempt to access or any activity is login in here with the <em>Origin of the request</em>".' data-step="10">
 				<div class="content-head">
 					<h2>System Logs <sup><i class="fal fa-question-circle" style="font-size:12px;" title="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi est eaque laborum eum sit? Ipsa earum dolor velit non praesentium architecto hic cupiditate fugiat sed. Maiores quod repellendus aliquam commodi."></i></sup></h2>
 				</div>
@@ -126,7 +126,7 @@
 
 	<section class="updates-msgs" style="display:flex;flex-direction:row;">
 		<div class="msgs-acc" style="width:66.66%;">
-			<div class="msgs-container">
+			<div class="msgs-container" data-intro='Communication is essential. Here you can <em>Message</em> the registered faculty".' data-step="11">
 				<div class="content-head">
 					<h2>Faculty Messages</h2>
 				</div>	
@@ -197,7 +197,7 @@
 			</div>			
 		</div>
 		<div class="alerts-notif">
-			<div class="alert-content">
+			<div class="alert-content" data-intro='With every request from the user, will be shown in here categories by user type.' data-step="12">
 				<div class="content-head">
 					<h2>Request <sup><i class="fal fa-question-circle" style="font-size:12px;" title="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi est eaque laborum eum sit? Ipsa earum dolor velit non praesentium architecto hic cupiditate fugiat sed. Maiores quod repellendus aliquam commodi."></i></sup></h2>
 				</div>

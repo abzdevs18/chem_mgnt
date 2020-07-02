@@ -6,7 +6,9 @@
 date_default_timezone_set('Asia/Manila');
 $date = Date("M. d, Y");
 $time = date("h:i a");
+$color = ['#283593','#4caf50','#424242','#424242','#455a64','#1b5e20'];
 
+define('DEF_COLOR', $color);
 define('DEF_TIME', $time);
 define('DEF_DATE', $date);
 

@@ -148,4 +148,14 @@ FROM user LEFT JOIN user_profile ON user.id = user_profile.user_id AND user_prof
 		   return false;
 	   }
 	}
+
+	public function getChemicals(){
+		$this->db->query("SELECT chemicals.*,brand.name AS brand FROM chemicals LEFT JOIN brand ON chemicals.brand_id = brand.id");
+		$row = $this->db->resultSet();
+		if ($row) {
+			return $row;
+		}else {
+			return false;
+		}
+	}
 }

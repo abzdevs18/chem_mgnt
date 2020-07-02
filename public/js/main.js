@@ -637,11 +637,12 @@ $(document).on("click", "#notif-icon", function () {
   $(".m_notification").toggleClass("m_notif_show");
 });
 
+//todo Here is the permission to show notficaiton
+
 $(document).on("click", "#add_record", function () {
   $(".m_add_hidden").css({"display":"flex"});
   if (!Push.Permission.has()) {
     Push.Permission.request(onGranted, onDenied);
-    // alert();
   } else {
     // alert(Push.Permission.has());
   }

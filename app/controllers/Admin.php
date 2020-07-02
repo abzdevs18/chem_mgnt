@@ -30,13 +30,22 @@ class Admin extends Controller
 
 	public function index(){
 		$logs = $this->chemModel->getSysLogs();
+		$account = $this->chemModel->getAccountInfo($_SESSION['uId']);
 		$config = $this->chemModel->getConfigSecurity();
 		$currentUser = $this->chemModel->getCurrentUser($_SESSION['uId']);
+		$avg = $this->chemModel->getAvgReq();
+		$pending = $this->chemModel->getPendingReq();
+		$chem = $this->chemModel->getChemCount();
+		$userCount = $this->chemModel->getUserCount();
 		$data = [
-			"logs" => $logs,
 			"config"=> $config,
 			"user"=> $currentUser,
-			"one" => $this->breadcrump('/')
+			"account"=> $account,
+			"logs" => $logs,
+			"avg"=>$avg,
+			"pending"=>$pending,
+			"chem"=>$chem,
+			"user_count"=>$userCount
 		];
 		// no other solution this is for the Left sidebar navigation
 		// the active state is dependent to this SESSION we are setting.
@@ -44,6 +53,151 @@ class Admin extends Controller
 		$_SESSION['menu_active'] = "home";
 
 		$this->view('admin/index',$data);
+	}
+
+	public function profile(){
+		$account = $this->chemModel->getAccountInfo($_SESSION['uId']);
+		$config = $this->chemModel->getConfigSecurity();
+		$currentUser = $this->chemModel->getCurrentUser($_SESSION['uId']);
+		$data = [
+			"config"=> $config,
+			"user"=> $currentUser,
+			"account"=> $account
+		];	
+		// no other solution this is for the Left sidebar navigation
+		// the active state is dependent to this SESSION we are setting.
+		unset($_SESSION['menu_active']);
+		$_SESSION['menu_active'] = "profile";
+
+		$this->view('admin/update-prof',$data);
+	}
+
+	public function request(){
+		$getChemRequest = $this->chemModel->getRequest();
+		$account = $this->chemModel->getAccountInfo($_SESSION['uId']);
+		$config = $this->chemModel->getConfigSecurity();
+		$currentUser = $this->chemModel->getCurrentUser($_SESSION['uId']);
+		$data = [
+			"config"=> $config,
+			"user"=> $currentUser,
+			"account"=> $account,
+			"request"=>$getChemRequest
+		];
+		// no other solution this is for the Left sidebar navigation
+		// the active state is dependent to this SESSION we are setting.
+		unset($_SESSION['menu_active']);
+		$_SESSION['menu_active'] = "request";
+
+		$this->view('admin/request',$data);
+	}
+
+	public function messages(){
+		$dept = $this->chemModel->getDepartment();
+		$senderList = $this->chemModel->getMessageSenderList();
+		$account = $this->chemModel->getAccountInfo($_SESSION['uId']);
+		$config = $this->chemModel->getConfigSecurity();
+		$currentUser = $this->chemModel->getCurrentUser($_SESSION['uId']);
+		$data = [
+			"config"=> $config,
+			"user"=> $currentUser,
+			"account"=> $account,
+			"dept" => $dept,
+			"list" => $senderList
+		];
+		
+		// no other solution this is for the Left sidebar navigation
+		// the active state is dependent to this SESSION we are setting.
+		unset($_SESSION['menu_active']);
+		$_SESSION['menu_active'] = "messages";
+
+		$this->view('admin/messages',$data);
+	}
+
+	public function chemical(){
+		$chem = $this->chemModel->getChemicals();
+		$account = $this->chemModel->getAccountInfo($_SESSION['uId']);
+		$config = $this->chemModel->getConfigSecurity();
+		$currentUser = $this->chemModel->getCurrentUser($_SESSION['uId']);
+		$data = [
+			"config"=> $config,
+			"user"=> $currentUser,
+			"account"=> $account,
+			'chem' => $chem
+		];
+		
+		// no other solution this is for the Left sidebar navigation
+		// the active state is dependent to this SESSION we are setting.
+		unset($_SESSION['menu_active']);
+		$_SESSION['menu_active'] = "chemicals";
+
+		$this->view('admin/chemical',$data);
+	}
+
+	public function student(){
+		$student = $this->chemModel->getStudent();
+		$dept = $this->chemModel->getDepartment();
+		$account = $this->chemModel->getAccountInfo($_SESSION['uId']);
+		$config = $this->chemModel->getConfigSecurity();
+		$currentUser = $this->chemModel->getCurrentUser($_SESSION['uId']);
+		$data = [
+			"config"=> $config,
+			"user"=> $currentUser,
+			"account"=> $account,
+			'student' => $student,
+			"dept" => $dept
+		];
+
+		
+		// no other solution this is for the Left sidebar navigation
+		// the active state is dependent to this SESSION we are setting.
+		unset($_SESSION['menu_active']);
+		$_SESSION['menu_active'] = "student";
+
+		$this->view('admin/student', $data);
+	}
+
+	public function privacy(){
+		$stored_user = $this->chemModel->getUsers();
+		$category = $this->chemModel->getCategory();
+		
+		$account = $this->chemModel->getAccountInfo($_SESSION['uId']);
+		$config = $this->chemModel->getConfigSecurity();
+		$currentUser = $this->chemModel->getCurrentUser($_SESSION['uId']);
+		$data = [
+			"config"=> $config,
+			"user"=> $currentUser,
+			"account"=> $account,
+			'stored_user' => $stored_user,
+			'category' => $category
+		];
+		
+		// no other solution this is for the Left sidebar navigation
+		// the active state is dependent to this SESSION we are setting.
+		unset($_SESSION['menu_active']);
+		$_SESSION['menu_active'] = "privacy";
+
+		$this->view('admin/privacy', $data);
+	}
+
+	public function logs(){
+		$logs = $this->chemModel->getSysLogs();
+		
+		$account = $this->chemModel->getAccountInfo($_SESSION['uId']);
+		$config = $this->chemModel->getConfigSecurity();
+		$currentUser = $this->chemModel->getCurrentUser($_SESSION['uId']);
+		$data = [
+			"config"=> $config,
+			"user"=> $currentUser,
+			"account"=> $account,
+			'logs' => $logs
+		];
+		
+		// no other solution this is for the Left sidebar navigation
+		// the active state is dependent to this SESSION we are setting.
+		unset($_SESSION['menu_active']);
+		$_SESSION['menu_active'] = "logs";
+
+		$this->view('admin/logs', $data);
 	}
 
 	public function updateConfig(){
@@ -88,115 +242,6 @@ class Admin extends Controller
 		$this->view('admin/templates/notifwrapper');
 	}
 
-	public function profile(){
-		$config = $this->chemModel->getConfigSecurity();
-		$currentUser = $this->chemModel->getCurrentUser($_SESSION['uId']);
-		
-		
-		// no other solution this is for the Left sidebar navigation
-		// the active state is dependent to this SESSION we are setting.
-		unset($_SESSION['menu_active']);
-		$_SESSION['menu_active'] = "profile";
-
-		$this->view('admin/update-prof');
-	}
-
-	public function request(){
-		$getChemRequest = $this->chemModel->getRequest();
-		$data = [
-			"request"=>$getChemRequest
-		];
-		// no other solution this is for the Left sidebar navigation
-		// the active state is dependent to this SESSION we are setting.
-		unset($_SESSION['menu_active']);
-		$_SESSION['menu_active'] = "request";
-
-		$this->view('admin/request',$data);
-	}
-
-	public function messages(){
-		$dept = $this->chemModel->getDepartment();
-		$senderList = $this->chemModel->getMessageSenderList();
-
-		$data = [
-			"dept" => $dept,
-			"list" => $senderList
-		];
-		
-		// no other solution this is for the Left sidebar navigation
-		// the active state is dependent to this SESSION we are setting.
-		unset($_SESSION['menu_active']);
-		$_SESSION['menu_active'] = "messages";
-
-		$this->view('admin/messages',$data);
-	}
-
-	public function chemical(){
-		$chem = $this->chemModel->getChemicals();
-
-		$data = [
-			'chem' => $chem
-		];
-		
-		// no other solution this is for the Left sidebar navigation
-		// the active state is dependent to this SESSION we are setting.
-		unset($_SESSION['menu_active']);
-		$_SESSION['menu_active'] = "chemicals";
-
-		$this->view('admin/chemical',$data);
-	}
-
-	public function student(){
-		$student = $this->chemModel->getStudent();
-		$dept = $this->chemModel->getDepartment();
-
-		$data = [
-			'student' => $student,
-			"dept" => $dept
-		];
-
-		
-		// no other solution this is for the Left sidebar navigation
-		// the active state is dependent to this SESSION we are setting.
-		unset($_SESSION['menu_active']);
-		$_SESSION['menu_active'] = "student";
-
-		$this->view('admin/student', $data);
-	}
-
-	public function privacy(){
-		$users = $this->chemModel->getUsers();
-		$category = $this->chemModel->getCategory();
-		$config = $this->chemModel->getConfigSecurity();
-
-		$data = [
-			'user' => $users,
-			'config' => $config,
-			'category' => $category
-		];
-		
-		// no other solution this is for the Left sidebar navigation
-		// the active state is dependent to this SESSION we are setting.
-		unset($_SESSION['menu_active']);
-		$_SESSION['menu_active'] = "privacy";
-
-		$this->view('admin/privacy', $data);
-	}
-
-	public function logs(){
-		$logs = $this->chemModel->getSysLogs();
-
-		$data = [
-			'logs' => $logs
-		];
-		
-		// no other solution this is for the Left sidebar navigation
-		// the active state is dependent to this SESSION we are setting.
-		unset($_SESSION['menu_active']);
-		$_SESSION['menu_active'] = "logs";
-
-		$this->view('admin/logs', $data);
-	}
 	public function getJsonLogs()
 	{
 		$logs = $this->chemModel->getSysLogs();
@@ -411,35 +456,5 @@ class Admin extends Controller
 
 			echo json_encode($data);
 		}
-	}
-
-	function breadcrump($delimiter = '/', $home = 'Home'){
-		// This gets the REQUEST_URI (/path/to/file.php), splits the string (using '/') into an array, and then filters out any empty values
-		$path = array_filter(explode('/', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)));
-
-		// This will build our "base URL" ... Also accounts for HTTPS :)
-		$base = ($_SERVER['HTTPS'] ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/';
-
-		// Initialize a temporary array with our breadcrumbs. (starting with our home page, which I'm assuming will be the base URL)
-		$breadcrumbs = Array("<a href=\"$base\">$home</a>");
-
-		// Find out the index for the last value in our path array
-		$last = end(array_keys($path));
-
-		// Build the rest of the breadcrumbs
-		foreach ($path AS $x => $crumb) {
-			// Our "title" is the text that will be displayed (strip out .php and turn '_' into a space)
-			$title = ucwords($crumb);
-	
-			// If we are not on the last index, then display an <a> tag
-			if ($x != $last)
-				$breadcrumbs[] = "<a href=\"$base$crumb\">$title</a>";
-			// Otherwise, just display the title (minus)
-			else
-				$breadcrumbs[] = $title;
-		}
-
-		// Build our temporary array (pieces of bread) into one big string :)
-		return implode($separator, $breadcrumbs);
 	}
 }

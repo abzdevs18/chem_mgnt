@@ -96,6 +96,17 @@ class chemModel
 		}
 	}
 
+	public function getAccountInfo($uId){
+		$this->db->query("SELECT user.user_type AS userType, user.firstname AS firstN, user.lastname AS lastN, user_profile.img_path AS userImage, user_email.email_add AS userEmail, user_contact.contact AS userPhone FROM user LEFT JOIN user_profile ON user_profile.user_id = user.id AND user_profile.profile_status = 1 LEFT JOIN user_email ON user_email.user_id = user.id AND user_email.email_status = 1 LEFT JOIN user_contact ON user_contact.user_id = user.id WHERE user.id = :userID");
+		$this->db->bind(":userID", $uId);
+		$row = $this->db->single();
+		if($row){
+			return $row;
+		}else{
+			return false;
+		}
+	}
+
 	public function getLabel(){
 		$this->db->query("SELECT * FROM chem_label");
 		$row = $this->db->resultSet();
@@ -248,4 +259,34 @@ class chemModel
 			return false;
 		}
 	}
+
+	public function getAvgReq(){
+		$this->db->query("SELECT COUNT(id) AS req FROM `request` GROUP BY month(timestamp)");
+		$rows = $this->db->resultSet();
+		$req = 0;
+		for($i = 0; $i < count($rows); $i++){
+			$req += $rows[$i]->req;
+		}
+		$num = $this->db->rowCount();
+		return round(($req/$num));
+	}
+
+	public function getPendingReq(){
+		$this->db->query("SELECT COUNT(id) AS req FROM `request` WHERE req_status = 0");
+		$num = $this->db->resultSet();
+		return $num[0]->req;
+	}
+
+	public function getChemCount(){
+		$this->db->query("SELECT COUNT(id) AS chem FROM chemicals");
+		$num = $this->db->resultSet();
+		return $num[0]->chem;
+	}
+
+	public function getUserCount(){
+		$this->db->query("SELECT COUNT(id) AS client FROM client_users");
+		$num = $this->db->resultSet();
+		return $num[0]->client;
+	}
+
 }

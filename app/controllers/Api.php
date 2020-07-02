@@ -180,6 +180,14 @@ class Api extends Controller
 		}
 	}
 
+	public function api_get_chemicals(){
+		if ( $_SERVER['REQUEST_METHOD'] == 'GET' ) {
+			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+			$chemicals = $this->userApi->getChemicals();
+			echo json_encode($chemicals);
+		}
+	}
+
 	public function api_get_latest_message(){
 		if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);

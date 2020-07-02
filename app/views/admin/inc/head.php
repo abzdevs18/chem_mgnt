@@ -60,6 +60,18 @@
     .req_formula_listing > p {
         display: inline-block;
     }
+    .icon_no_prof {
+    line-height: 60px;
+    background: #fff;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: var(--font-normal);
+    font-weight: 600;
+    border-radius: 50%;
+    font-size: 25px;
+    }
     </style>
     <script>
     $(function() {
@@ -278,11 +290,18 @@
                     </div>
                     <div
                         style="display: flex;flex-direction: row;margin-left: 20px;vertical-align: middle;line-height: 45px;border-left: 2px solid #999;" data-intro='To view you account settings click <em>profile icon</em>."' data-step="3">
-                        <span style="font-family: 'quicksand';font-weight: 600;padding-left: 10px;">Administrator</span>
-                        <div
-                            style="width: 46px;height: 46px;border: 1px solid #666;margin-left: 10px;border-radius: 50%;background: #f3f3f3;background-image: url('/img/prof.png');background-size: contain;background-repeat: no-repeat;background-position: center;">
-
+                        <?php if($data['account']->userType):?>
+                            <span style="font-family: 'quicksand';font-weight: 600;padding-left: 10px;">Administrator</span>
+                        <?php else:?>
+                            <span style="font-family: 'quicksand';font-weight: 600;padding-left: 10px;">Attendant</span>
+                        <?php endif;?>
+                
+                    <?php if($data['account']->userImage):?>
+                        <div style="width: 46px;height: 46px;border: 1px solid #666;margin-left: 10px;border-radius: 50%;background: #f3f3f3;background-image: url('/img/prof.png');background-size: contain;background-repeat: no-repeat;background-position: center;">
                         </div>
+                    <?php else:?>                                    
+                        <span class="icon_no_prof" style="background-color:<?=DEF_COLOR[rand(0,5)]?>;margin-left: 10px;color:#fff;width: 46px;height: 46px;line-height:46px;"><?php echo strtoupper($data['account']->firstN[0])?></span>
+                    <?php endif;?>
                     </div>
                 </div>
             </div>
@@ -312,18 +331,27 @@
                 <div id="navigation-scroll" class="mCustomScrollbar content fluid light" data-mcs-theme="inset-2-dark"
                     style="height: 100%;width: 100%;">
                     <div id="logo-admin" dir="ltr">
-                        <div style="width: 116px;">
-                            <img style="width: 100%;" src="/img/logo1.png" id="logo-icon">
+                        <div>
+                        <!-- <div style="width: 116px;"> -->
+                            <img style="width: 100%;border-radius: 3px;transition: all .5s ease-in-out;" src="/img/default/logo_default.png" id="logo-icon">
                         </div>
                     </div>
                     <div id="admin-profile">
                         <div id="profile-container" class="adm-prof">
                             <div id="admin-icon">
-                                <img src="/img/prof.png">
+                                <?php if($data['account']->userImage):?>
+                                    <img src="/img/prof.png">
+                                <?php else:?>                                    
+                                    <span class="icon_no_prof" style="background-color:<?=DEF_COLOR[rand(0,5)]?>;color:#fff;"><?php echo strtoupper($data['account']->firstN[0])?></span>
+                                <?php endif;?>
                             </div>
                             <div id="admin-details">
-                                <h3>Hi! I'm Angela</h3>
-                                <p>Administrator</p>
+                                <h3>Hi! <?php echo $data['account']->firstN?></h3>
+                                <?php if($data['account']->userType):?>
+                                    <p>Administrator</p>
+                                <?php else:?>
+                                    <p>Attendant</p>
+                                <?php endif;?>
                             </div>
                             <div id="admin-edit">
                                 <a href="/admin/profile"><i class="fal fa-pencil"></i></a>
@@ -347,11 +375,13 @@
                                 <i class="fal fa-cubes"></i>
                                 <a href="#"> Requests</a>
                             </li>
+                            <?php if(($data['user'][0]->user_type == 1) || ($data['user'][0]->user_type == 0 AND $data['config'][3]->config_value == 1)):?>
                             <li data-link="/admin/messages"
                                 class="<?=($_SESSION['menu_active']=="messages") ? 'menu-active' : ''; ?>">
                                 <i class="fal fa-envelope"></i>
                                 <a href="#"> Messages</a>
                             </li>
+                            <?php endif;?>
                             <li data-link="/admin/chemical"
                                 class="<?=($_SESSION['menu_active']=="chemicals") ? 'menu-active' : ''; ?>">
                                 <i class="fal fa-flask"></i>
@@ -368,12 +398,12 @@
                                 <i class="fal fa-shield-check"></i>
                                 <a href="#"> Privacy settings</a>
                             </li>
-                            <?php endif;?>
                             <li data-link="/admin/logs"
                                 class="<?=($_SESSION['menu_active']=="logs") ? 'menu-active' : ''; ?>">
                                 <i class="fal fa-clipboard"></i>
                                 <a href="#"> System Logs</a>
                             </li>
+                            <?php endif;?>
                             <li data-link="/users/signout">
                                 <i class="fal fa-sign-out"></i>
                                 <a href="#"> Logout</a>

@@ -7,7 +7,7 @@
 	<section class="main-tbl-container">
 		<div class="tbl-wrap">
 			<div class="content-head">
-				<h2>Registered Students<?php print_r($data['one']);?></h2>
+				<h2>Registered Students</h2>
 			</div>
 			<div class="sortby filter-category">
 				<div id="sort-drop">

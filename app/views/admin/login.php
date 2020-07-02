@@ -17,8 +17,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intro.js@2.9.3/introjs.min.css">
 </head>
 
-<body>
-    <main>
+<body style="background-color:#fff !important;">
+    <main style="background-color:#fff !important;">
         <div id="flash-msgs">
             <p>Wrong username/password</p>
         </div>
@@ -27,23 +27,23 @@
             <div class="awesome">
                 <!-- Admin Credential start -->
                 <div class="icon">
-                    <img style="width: 200px;" src="<?=URL_ROOT;?>/img/default/<?=$data['logo']->path?>">
+                    <img style="width: 55%;margin-bottom: -45px;" src="<?=URL_ROOT;?>/img/default/<?=$data['logo']->path?>">
                     <!-- <i class="fal fa-user-shield"></i> -->
                 </div>
                 <div class="add">
-                    <h3>Site/Admin Login</h3>
+                    <!-- <h3>Site/Admin Login</h3> -->
                     <form id="loginCredentials">
                         <div class="group-control adminUVal">
-                            <div class="form-group">
+                            <div class="form-group" style="box-shadow:0px 0px 7px #3333;border-radius:3px;">
                                 <input type="text" name="adminUserName" class="form-control" autocomplete="off" data-intro='Use "admin" as username' data-step="1">
-                                <label for="adminUserName">Username</label>
+                                <label for="adminUserName" style="background-color:#fff !important;">Username</label>
                             </div>
                             <label class="invalid-feedback">Error reporting</label>
                         </div><!-- End Database Name Input -->
                         <div class="group-control adminPVal">
-                            <div class="form-group">
+                            <div class="form-group" style="box-shadow:0px 0px 7px #3333;border-radius:3px;">
                                 <input type="password"  autocomplete="off" name="adminUserPass" class="form-control" data-intro="Your temporary password is: 779267" data-step="2">
-                                <label for="adminUserPass">Password</label>
+                                <label for="adminUserPass" style="background-color:#fff !important;">Password</label>
                             </div>
                             <label class="invalid-feedback">Error reporting</label>
                         </div><!-- End Database Name Input -->

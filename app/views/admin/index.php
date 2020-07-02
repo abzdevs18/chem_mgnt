@@ -3,7 +3,7 @@
 	<section class="tg-dash intro-manual" data-step="1" data-hint="Hello start with  this one">
 		<h1>Dashboard</h1>
 	</section>
-
+	<?php if($data['user'][0]->user_type == 1):?>
 	<section class="main-section mar-30">
 		<div class="row" data-intro='Here you will see the graphical representation of <em>Monthly/Pending request, Chemicals in laboratory and number of Registered student</em>".' data-step="7">
 			<div class="col-4">
@@ -13,8 +13,8 @@
 						<img src="/img/icons/col-1.png">				
 					</figure>
 					<div class="col-content">
-						<p>128</p>
-						<h3>Monthly Request</h3>
+						<p><?php print_r($data['avg'])?></p>
+						<h3>Avg. Request/month</h3>
 						<a href="#" class="graphDetails" data-intro='To check the statistics of the request click <em>view details</em>".' data-step="8">view details <i class="fal fa-angle-right"></i></a>						
 					</div>
 				</div>
@@ -26,7 +26,7 @@
 						<img src="/img/icons/clock.png">				
 					</figure>
 					<div class="col-content">
-						<p>34</p>
+						<p><?php print_r($data['pending'])?></p>
 						<h3>Pending Request</h3>
 						<a href="#">view details <i class="fal fa-angle-right"></i></a>
 					</div>
@@ -39,7 +39,7 @@
 						<img src="/img/icons/chemistry.png">				
 					</figure>
 					<div class="col-content">
-						<p>68</p>
+						<p><?php print_r($data['chem'])?></p>
 						<h3>Chemical in Lab</h3>
 						<a href="#">view details <i class="fal fa-angle-right"></i></a>
 					</div>
@@ -52,8 +52,8 @@
 						<img src="/img/icons/col-4.png">				
 					</figure>
 					<div class="col-content">
-						<p>43</p>
-						<h3>Registered Student</h3>
+						<p><?php print_r($data['user_count'])?></p>
+						<h3>University Users</h3>
 						<a href="#">view details <i class="fal fa-angle-right"></i></a>
 					</div>
 				</div>
@@ -93,7 +93,7 @@
 			</div>	
 		</div>
 	</section>
-
+	
 	<section class="offices-msgs" style="justify-content:left;"  data-step="2" data-hint="Number of request from idela users">
 		<div class="alerts-notif" style="width:40%;">
 			<div class="alert-content" data-intro='Users needs to be verified before requesting chemicals. Here are the list of <em>Registration request</em>".' data-step="9">
@@ -123,8 +123,10 @@
 			</div>
 		</div>
 	</section>
+    <?php endif;?>
 
 	<section class="updates-msgs" style="display:flex;flex-direction:row;">
+	<?php if($data['user'][0]->user_type == 1):?>
 		<div class="msgs-acc" style="width:66.66%;">
 			<div class="msgs-container" data-intro='Communication is essential. Here you can <em>Message</em> the registered faculty".' data-step="11">
 				<div class="content-head">
@@ -196,6 +198,58 @@
 				</div>			
 			</div>			
 		</div>
+	<?php else:?>		
+		<div class="row" style="display: grid;grid-template-columns: repeat(2,1fr);width: 66.66%;grid-template-rows: repeat(2,1fr);grid-gap: 10px;" data-intro='Here you will see the graphical representation of <em>Monthly/Pending request, Chemicals in laboratory and number of Registered student</em>".' data-step="7">
+			<div class="col-4" style="width:unset;margin:unset;">
+				<sup><i class="fal fa-question-circle" style="font-size:12px;" title="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi est eaque laborum eum sit? Ipsa earum dolor velit non praesentium architecto hic cupiditate fugiat sed. Maiores quod repellendus aliquam commodi."></i></sup>
+				<div class="col-wrap pad-30" style="margin-top:50px;">
+					<figure style="width:100px;">
+						<img src="/img/icons/col-1.png">				
+					</figure>
+					<div class="col-content">
+						<p style="font-size:35px;"><?php print_r($data['avg'])?></p>
+						<h3 style="font-size: 24px;">Avg. Request/month</h3>
+					</div>
+				</div>
+			</div>
+			<div class="col-4" style="width:unset;margin:unset;">
+				<sup><i class="fal fa-question-circle" style="font-size:12px;" title="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi est eaque laborum eum sit? Ipsa earum dolor velit non praesentium architecto hic cupiditate fugiat sed. Maiores quod repellendus aliquam commodi."></i></sup>
+				<div class="col-wrap pad-30" style="margin-top:50px;">
+					<figure style="width:100px;">
+						<img src="/img/icons/clock.png">				
+					</figure>
+					<div class="col-content">
+						<p style="font-size:35px;"><?php print_r($data['pending'])?></p>
+						<h3 style="font-size: 24px;">Pending Request</h3>
+					</div>
+				</div>
+			</div>
+			<div class="col-4" style="width:unset;margin:unset;">
+				<sup><i class="fal fa-question-circle" style="font-size:12px;" title="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi est eaque laborum eum sit? Ipsa earum dolor velit non praesentium architecto hic cupiditate fugiat sed. Maiores quod repellendus aliquam commodi."></i></sup>
+				<div class="col-wrap pad-30" style="margin-top:50px;">
+					<figure style="width:100px;">
+						<img src="/img/icons/chemistry.png">				
+					</figure>
+					<div class="col-content">
+						<p style="font-size:35px;"><?php print_r($data['chem'])?></p>
+						<h3 style="font-size: 24px;">Chemical in Lab</h3>
+					</div>
+				</div>
+			</div>
+			<div class="col-4" style="width:unset;margin:unset;">
+				<sup><i class="fal fa-question-circle" style="font-size:12px;" title="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi est eaque laborum eum sit? Ipsa earum dolor velit non praesentium architecto hic cupiditate fugiat sed. Maiores quod repellendus aliquam commodi."></i></sup>
+				<div class="col-wrap pad-30" style="margin-top:50px;">
+					<figure style="width:100px;">
+						<img src="/img/icons/col-4.png">				
+					</figure>
+					<div class="col-content">
+						<p style="font-size:35px;"><?php print_r($data['user_count'])?></p>
+						<h3 style="font-size: 24px;">University Users</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	<?php endif ?>
 		<div class="alerts-notif">
 			<div class="alert-content" data-intro='With every request from the user, will be shown in here categories by user type.' data-step="12">
 				<div class="content-head">

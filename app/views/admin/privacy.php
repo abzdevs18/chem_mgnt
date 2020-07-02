@@ -33,7 +33,7 @@
 					<div class="form-group">
                         <select class="selected-user">
                             <optgroup>
-                                <?php foreach ($data['user'] as $user) : ?>
+                                <?php foreach ($data['stored_user'] as $user) : ?>
                                     <option selected value="<?php echo $user->id?>"><?php echo $user->username?></option>
                                     <?php endforeach; ?>
                             </optgroup>

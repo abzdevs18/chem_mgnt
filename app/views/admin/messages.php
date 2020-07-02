@@ -30,14 +30,14 @@
 					<div class="msgs-3-col-item">
 						<ul class="jobs-updates bidders">
 							<?php 
-								$color = ['#283593','#4caf50','#424242','#424242','#455a64','#1b5e20'];
+								// $color = ['#283593','#4caf50','#424242','#424242','#455a64','#1b5e20'];
 								foreach ($data['list'] as $list): ?>
 								<li class="chat-user" data-sender="<?=$list->userId;?>">
 									<div>
 										<?php if($list->profile):?>
 										<img src="<?=URL_ROOT?>/img/icons/small-prof.jpg" /> 
 										<?php else: ?>
-											<span class="no-icon-prof" style="background-color: <?=$color[rand(0,5)];?>"><?=substr($list->fname, 0,1);?></span>
+											<span class="no-icon-prof" style="background-color: <?=DEF_COLOR[rand(0,5)]?>"><?=substr($list->fname, 0,1);?></span>
 										<?php endif;?>
 										<span><?=$list->fname . ' '.$list->lname;?></span>								
 									</div>

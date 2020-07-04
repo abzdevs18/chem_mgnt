@@ -83,6 +83,7 @@ class Api extends Controller
 			$salted_pass = $this->salt . trim($_POST['Pass']);
 			$hashed = password_hash($salted_pass, PASSWORD_DEFAULT);
 
+			$dept = $this->userApi->getDepartmentByName(trim($_POST['Department']));
 			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 			$data = [
 				"status"=>0,
@@ -93,7 +94,7 @@ class Api extends Controller
 				"client_pass"=>$hashed,
 				"date"=> $this->date,
 				"time"=> $this->time,
-				"Department"=>trim($_POST['Department']),
+				"Department"=>$dept->id,
 				"Account_type"=>trim($_POST['account_type']),
 				"registrationMessage"=>"",
 				"dev_err_info"=>""

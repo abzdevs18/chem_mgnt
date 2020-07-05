@@ -25,19 +25,21 @@
 	<script>  
 		var notif = new Audio('/media/audio/notif.mp3');
 		socket.on("new_req",function(data){
-			// $.ajax({
-			// 	url: "/admin/notification",
-			// 	success: function(data) {
-			// 		$(".notif-holder > div > div:first-child").append(data);
-			// 		console.log(data);
-			// 	},
-			// 	error: function(err) {
-			// 		console.log(err);
-			// 	}
-			// });
-			console.log(data['stud_id']);
-			console.log(data);
-    		notif.play();
+			let id = data['stud_id'];
+			$.ajax({
+				url: "/Admin/newRequest",
+				type: "POST",
+				data: {
+					usr_id:id
+				},
+				success: function(data) {
+					console.log(data);
+    				notif.play();
+				},
+				error: function(err) {
+					console.log(err);
+				}
+			});
 		});
 	// Start the intro
 	// let host = "http://sfchem.cf.local";

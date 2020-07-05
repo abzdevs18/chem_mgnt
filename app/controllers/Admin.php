@@ -477,4 +477,24 @@ class Admin extends Controller
 			}
 		}
 	}
+
+	public function newRequest(){
+		if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {		
+			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+			$data = [
+				/*check this first form*/
+				"status" => "",
+				"req_usr_id" => trim($_POST['usr_id'])
+			];
+			$res = $this->chemModel->getUserInfo(trim($_POST['usr_id']));
+			if($res){
+				$data['status'] = 1;
+				$data['req_usr_id'] = $res[0];
+				echo json_encode($data);
+			}else{
+				$data['status'] = 0;
+				echo json_encode($data);
+			}
+		}
+	}
 }

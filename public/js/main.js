@@ -5,6 +5,7 @@ import { log, showAlertFloat } from './modules.js';
 // let m = moment('Jun 22 2020 10:11 AM', 'lll');
 // console.log(m.fromNow());
 
+var URL_ROOT = "";
 let currentPage = window.location.pathname;
 if(currentPage == '/admin/request'){
   // Get Chemical request
@@ -37,7 +38,7 @@ if(currentPage == '/admin/request'){
         <td class="ch-row-second" style="max-width: 150px;">
           <div class="request_icon_wrapper">
             <div class="req_icon">
-              <span>`+data[i].fname.charAt(0)+`</span>
+              <span style="text-transform: uppercase;">`+data[i].fname.charAt(0)+`</span>
             </div>
             <div class="cc-name" style="margin:5px;margin-top:0px;">
               <h3>`+data[i].fname+` `+data[i].lname+`</h3>
@@ -70,7 +71,9 @@ if(currentPage == '/admin/request'){
             <canvas class="dreData_`+i+`" width="110"></canvas>
           </div>
         </td>
-        <td colspan="5"></td>
+        <td colspan="5">
+          <button class="req_approve" data-reqid="`+data[i].req_id+`">Approve</button>
+        </td>
       </tr>`;
         // Firefox 1.0+
         var isFirefox = typeof InstallTrigger !== 'undefined';
@@ -210,9 +213,28 @@ if(currentPage == '/admin/request'){
   });
   console.log(currentPage);
 }
+$(document).on('click','.req_approve', function(){
+  let id = $(this).attr("data-reqid");
+  $.ajax({
+    url: URL_ROOT + "/Admin/approve_req",
+    type: "POST",
+    dataType: "json",
+    data:{
+      req_id:id
+    },
+    success:function(data){
+      if(data['status'] == 1){
+        socket.emit("req_approve",data);
+      }
+      console.log(data);
+    },
+    error:function(err){
+      console.log(err)
+    }
+  });
+});
 // import { log, showAlertFloat } from './modules';
 
-var URL_ROOT = "";
 $(document).on("click", ".save-btn", function (e) {
   e.preventDefault();
   var data = $("#chemicalAdd").serializeArray();

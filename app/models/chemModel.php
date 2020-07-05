@@ -289,4 +289,26 @@ class chemModel
 		return $num[0]->client;
 	}
 
+	public function set_req_approve($id){
+		try {
+			$this->db->beginTransaction();
+			$this->db->query("SELECT * FROM `request` WHERE id = :req_id");
+			$this->db->bind(":req_id",$id);
+			$row = $this->db->resultSet();
+
+			if($this->db->rowCount() > 0){
+				$this->db->query("UPDATE `request` SET `req_status`= 1 WHERE `id` = :req_id_up");
+				$this->db->bind(":req_id_up", $id);
+				$this->db->execute();
+			}
+
+			$this->db->commit();
+			return $row;
+
+		} catch (Exception $e) {
+			$this->db->rollBack();
+			return false;
+		}
+	}
+
 }

@@ -1,13 +1,13 @@
-@host = https://chemlab.cf/
-# @host = http://sfchem.cf.local/
+# @host = https://chemlab.cf/
+@host = http://sfchem.cf.local/
 
 GET {{host}}/Api/api_get_chemicals
 ###
 POST {{host}}/Api/api_login HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
 
-clientUserName=diosh@gmail.com
-&clientUserPass=jkkombj
+clientUserName=flag@gmail.com
+&clientUserPass=hindu?
 ###
 POST {{host}}/Api/api_register HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
@@ -15,7 +15,7 @@ Content-Type: application/x-www-form-urlencoded
 norsuId=201303212
 &FirstName=evs
 &LastName=evs
-&clientEmail=flag@gmail.com
+&clientEmail=flagg@gmail.com
 &Pass=hindu?
 &Department=College of Education
 &account_type=2
@@ -24,9 +24,9 @@ POST {{host}}/Api/api_request HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
 
 quantity=67
-&chem_id=65
+&chem_id=sdd
 &stud_id=14
-&purpose=Test for validation
+&purpose=Tsd
 &account_type=1
 &subject=2
 ###

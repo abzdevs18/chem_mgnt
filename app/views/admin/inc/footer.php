@@ -25,6 +25,17 @@
 	<script>  
 		var notif = new Audio('/media/audio/notif.mp3');
 		socket.on("new_req",function(data){
+			// $.ajax({
+			// 	url: "/admin/notification",
+			// 	success: function(data) {
+			// 		$(".notif-holder > div > div:first-child").append(data);
+			// 		console.log(data);
+			// 	},
+			// 	error: function(err) {
+			// 		console.log(err);
+			// 	}
+			// });
+			console.log(data);
     		notif.play();
 		});
 	// Start the intro

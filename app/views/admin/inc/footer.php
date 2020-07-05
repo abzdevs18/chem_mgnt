@@ -35,6 +35,7 @@
 			// 		console.log(err);
 			// 	}
 			// });
+			console.log(data['stud_id']);
 			console.log(data);
     		notif.play();
 		});

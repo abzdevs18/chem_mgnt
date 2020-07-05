@@ -62,6 +62,10 @@ io.on("connection", function (socket) {
     io.emit("new_login", data);
     // console.log(data);
   });
+  socket.on("req_approve", function (data) {
+    io.emit("req_approve", data);
+    // console.log(data);
+  });
   socket.on("new_req", function (data) {
     io.emit("new_req", data);
     // console.log(data);

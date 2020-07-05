@@ -127,11 +127,12 @@ class Api extends Controller
 	public function api_request(){
 		if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {		
 			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
+			$chemId = $this->userApi->getChemicalByName(trim($_POST['chem_id']));
+// print_r($chemId);
 			$data = [
 				"status"=>"",
 				"quantity"=>trim($_POST['quantity']),
-				"chem_id"=>trim($_POST['chem_id']),
+				"chem_id"=>$chemId[0]->id,
 				"stud_id"=>trim($_POST['stud_id']),
 				"dateReq"=> $this->date,
 				"timeReq"=> $this->time,

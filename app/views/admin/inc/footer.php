@@ -32,7 +32,7 @@
 					usr_id:id
 				},
 				success: function(data) {
-					if(data['status'] == 1){
+					if(data.status == 1){
 						console.log(data['req_usr_id']->lname);
 						demo();
 					}

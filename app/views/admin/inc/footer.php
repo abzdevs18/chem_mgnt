@@ -36,6 +36,7 @@
 					// 	console.log(data['req_usr_id']->lname);
 					// 	demo();
 					// }
+					console.log(data);
 					console.log(data.status + "::"+data['status']);
 						console.log(data['req_usr_id']->lname);
 						demo();

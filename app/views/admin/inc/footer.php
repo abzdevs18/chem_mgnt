@@ -23,6 +23,7 @@
 	<!-- <script src="https://cdn.tiny.cloud/1/hhu3aczt7p034dcjnizjwnns5faj5u4s14e894midesztea0/tinymce/5/tinymce.min.js"></script>  -->
 	<script src="//unpkg.com/timeago.js"></script>
 	<script>  
+		const notif = new Audio('/media/audio/notif.mp3');
 		socket.on("new_req",function(data){
 			let id = data['stud_id'];
 			$.ajax({
@@ -32,6 +33,7 @@
 					usr_id:id
 				},
 				success: function(data) {
+    	notif.play();
 					// if(data.status == 1){
 					// 	console.log(data['req_usr_id']->lname);
 					// 	demo();
@@ -39,7 +41,7 @@
 					console.log(data);
 					console.log(data.status + "::"+data['status']);
 						console.log(data['req_usr_id']->lname);
-						demo();
+						// demo();
 				},
 				error: function(err) {
 					console.log(err);
@@ -48,7 +50,6 @@
 		});
 		
 	function demo() {
-		const notif = new Audio('/media/audio/notif.mp3');
 		Push.create("New request received!", {
 			body: "Some data show in here.",
 			icon: "/img/icons/clock.png",
@@ -62,7 +63,6 @@
 			},
 			vibrate: [200, 100, 200, 100, 200, 100, 200]
 		});
-    	notif.play();
 	}
 	// Start the intro
 	// let host = "http://sfchem.cf.local";

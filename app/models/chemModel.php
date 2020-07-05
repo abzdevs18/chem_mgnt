@@ -314,7 +314,7 @@ class chemModel
 	public function getUserInfo($id){
 		$this->db->query("SELECT request.id AS req_id, client_users.firstname AS fname,client_users.lastname AS lname,user_profile.img_path AS profile, chemicals.chemical_name AS chem FROM request LEFT JOIN client_users ON client_users.id = request.student_id LEFT JOIN user_profile ON user_profile.user_id = client_users.id LEFT JOIN chemicals ON chemicals.id = request.chem_id WHERE client_users.id = :usrId AND request.req_status = 0");
 		$this->db->bind(":usrId",$id);
-		$row = $this->db->resultSet();
+		$row = $this->db->single();
 		if($row){
 			return $row;
 		}else{

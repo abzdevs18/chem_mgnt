@@ -486,10 +486,11 @@ class Admin extends Controller
 				"status" => "",
 				"req_usr_id" => trim($_POST['usr_id'])
 			];
+			// echo trim($_POST['usr_id']);
 			$res = $this->chemModel->getUserInfo(trim($_POST['usr_id']));
 			if($res){
 				$data['status'] = 1;
-				$data['req_usr_id'] = $res[0];
+				$data['req_usr_id'] = $res;
 				echo json_encode($data);
 			}else{
 				$data['status'] = 0;

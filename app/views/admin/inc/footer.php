@@ -26,45 +26,41 @@
 		var notif = new Audio('/media/audio/notif.mp3');
 		socket.on("new_req",function(data){
 			let id = data['stud_id'];
-			console.log(data);
-			// $.ajax({
-			// 	url: "/Admin/newRequest",
-			// 	type: "POST",
-			// 	data: {
-			// 		usr_id:id
-			// 	},
-			// 	success: function(data) {
-    				notif.play();
-			// 		// if(data.status == 1){
-			// 		// 	console.log(data['req_usr_id']->lname);
-			// 		// 	demo();
-			// 		// }
-			// 		console.log(data);
-			// 		console.log(data.status + "::"+data['status']);
-			// 			console.log(data['req_usr_id']->lname);
-			// 			// demo();
-			// 	},
-			// 	error: function(err) {
-			// 		console.log(err);
-			// 	}
-			// });
+			$.ajax({
+				url: URL_ROOT + "/Admin/newRequest",
+				type: "POST",
+				data: {
+					usr_id:id
+				},
+				dataType:'json',
+				success: function(data) {
+					if(data.status == '1'){
+    					notif.play();
+						// console.log(data['req_usr_id']['chem']);
+						demo();
+					}
+				},
+				error: function(err) {
+					console.log(err);
+				}
+			});
 		});
 		
-	// function demo() {
-	// 	Push.create("New request received!", {
-	// 		body: "Some data show in here.",
-	// 		icon: "/img/icons/clock.png",
-	// 		link: "/#",
-	// 		// timeout: 4000,
-	// 		requireInteraction: true,
-	// 		onClick: function () {
-	// 		console.log("Fired!");
-	// 		window.focus();
-	// 		this.close();
-	// 		},
-	// 		vibrate: [200, 100, 200, 100, 200, 100, 200]
-	// 	});
-	// }
+	function demo() {
+		Push.create("New request received!", {
+			body: "Some data show in here.",
+			icon: "/img/icons/clock.png",
+			link: "/#",
+			// timeout: 4000,
+			requireInteraction: true,
+			onClick: function () {
+			console.log("Fired!");
+			window.focus();
+			this.close();
+			},
+			vibrate: [200, 100, 200, 100, 200, 100, 200]
+		});
+	}
 	// Start the intro
 	// let host = "http://sfchem.cf.local";
 	if(window.location.href == host+'/admin'){		  

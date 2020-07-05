@@ -469,7 +469,7 @@ class Admin extends Controller
 			$res = $this->chemModel->set_req_approve(trim($_POST['req_id']));
 			if($res){
 				$data['status'] = 1;
-				$data['req_usr_id'] = $res[0]->id;
+				$data['req_usr_id'] = $res[0]->student_id;
 				echo json_encode($data);
 			}else{
 				$data['status'] = 0;

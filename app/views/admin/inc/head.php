@@ -402,11 +402,11 @@
                                 <a href="#"> Requests</a>
                             </li>
                             <?php if(($data['user'][0]->user_type == 1) || ($data['user'][0]->user_type == 0 AND $data['config'][3]->config_value == 1)):?>
-                            <li data-link="/admin/messages"
+                       <!--      <li data-link="/admin/messages"
                                 class="<?=($_SESSION['menu_active']=="messages") ? 'menu-active' : ''; ?>">
                                 <i class="fal fa-envelope"></i>
                                 <a href="#"> Messages</a>
-                            </li>
+                            </li> -->
                             <?php endif;?>
                             <li data-link="/admin/chemical"
                                 class="<?=($_SESSION['menu_active']=="chemicals") ? 'menu-active' : ''; ?>">

@@ -61,7 +61,7 @@ if(currentPage == '/admin/request'){
           <span class="ch-request-status">Pending</span>
         </td>
         <td class="action-btn">
-          <span class="eye" data-jId="`+data[i].req_id+`"><i class="fal fa-eye"></i></span>
+          <span class="eye things-notdone" data-jId="`+data[i].req_id+`"><i class="fal fa-eye"></i></span>
           <span class="pencil" data-jId="`+data[i].req_id+`"><i class="fal fa-pencil-alt"></i></span>
           <span class="trash" data-jId="`+data[i].req_id+`"><i class="fal fa-trash"></i></span>
         </td>
@@ -140,7 +140,7 @@ if(currentPage == '/admin/request'){
                 </div>
                 <span class="tg-adverified"><i class="fal fa-atom" style="padding-right:5px;"></i> user identification</span>
               </li>`;
-          $('#mCSB_9_container').append(item);
+          $('#mCSB_10_container').append(item);
         }
       }
     });
@@ -165,7 +165,7 @@ if(currentPage == '/admin/request'){
             <h3>`+data[i].firstname +` `+data[i].lastname +`</h3>
             <time datetime="2017-08-08">`+eventTime+`</time>									
           </li>`;
-          $('#mCSB_8_container').append(item);
+          $('#mCSB_9_container').append(item);
         }
       }
     });
@@ -207,7 +207,7 @@ if(currentPage == '/admin/request'){
                   </div>
                 </div>                  
               </li>`;
-          $('#mCSB_10_container').append(item);
+          $('#mCSB_11_container').append(item);
         }
       }
     });
@@ -273,6 +273,45 @@ $(document).on("click", ".save-btn", function (e) {
   });
   // console.log(decoded);
 });
+
+$(document).on("click", "#save-update-chem", function (e) {
+  e.preventDefault();
+  var data = $("#chemicalAddUpdate").serializeArray();
+  var chemicalFormula = $("#chemicalFormula").val();
+  let category = $('.meta-selected-category').attr('data-index');
+  let brand = $('.meta-selected-brand').attr('data-index');
+  let note = $("#note").val();
+  let usr = $(this).attr('data-usr');
+  // Change value after serializing the form
+  // user htmlDecode() method to decode OR php html_entity_decode() method. 
+
+  data.find(item => item.name === 'mytextarea').value = htmlEncode(chemicalFormula);
+  data.find(item => item.name === 'category').value = htmlEncode(category);
+  data.find(item => item.name === 'chemBrand').value = htmlEncode(brand);
+  data.push({name: 'note', value: note});
+  $.ajax({
+    url: URL_ROOT + "/admin/updateChemical",
+    type: "POST",
+    data: $.param(data),
+    beforeSend: function(){
+      $("#save-form").show(100);
+    },
+    success: function (data) {
+      setTimeout(function(){
+      //   window.location.href ="/admin/form"
+        showAlertFloat("","Chemical is Addedd");
+        $("#save-form").hide(100);
+      }, 3000);
+      
+      log("Der","130.23.23.123","Add chemical",1);
+    },
+    error: function (e) {
+      console.log(e);
+    }
+  });
+  // console.log(decoded);
+});
+
 function htmlEncode(value) {
   if (value) {
     return jQuery('<div />').text(value).html();

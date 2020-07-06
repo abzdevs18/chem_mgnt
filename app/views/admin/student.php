@@ -10,7 +10,7 @@
 				<h2>Registered Students</h2>
 			</div>
 			<div class="sortby filter-category">
-				<div id="sort-drop">
+				<div id="sort-drop" class="gone-now">
 					<span>Sort by:</span>
 					<select id="student-filter-id">
 						<optgroup>
@@ -63,7 +63,7 @@
 								<span><?=$student->student_id;?></span>
 							</td>
 							<td class="action-btn">
-								<span class="eye" data-jId="<?=$student->student_id;?>"><i class="fal fa-eye"></i></span>
+								<span class="eye things-notdone" data-jId="<?=$student->student_id;?>"><i class="fal fa-eye"></i></span>
 								<span class="pencil" data-jId="<?=$student->student_id;?>"><i class="fal fa-pencil-alt"></i></span>
 								<span class="trash" data-jId="<?=$student->student_id;?>"><i class="fal fa-trash"></i></span>
 							</td>

@@ -1,6 +1,5 @@
 <?php require_once APP_ROOT . '/views/admin/inc/head.php'; ?>
 
-
 	<!-- <section class="tg-dash">
 		<h1>Chemicals</h1>
 	</section> -->
@@ -9,13 +8,13 @@
 			<div class="content-head">
 				<h2>Chemicals</h2>
 			</div>
-			<div class="filter-category">
+			<div class="filter-category things-notdone">
 				<ul id="job-filters">
 					<li class="active-filter">All Chemicals <span>(10)</span></li>
 				</ul>
 			</div>
 			<div class="sortby filter-category">
-				<div id="sort-drop">
+				<div id="sort-drop" style="opacity: 0;">
 					<span>Sort by:</span>
 					<select id="brand-filter-table">
 						<optgroup>
@@ -73,8 +72,8 @@
 								<span><?=$chem->brand?></span>
 							</td>
 							<td class="action-btn">
-								<span class="eye"><i class="fal fa-eye"></i></span>
-								<span class="pencil"><i class="fal fa-pencil-alt"></i></span>
+								<span class="eye things-notdone"><i class="fal fa-eye"></i></span>
+								<span class="pencil" data-chem-id="<?php echo $chem->id;?>"><i class="fal fa-pencil-alt"></i></span>
 								<span class="trash"><i class="fal fa-trash"></i></span>
 							</td>
 						</tr>
@@ -85,5 +84,4 @@
 			<div class="box cc-pagination-footer index_native" data-rows="5"></div>
 		</div>
 	</section>
-
 <?php require_once APP_ROOT . '/views/admin/inc/footer.php'; ?>

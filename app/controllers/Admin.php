@@ -294,16 +294,36 @@ class Admin extends Controller
 
 	public function form(){
 		$brand = $this->chemModel->getBrand();
+		$account = $this->chemModel->getAccountInfo($_SESSION['uId']);
+		$config = $this->chemModel->getConfigSecurity();
+		$currentUser = $this->chemModel->getCurrentUser($_SESSION['uId']);
 		// $label = $this->chemModel->getLabel();
 		$category = $this->chemModel->getCategory();
 
 		$data = [
-			"brand" => $brand,
+			"config"=> $config,
+			"user"=> $currentUser,
+			"account"=> $account,
 			// "label" => $label,
+			"brand" => $brand,
 			"category" => $category
 		];
 
 		$this->view('admin/form', $data);
+	}
+
+	public function setChemUpdate(){
+		$chem = trim($_POST['chemId']);
+		$brand = $this->chemModel->getBrand();
+		$category = $this->chemModel->getCategory();
+		$chem = $this->chemModel->getChemicalById($chem);
+		$data = [
+			"brand" => $brand,
+			"category" => $category,
+			"chem" => $chem
+		];
+
+		$this->view('admin/templates/chemUpdate', $data);
 	}
 
 	public function ajaxAddCat()
@@ -351,6 +371,40 @@ class Admin extends Controller
 	}
 
 	public function add(){
+		if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {		
+			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+			$v = '<p>H<sub>2</sub><span id=\"_mce_caret\" data-mce-bogus=\"1\" data-mce-type=\"format-caret\">O</span><br></p>';
+			$data = [
+				/*check this first form*/
+				"status" => "",
+				"category" => trim($_POST['category']),
+				"label" => trim($_POST['label']),
+				"chemName" => trim($_POST['chemName']),
+				"chemWt" => trim($_POST['chemWt']),
+				"chemAssay" => trim($_POST['chemAssay']),
+				"chemQuantity" => trim($_POST['chemQuantity']),
+				"chemExpiration" => trim($_POST['chemExpiration']),
+				"chemBrand" => trim($_POST['chemBrand']),
+				"chemFormula" => trim($_POST['mytextarea']),
+				"note" => trim($_POST['note'])
+			];
+
+			$res = $this->chemModel->addChemical($data);
+
+			if ($res) {
+				echo $_POST['mytextarea'];
+			}else {
+				echo $res;
+			}
+			// echo json_encode($data)
+
+			// echo "D";
+		}else {
+			echo "not";
+		}
+	}
+
+	public function updateChemical(){
 		if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {		
 			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 			$v = '<p>H<sub>2</sub><span id=\"_mce_caret\" data-mce-bogus=\"1\" data-mce-type=\"format-caret\">O</span><br></p>';

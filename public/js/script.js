@@ -44,13 +44,24 @@ $(document).on("click",".req_logs_", function(e) {
 	$(".containerCollapse").not(rowId).slideUp(100);
 });
 
-$(".pencil").click(function(e){
+$(document).on("click",".pencil",function(e){
 	e.stopPropagation();
+	let chemId = $(this).attr("data-chem-id");
 	$("#cc-chem-modal").show(50);
 	$(".modal-notification").css({
 		"margin-top":"80px",
 	});
-	$('body').css('overflow','hidden')
+	$('body').css('overflow','hidden');
+
+	$.ajax({
+		url:"/admin/setChemUpdate",
+		type:"POST",
+		data:{chemId},
+		success:function(data){
+			$("#mCSB_7_container").html(data);
+			 $(".cc-ajax-wrap").mCustomScrollbar();
+		}
+	});
 });
 
 $(".trash").click(function(e){

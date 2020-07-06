@@ -137,6 +137,18 @@ class chemModel
 		}
 	}
 
+	public function getChemicalById($chem){
+		$this->db->query("SELECT chemicals.*,brand.name AS brand, chem_note.note AS chem_note FROM chemicals LEFT JOIN brand ON chemicals.brand_id = brand.id LEFT JOIN chem_note ON chem_note.chem_id = chemicals.id WHERE chemicals.id = :chemId");
+		$this->db->bind(":chemId",$chem);
+		$row = $this->db->single();
+		if ($row) {
+			return $row;
+		}else {
+			return false;
+		}
+	}
+
+
 	public function getDepartment(){
 		$this->db->query("SELECT * FROM department");
 		$row = $this->db->resultSet();
@@ -193,6 +205,16 @@ class chemModel
 	public function getCategory(){
 		$this->db->query("SELECT * FROM category");
 		$row = $this->db->resultSet();
+		if ($row) {
+			return $row;
+		}else {
+			return false;
+		}
+	}
+
+	public function getCategoryById($id){
+		$this->db->query("SELECT * FROM category WHERE id = $id");
+		$row = $this->db->single();
 		if ($row) {
 			return $row;
 		}else {

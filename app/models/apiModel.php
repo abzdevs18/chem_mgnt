@@ -158,7 +158,7 @@ FROM user LEFT JOIN user_profile ON user.id = user_profile.user_id AND user_prof
 			return false;
 		}
 	}
-
+	
 	public function getChemicalByName($name){
 		$this->db->query("SELECT chemicals.*,brand.name AS brand FROM chemicals LEFT JOIN brand ON chemicals.brand_id = brand.id WHERE chemicals.chemical_name = :chemName");
 		$this->db->bind(":chemName",$name);

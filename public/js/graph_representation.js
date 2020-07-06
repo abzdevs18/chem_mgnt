@@ -101,14 +101,14 @@ if(currentPage == '/admin/index' || currentPage == '/admin'){
 
 $(document).on("click", ".graphDetails", function(e) {
   e.preventDefault();
-  var status = $(this).attr("data-status");
-  if (!status) {
-    $(this).attr("data-status", "open");
-    $(".dataGraph").slideToggle("slow");
-  } else {
-    $(this).attr("data-status", "");
-    $(".dataGraph").slideToggle("slow");
-  }
+  // var status = $(this).attr("data-status");
+  // if (!status) {
+  //   $(this).attr("data-status", "open");
+  //   $(".dataGraph").slideToggle("slow");
+  // } else {
+  //   $(this).attr("data-status", "");
+  //   $(".dataGraph").slideToggle("slow");
+  // }
 });
 
 $(document).on('click','.req_logs_', function(){

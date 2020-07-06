@@ -9,7 +9,7 @@
 			<div class="content-head">
 				<h2>Pending Request <sup><i class="fal fa-question-circle" style="font-size:12px;" title="This are the current request sent to the admin."></i></sup></h2>
 			</div>
-			<div class="filter-category" id="pending1">
+			<div class="filter-category things-notdone" id="pending1">
 				<ul id="job-filters">
 					<li class="active-filter" id="filter-all">All <span>(10)</span></li>
 					<li id="filter-featured">Pending <span>(10)</span></li>
@@ -19,7 +19,7 @@
 				</ul>
 			</div><!-- End of filter tabs -->
 			<div class="sortby filter-category" id="pending2">
-				<div id="sort-drop">
+				<div id="sort-drop" class="gone-now">
 					<span>Sort by:</span>
 					<select id="sort-filter">
 						<optgroup>

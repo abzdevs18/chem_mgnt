@@ -72,3 +72,10 @@ color: #fff;
 	border-radius: 3px;
 	transition: all .5s ease-in-out;
 } 
+
+.things-notdone {
+	display: none !important;
+}
+.gone-now {
+	opacity: 0 !important;
+}

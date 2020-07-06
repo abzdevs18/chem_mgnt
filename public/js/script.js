@@ -39,9 +39,9 @@ $(document).ready(function() {
 
 $(document).on("click",".req_logs_", function(e) {
 	e.stopPropagation();
-	let rowId = $(this).attr("data-rowId");
-	$(rowId).slideToggle(400);
-	$(".containerCollapse").not(rowId).slideUp(100);
+	// let rowId = $(this).attr("data-rowId");
+	// $(rowId).slideToggle(400);
+	// $(".containerCollapse").not(rowId).slideUp(100);
 });
 
 $(document).on("click",".pencil",function(e){

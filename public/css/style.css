@@ -1033,16 +1033,16 @@ tbody tr td {
 .ch-checkbox-item i {
   color: #fff;
 }
-.ch-selection-item-action:hover {
+/*.ch-selection-item-action:hover {
   width: 35px;
-}
+}*/
 .req_logs_ td:nth-child(2){
   padding-left: 15px;
   transition: all .3s ease-in-out;
 }
-.ch-selection-item-action:hover + .ch-row-second {
+/*.ch-selection-item-action:hover + .ch-row-second {
   padding-left: 42px;
-}
+}*/
 .req_logs_ td {
   vertical-align: middle !important;
 }

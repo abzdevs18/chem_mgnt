@@ -113,6 +113,19 @@ class Admin extends Controller
 		$this->view('admin/messages',$data);
 	}
 
+	public function search(){
+		$account = $this->chemModel->getAccountInfo($_SESSION['uId']);
+		$config = $this->chemModel->getConfigSecurity();
+		$currentUser = $this->chemModel->getCurrentUser($_SESSION['uId']);
+		$data = [
+			"config"=> $config,
+			"user"=> $currentUser,
+			"account"=> $account
+		];	
+
+		$this->view('admin/search',$data);
+	}
+
 	public function chemical(){
 		$chem = $this->chemModel->getChemicals();
 		$account = $this->chemModel->getAccountInfo($_SESSION['uId']);
@@ -451,6 +464,85 @@ class Admin extends Controller
 					$data['status'] = 1;
 				}else {
 					$data['Problem Occur adding the user!'];
+				}
+			}
+
+			echo json_encode($data);
+		}
+	}
+
+	public function userAdPassUp(){
+		if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {		
+			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+			$salted_pass = $this->salt.trim($_POST['newPass']);
+			$hashed = password_hash($salted_pass, PASSWORD_DEFAULT);
+			$data = [
+				/*check this first form*/
+				"status" => "",
+				"currPass" => $this->salt.trim($_POST['currPass']),
+				"userId" => $_SESSION['uId'],
+				"newPass" => $hashed
+			];
+
+			$res = $this->adminModel->updateUsrPwd($data);
+			if($res){
+				$data['status'] = 1;
+			}else {
+				$data['status']= 'Problem during password update!';
+			}
+			echo json_encode($data);
+		}
+	}
+
+	public function adminUpdateBio(){
+		if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {		
+			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+			$data = [
+				/*check this first form*/
+				"status" => "",
+				"gender" => trim($_POST['gender']),
+				"userId" => $_SESSION['uId'],
+				"uname" => trim($_POST['uname']),
+				"email" => trim($_POST['email']),
+				"lname" => trim($_POST['lname']),
+				"name" => trim($_POST['name']),
+				"phone" => trim($_POST['phone'])
+			];
+
+			$res = $this->adminModel->updateUserAdminBio($data);
+			if($res){
+				$data['status'] = 1;
+			}else {
+				$data['Problem Occur adding the user!'];
+			}
+
+			echo json_encode($data);
+		}
+	}
+
+	public function userPhotoUpdate(){
+		if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {		
+			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+			$data = [
+				/*check this first form*/
+				"status" => "",
+				"userId" => $_SESSION['uId'],
+				"photo" => $_FILES['photo']['name']
+			];
+
+			if($_FILES['photo']['name']){
+				$target = $_SERVER['DOCUMENT_ROOT'] . "/public/img/users/" . basename($_FILES['photo']['name']);
+				
+				if (move_uploaded_file($_FILES["photo"]["tmp_name"], $target)) {
+
+					$res = $this->adminModel->updateUserPhoto($data);
+					if($res){
+						$data['status'] = 1;
+					}else {
+						$data['Problem Occur adding the user!'];
+					}
+				}else{
+					$data['status'] = "Problem uploading photo";
 				}
 			}
 

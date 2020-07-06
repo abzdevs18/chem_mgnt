@@ -43,7 +43,7 @@ class apiModel{
 	}
 
 	public function loginClient($email, $password) {
-		$this->db->query("SELECT user_email.user_id AS fId, user_email.email_add AS usrEmail, client_users.id AS usr_id, client_users.password AS usrPass, client_users.account_type AS account_type FROM user_email LEFT JOIN client_users ON client_users.norsu_id = user_email.user_id WHERE user_email.email_add = :email");
+		$this->db->query("SELECT user_email.user_id AS fId, user_email.email_add AS usrEmail, client_users.id AS usr_id, client_users.password AS usrPass, client_users.account_type AS account_type, client_users.status AS account_status FROM user_email LEFT JOIN client_users ON client_users.norsu_id = user_email.user_id WHERE user_email.email_add = :email");
 		$this->db->bind(':email', $email);
 		$row = $this->db->single();
 		// $hashed_pass = $row->usrPass;

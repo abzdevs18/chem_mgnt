@@ -44,9 +44,13 @@ $(document).on("click",".req_logs_", function(e) {
 	$(".containerCollapse").not(rowId).slideUp(100);
 });
 
-$(".eye").click(function(e){
+$(".pencil").click(function(e){
 	e.stopPropagation();
-	console.log("COnsole");
+	$("#cc-chem-modal").show(50);
+	$(".modal-notification").css({
+		"margin-top":"80px",
+	});
+	$('body').css('overflow','hidden')
 });
 
 $(".trash").click(function(e){
@@ -59,9 +63,11 @@ $(".trash").click(function(e){
 
 $(document).on('click','.notif-cc-close', function(){
 	$("#cc-modal").hide(50);
+	$("#cc-chem-modal").hide(50);
 	$(".modal-notification").css({
 		"margin-top":"-100%",
 	});
+	$('body').css('overflow', 'inherit');
 });
 
 $('.note-path').click(function () {
@@ -251,6 +257,60 @@ $(".add-user-save-btn").click(function(){
 		}
 	});
 });
+// User adding
+$(".update-admin-bio").click(function(){
+	let context = $(this);
+	let usr = $(this).attr("data-usr");
+	let gender = $("#add-user-gender").val();
+	let uname = $("#add-user-uname").val();
+	let email = $("#add-user-email").val();
+	let lname = $("#add-user-lname").val();
+	let name = $("#add-user-name").val();
+	let phone = $("#add-user-phone").val();
+
+	let fd = new FormData();
+	fd.append('gender',gender);
+	fd.append('uname',uname);
+	fd.append('email',email);
+	fd.append('lname',lname);
+	fd.append('name',name);
+	fd.append('phone',phone);
+
+	$.ajax({
+		url: "/admin/adminUpdateBio",
+		method: "POST",
+		processData: false, // important
+		contentType: false, // important
+		data: fd,
+		dataType:'json',
+		beforeSend: function(){
+			$(context).css({"color":"#00cc67 !important"});
+		  $("#save-bio-form").show(100);
+		},	
+		success: function (data) {
+			if(data['status'] == 1){
+				log(usr,"Profile update",1);
+				// socket.emit("userNotification", data);
+				setTimeout(function(){
+					//   window.location.href ="/admin/form"
+					showAlertFloat("","Profile updated!!");
+					$(context).css({"color":"#fff !important"});
+					$("#save-bio-form").hide(100);
+				}, 3000);
+			}else{
+				log(usr,"Profile update",1);
+				setTimeout(function(){
+					showAlertFloat("#c00","Profile updated FAILED!!");
+					$(context).css({"color":"#fff !important"});
+					$("#save-bio-form").hide(100);
+				}, 3000);
+			}
+		},
+		error: function (e) {
+			console.log(e);
+		}
+	});
+});
 $(".deleteUser").click(function(e){
 	e.preventDefault();
 	let context = $(this);
@@ -305,8 +365,53 @@ $(".student-save").click(function(){
 			console.log(e);
 		}
 	});
-
 })
+
+// Student update
+$(".update-pass-ad").click(function(){
+	let context = $(this);
+	let usr = $(this).attr("data-usr");
+	let currPass = $("#curr-pass").val();
+	let newPass = $("#new-pass").val();
+	let confPass = $("#conf-pass").val();
+
+	$.ajax({
+		url: "/admin/userAdPassUp",
+		method: "POST",
+		dataType:'json',
+		data: {currPass,newPass},
+		beforeSend: function(){
+			$(context).css({"color":"#00cc67 !important"});
+		  	$("#pass-save-form").show(100);
+		},
+		success: function (data) {
+			if(data['status'] == 1){
+				log(usr,"Add User",1);
+				// socket.emit("userNotification", data);
+				setTimeout(function(){
+					//   window.location.href ="/admin/form"
+					showAlertFloat("","Password updated!!");
+					$(context).css({"color":"#fff !important"});
+					$("#pass-save-form").hide(100);
+					setTimeout(function(){						
+					  window.location.href ="/admin"
+					},1500);
+				}, 3000);
+			}else{
+				log(usr,"Add User",0)
+				setTimeout(function(){
+					showAlertFloat("#c00",data['status']);
+					$(context).css({"color":"#fff !important"});
+					$("#pass-save-form").hide(100);
+				}, 3000);
+			}
+		},
+		error: function (e) {
+			console.log(e);
+		}
+	});
+})
+
 
 	// Multiple images preview in browser
 	function read(input) {
@@ -331,6 +436,50 @@ $(".student-save").click(function(){
 	$("#user-photo").on("change", function() {
 	  $(".new_user_photo_set").show(100);
 	  read(this);
+	});
+
+	$(".up-photo-btn").on("change",function(){
+		let context = $('.open_file_ex');
+		let usr = $(this).attr("data-usr");
+
+		let photo = $("#user-photo").prop('files')[0];
+		let fd = new FormData();
+		fd.append('photo',photo);
+
+		$.ajax({
+			url: "/admin/userPhotoUpdate",
+			method: "POST",
+			processData: false, // important
+			contentType: false, // important
+			data: fd,
+			dataType:'json',
+			beforeSend: function(){
+				$(context).css({"color":"#00cc67 !important"});
+			  $("#save-form").show(100);
+			},
+			success: function (data) {
+				if(data['status'] == 1){
+					log(usr,"Profile update",1);
+					// socket.emit("userNotification", data);
+					setTimeout(function(){
+						//   window.location.href ="/admin/form"
+						showAlertFloat("","Profile updated!!");
+						$(context).css({"color":"#fff !important"});
+						$("#save-form").hide(100);
+					}, 3000);
+				}else{
+					log(usr,"Profile update",1);
+					setTimeout(function(){
+						showAlertFloat("#c00","Profile updated FAILED!!");
+						$(context).css({"color":"#fff !important"});
+						$("#save-form").hide(100);
+					}, 3000);
+				}
+			},
+			error: function (e) {
+				console.log(e);
+			}
+		});
 	});
 $(document).on("click","#add-note-modal", function(){
 	let state = $(this).attr("data-click");

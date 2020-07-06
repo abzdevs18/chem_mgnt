@@ -6,7 +6,7 @@ GET {{host}}/Api/api_get_chemicals
 POST {{host}}/Api/api_login HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
 
-clientUserName=flag@gmail.com
+clientUserName=flagg@gmail.com
 &clientUserPass=hindu?
 ###
 POST {{host}}/Api/api_register HTTP/1.1
@@ -15,7 +15,7 @@ Content-Type: application/x-www-form-urlencoded
 norsuId=201303212
 &FirstName=evs
 &LastName=evs
-&clientEmail=flagg@gmail.com
+&clientEmail=flag@gmail.com
 &Pass=hindu?
 &Department=College of Education
 &account_type=2
@@ -25,8 +25,8 @@ Content-Type: application/x-www-form-urlencoded
 
 quantity=67
 &chem_id=sdd
-&stud_id=14
-&purpose=Tsd
+&stud_id=20
+&purpose=Tssadd
 &account_type=1
 &subject=2
 ###

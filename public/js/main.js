@@ -1,5 +1,6 @@
 // require('./modules.js');
 import { log, showAlertFloat } from './modules.js';
+// import htmlToImage from 'html-to-image';
 // import moment from 'moment';
 
 // let m = moment('Jun 22 2020 10:11 AM', 'lll');

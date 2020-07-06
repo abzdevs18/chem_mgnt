@@ -97,7 +97,7 @@ class chemModel
 	}
 
 	public function getAccountInfo($uId){
-		$this->db->query("SELECT user.user_type AS userType, user.firstname AS firstN, user.lastname AS lastN, user_profile.img_path AS userImage, user_email.email_add AS userEmail, user_contact.contact AS userPhone FROM user LEFT JOIN user_profile ON user_profile.user_id = user.id AND user_profile.profile_status = 1 LEFT JOIN user_email ON user_email.user_id = user.id AND user_email.email_status = 1 LEFT JOIN user_contact ON user_contact.user_id = user.id WHERE user.id = :userID");
+		$this->db->query("SELECT user.user_type AS userType, user.username AS username, user.gender AS gender, user.firstname AS firstN, user.lastname AS lastN, user_profile.img_path AS userImage, user_email.email_add AS userEmail, user_contact.contact AS userPhone FROM user LEFT JOIN user_profile ON user_profile.user_id = user.id AND user_profile.profile_status = 1 LEFT JOIN user_email ON user_email.user_id = user.id AND user_email.email_status = 1 LEFT JOIN user_contact ON user_contact.user_id = user.id WHERE user.id = :userID");
 		$this->db->bind(":userID", $uId);
 		$row = $this->db->single();
 		if($row){
@@ -268,7 +268,11 @@ class chemModel
 			$req += $rows[$i]->req;
 		}
 		$num = $this->db->rowCount();
-		return round(($req/$num));
+		if($num > 0){
+			return round(($req/$num));
+		}else{
+			return 0;
+		}
 	}
 
 	public function getPendingReq(){
@@ -312,7 +316,7 @@ class chemModel
 	}
 
 	public function getUserInfo($id){
-		$this->db->query("SELECT request.id AS req_id, client_users.firstname AS fname,client_users.lastname AS lname,user_profile.img_path AS profile, chemicals.chemical_name AS chem FROM request LEFT JOIN client_users ON client_users.id = request.student_id LEFT JOIN user_profile ON user_profile.user_id = client_users.id LEFT JOIN chemicals ON chemicals.id = request.chem_id WHERE client_users.id = :usrId AND request.req_status = 0");
+		$this->db->query("SELECT request.id AS req_id, client_users.firstname AS fname,client_users.lastname AS lname,user_profile.img_path AS profile, chemicals.chemical_name AS chem FROM request LEFT JOIN client_users ON client_users.id = request.student_id LEFT JOIN user_profile ON user_profile.user_id = client_users.id LEFT JOIN chemicals ON chemicals.id = request.chem_id WHERE client_users.id = 14 AND request.req_status = 0");
 		$this->db->bind(":usrId",$id);
 		$row = $this->db->single();
 		if($row){

@@ -41,6 +41,81 @@ class adminModel
 		}
 	}
 
+	public function updateUserAdminBio($data){
+		try {
+			$this->db->beginTransaction();
+			$this->db->query("UPDATE `user` SET `username`=:uname, `firstname`=:name, `lastname`=:lname,`gender`=:gender WHERE `id`=:userId");
+			$this->db->bind(":gender", $data['gender']);
+			$this->db->bind(":uname", $data['uname']);
+			$this->db->bind(":name", $data['name']);
+			$this->db->bind(":lname", $data['lname']);
+			$this->db->bind(":userId", $data['userId']);
+
+			$this->db->execute();
+
+			$this->db->query("SELECT `email_add` FROM `user_email` WHERE `email_add` = :usrEmail");
+			$this->db->bind(":usrEmail",$data['email']);
+			$this->db->resultSet();
+
+			if($this->db->rowCount() < 1){
+				$this->db->query("UPDATE `user_email` SET `email_status`= 0 WHERE `user_id`=:userId");
+				$this->db->bind(":userId", $data['userId']);
+				$this->db->execute();
+
+				$this->db->query("INSERT INTO `user_email`(`user_id`, `email_add`, `email_status`) VALUES(:userId, :email, :emailStatus)");
+				$this->db->bind(":userId", $data['userId']);
+				$this->db->bind(":email", $data['email']);
+				$this->db->bind(':emailStatus', 1);
+				$this->db->execute();	
+			}else{
+				$this->db->query("UPDATE `user_email` SET `email_status`= 0 WHERE `user_id`=:userId");
+				$this->db->bind(":userId", $data['userId']);
+				$this->db->execute();
+
+				$this->db->query("UPDATE `user_email` SET `email_status`= 1 WHERE `email_add` = :email AND `user_id`=:userId");
+				$this->db->bind(":email", $data['email']);
+				$this->db->bind(":userId", $data['userId']);
+				$this->db->execute();
+			}
+
+
+			$this->db->query("SELECT `contact` FROM `user_contact` WHERE `contact` = :contact AND `user_id`=:userId");
+			$this->db->bind(":contact",$data['phone']);
+				$this->db->bind(":userId", $data['userId']);
+			$this->db->resultSet();
+
+			if($this->db->rowCount() < 1){				
+				$this->db->query("UPDATE `user_contact` SET `status`= 0 WHERE `user_id`=:userId");
+				$this->db->bind(":userId", $data['userId']);
+				$this->db->execute();
+
+				$this->db->query("INSERT INTO `user_contact`(`user_id`, `contact`, `status`) VALUES(:userId, :phone, :phoneStatus)");
+				$this->db->bind(':userId', $data['userId']);
+				$this->db->bind(":phone", $data['phone']);
+				$this->db->bind(':phoneStatus', 1);
+
+				$this->db->execute();
+			}else{
+				$this->db->query("UPDATE `user_contact` SET `status`= 0 WHERE `user_id`=:userId");
+				$this->db->bind(":userId", $data['userId']);
+				$this->db->execute();
+
+				$this->db->query("UPDATE `user_contact` SET `status`= 1 WHERE `contact` = :contact AND `user_id`=:userId");
+				$this->db->bind(":contact",$data['phone']);
+				$this->db->bind(":userId", $data['userId']);
+				$this->db->execute();
+			}
+
+			$this->db->commit();
+			return true;
+
+		} catch (Exception $e) {
+			$this->db->rollBack();
+			// return $e->getMessage();
+			return false;
+		}
+	}
+
 	public function addUserAdmin($data){
 		try {
 			$this->db->beginTransaction();
@@ -77,6 +152,63 @@ class adminModel
 				$this->db->bind(':photoStatus', 1);
 	
 				$this->db->execute();
+			}
+
+			$this->db->commit();
+			return true;
+
+		} catch (Exception $e) {
+			$this->db->rollBack();
+			// return $e->getMessage();
+			return false;
+		}
+	}
+
+	public function updateUserPhoto($data){
+		try {
+			$this->db->beginTransaction();	
+
+			$this->db->query("UPDATE `user_profile` SET `profile_status`= 0 WHERE `user_id`= :userId");
+			$this->db->bind(':userId', $data['userId']);	
+
+			$this->db->execute();
+
+			$this->db->query("INSERT INTO `user_profile`(`user_id`, `img_path`, `profile_status`) VALUES(:userId, :path, :photoStatus)");
+			$this->db->bind(':userId', $data['userId']);
+			$this->db->bind(":path", $data['photo']);
+			$this->db->bind(':photoStatus', 1);
+
+			$this->db->execute();
+
+			$this->db->commit();
+			return true;
+
+		} catch (Exception $e) {
+			$this->db->rollBack();
+			// return $e->getMessage();
+			return false;
+		}
+	}
+
+	public function updateUsrPwd($data){
+		try {
+			$this->db->beginTransaction();
+
+			$this->db->query("SELECT id,user_pass FROM user WHERE id = :userId");
+			$this->db->bind(':userId', $data['userId']);	
+			$row = $this->db->resultSet();
+			if($this->db->rowCount() > 0){	
+				$password = $data['currPass'];		
+				if (password_verify($password,$row[0]->user_pass)) {
+
+					$this->db->query("UPDATE `user` SET `user_pass`= :newPass WHERE `id`= :userId");
+					$this->db->bind(':newPass', $data['newPass']);	
+					$this->db->bind(':userId', $data['userId']);	
+					$this->db->execute();
+
+				}else{
+					return false;
+				}
 			}
 
 			$this->db->commit();

@@ -17,6 +17,11 @@ define('DB_USER', 'root');
 define('DB_PASS', 'D3b1an!?');
 define('DB_NAME', 'ch_mgnt');
 
+// define('DB_HOST', '34.64.217.241');
+// define('DB_USER', 'root');
+// define('DB_PASS', 'D3b1an!?');
+// define('DB_NAME', 'ch_mgnt');
+
 //APP ROOT
 define('APP_ROOT', dirname(dirname(__FILE__)));
 

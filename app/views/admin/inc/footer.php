@@ -44,12 +44,13 @@
 					console.log(err);
 				}
 			});
+			console.log(data);
 		});
 		
 	function demo() {
 		Push.create("New request received!", {
-			body: "Some data show in here.",
-			icon: "/img/icons/clock.png",
+			body: "<div style='width:30px;height:30px;background-color:red;'></div>",
+			icon: "",
 			link: "/#",
 			// timeout: 4000,
 			requireInteraction: true,
@@ -62,7 +63,7 @@
 		});
 	}
 	// Start the intro
-	// let host = "http://sfchem.cf.local";
+	let host = "http://sfchem.cf.local";
 	if(window.location.href == host+'/admin'){		  
 		introJs().setOption(
 			"showStepNumbers", false,"showBullets",false,'doneLabel', 'Next page').start().oncomplete(function() {

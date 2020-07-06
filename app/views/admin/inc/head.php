@@ -79,10 +79,10 @@
     });
     </script>
     <script>
-    // var socket = io.connect('https://34.71.32.229:3000/');
+    var socket = io.connect('http://192.168.0.11:3389/');
 
     // Connecting to secure socket
-    var socket = io.connect('https://chemlab.cf:3389/',{secure: true});
+    // var socket = io.connect('https://chemlab.cf:3389/',{secure: true});
 
     tinymce.init({
         selector: 'textarea#chemicalFormula',
@@ -258,6 +258,132 @@
         </div>
     </div>
     <!-- End Notification Modal -->
+
+    <!-- Modal: For adding chemicals. First Plan -->
+    <div id="cc-chem-modal" style="display:none;width: 100%; height: 100vh; z-index: 999999; position: fixed;background: rgba(3,3,3,0.2);transition: all .5s ease-in-out;">
+        <div style="min-width: 300px;width: 50%;margin: 0 auto;margin-top: -100%;transition: all .5s ease-in-out;" class="modal-notification" >
+            <section class="offices-msgs" style="flex-direction: column;width: 100%;background: #fff;border-radius: 5px;">
+                <div class="alerts-notif" style="width: 100%;margin: 0 auto;position: relative;padding: 0;">
+                    <span class="modal-close notif-cc-close" style="position: absolute;color: #fff;z-index: 9;right: 0px;padding: 5px 7px 10px;border-radius: 3px;width: 15px;height: 15px;text-align: center;line-height: 20px;font-size: 20px;border: 1px solid #fff;margin: 14px;"><i
+                            class="fal fa-times"></i></span>
+                    <div class="alert-content no-fixed-height" style="display: flex;flex-direction: column;">
+                        <div class="content-head">
+                            <h2>Job Details</h2>
+                        </div>
+                    </div>
+                </div>
+                <section class="alert-content mCustomScrollbar cc-update-chem fluid light" data-mcs-theme="inset-2-dark" style="height: 400px;width: 100%;">
+                    <div class="changepass-holder half-row" style="margin-top: 30px;">
+                        <div class="form-group half-form-group">
+                            <div class="smart-drop-wrapper" id="chemCat">
+                                <input type="text" name="category" class="cusDrop meta-selected-category" placeholder="Select category" value="" data-name="category" data-filled="false">
+                                <div class="options-wrapper wrapper-category">
+                                    <div class="options">
+                                        <div class="mCustomScrollbar cc-ajax-wrap" data-mcs-theme="inset-2-dark" style="max-height: 300px;overflow: hidden;">
+                                        <?php foreach ($data['category'] as $category) : ?>
+                                            <div class="options-item temp-remover" id="content-wrap-<?=$category->id?>" data-meta="category" data-id="<?=$category->id?>" data-name="<?=$category->name?>">                                        
+                                                <input type="text" name="" class="hidden-container" data-id="<?=$category->id?>" value="<?=$category->name;?>" style="display:none;"/>
+                                                <span class="smart-drop-add-btn remove-term" data-item="category" data-id="<?=$category->id;?>">Delete</span>
+                                                <span class="brand-name" value="<?=$category->id;?>"><?=$category->name;?>  <i class="fas fa-pencil-alt edit-smart-option" data-id="<?=$category->id?>"></i></span>
+                                            </div>
+                                        <?php endforeach; ?>
+                                        </div>
+                                        <div class="options-item smart-drop-add top-form-add" style="display:flex;justify-content:end;">
+                                            <input type="text" name="" class="add-meta-value-category" placeholder="+ add"/>
+                                            <span class="smart-drop-add-btn add-term" data-item="category">Add</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <label for="chemCat">Category</label>
+                        </div>
+                        <div class="form-group half-form-group">
+                            <!-- <input type="text" name="title" class="form-control"> -->
+                            <select style="width: 100%;" name="label" id="pre_warning_label">
+                                <optgroup>
+                                    <option>Choose precaution label</option>
+                                    <option value="1">Nature Friendly</option>
+                                    <option value="2">Proceed with Caution</option>
+                                    <option value="3">Dispose properly</option>
+                                    <option value="4">Biohazad</option>
+                                </optgroup>
+                            </select>
+                            <label for="label">Precautionary Label <sup style="position;absolute;right:0;"><i
+                                        class="fal fa-question-circle" style="font-size:12px;"
+                                        title="How dangerous is this chemical."></i></sup></label>
+                        </div>
+                    </div>
+                    <div class="changepass-holder half-row">
+                        <div class="form-group">
+                            <input type="text" name="chemName" class="form-control">
+                            <label for="chemName">Chemical Name</label>
+                        </div>
+                    </div>
+                    <div class="changepass-holder half-row">
+                        <div class="form-group">
+                            <textarea id="chemicalFormula" name="mytextarea" value=""></textarea>
+                            <label for="chemName" style="z-index: 99;">Chemical Formula</label>
+                        </div>
+                    </div>
+                    <div class="changepass-holder half-row">
+                        <div class="form-group half-form-group">
+                            <input type="text" name="chemWt" class="form-control">
+                            <label for="chemWt">Mol. Wt.</label>
+                        </div>
+                        <div class="form-group half-form-group">
+                            <input type="text" name="chemAssay" class="form-control">
+                            <label for="chemAssay">Assay</label>
+                        </div>
+                    </div>
+                    <div class="changepass-holder third-row">
+                        <div class="form-group half-form-group">
+                            <input type="text" name="chemQuantity" class="form-control">
+                            <label for="chemQuantity">Quantiy</label>
+                        </div>
+                        <div class="form-group half-form-group">
+                            <input type="date" name="chemExpiration" class="form-control">
+                            <label for="chemExpiration">Expiration</label>
+                        </div>
+                        <div class="form-group half-form-group">
+                            <div class="smart-drop-wrapper" id="chemBrand">
+                                <input type="text" name="chemBrand" class="cusDrop meta-selected-brand" value="" placeholder="Select brand" data-name="brand">
+                                <div class="options-wrapper wrapper-brand">
+                                    <div class="options">
+                                        <?php foreach ($data['brand'] as $brand) : ?>
+                                            <div class="options-item temp-remover" id="content-wrap-<?=$brand->id?>" data-meta="brand" data-id="<?=$brand->id?>" data-name="<?=$brand->name?>">                                        
+                                                <input type="text" name="" class="hidden-container" data-id="<?=$brand->id?>" value="<?=$brand->name;?>" style="display:none;"/>
+                                                <span class="smart-drop-add-btn remove-term" data-item="brand" data-id="<?=$brand->id;?>">Delete</span>
+                                                <span class="brand-name" value="<?=$brand->id;?>"><?=$brand->name;?>  <i class="fas fa-pencil-alt edit-smart-option" data-id="<?=$brand->id?>"></i></span>
+                                            </div>
+                                        <?php endforeach; ?>
+                                        <div class="options-item smart-drop-add top-form-add" style="display:flex;">
+                                            <input type="text" name="" class="add-meta-value-brand" placeholder="+ add"/>
+                                            <span class="smart-drop-add-btn add-term" data-item="brand">Add</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <label for="chemBrand">Brand</label>
+                        </div>
+                    </div>
+                    <div class="changepass-holder x-border-left" style="display:flex;flex-direction:column;">
+                        <div class="form-group">
+                            <!-- <input type="text" name="emFirst" placeholder="First Name*" class="form-control"> -->
+                            <textarea name="note" id="note" cols="30" rows="40" class="form-control"
+                                style="resize: vertical;height: 200px;"></textarea>
+                            <label for="note">Guidelines</label>
+                        </div>
+                    </div>
+                </section>
+                <section class="alert-actions">
+                    <button style="background:var(--proceed-with-caution-label);">Delete</button>
+                    <button style="background: var(--green);">Cancel</button>
+                </section>
+            </section>
+        </div>
+    </div>
+    <!-- End Modal -->
+    div
     <main>
         <header class="dashboard-nav">
             <div id="add-post">
@@ -297,7 +423,7 @@
                         <?php endif;?>
                 
                     <?php if($data['account']->userImage):?>
-                        <div style="width: 46px;height: 46px;border: 1px solid #666;margin-left: 10px;border-radius: 50%;background: #f3f3f3;background-image: url('/img/prof.png');background-size: contain;background-repeat: no-repeat;background-position: center;">
+                        <div style="width: 46px;height: 46px;border: 1px solid #666;margin-left: 10px;border-radius: 50%;background: #f3f3f3;background-image: url(<?php echo "/img/users/".$data['account']->userImage;?>);background-size: contain;background-repeat: no-repeat;background-position: center;">
                         </div>
                     <?php else:?>                                    
                         <span class="icon_no_prof" style="background-color:<?=DEF_COLOR[rand(0,5)]?>;margin-left: 10px;color:#fff;width: 46px;height: 46px;line-height:46px;"><?php echo strtoupper($data['account']->firstN[0])?></span>
@@ -338,9 +464,9 @@
                     </div>
                     <div id="admin-profile">
                         <div id="profile-container" class="adm-prof">
-                            <div id="admin-icon">
+                            <div id="admin-icon" style="overflow: hidden;border-radius: 50%;">
                                 <?php if($data['account']->userImage):?>
-                                    <img src="/img/prof.png">
+                                    <img src="<?php echo "/img/users/".$data['account']->userImage;?>">
                                 <?php else:?>                                    
                                     <span class="icon_no_prof" style="background-color:<?=DEF_COLOR[rand(0,5)]?>;color:#fff;"><?php echo strtoupper($data['account']->firstN[0])?></span>
                                 <?php endif;?>

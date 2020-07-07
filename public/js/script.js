@@ -42,6 +42,7 @@ $(document).on("click",".req_logs_", function(e) {
 	// let rowId = $(this).attr("data-rowId");
 	// $(rowId).slideToggle(400);
 	// $(".containerCollapse").not(rowId).slideUp(100);
+	$(".request_side").css("right","0");
 });
 
 $(document).on("click",".pencil",function(e){

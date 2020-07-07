@@ -125,7 +125,7 @@
 	</section>
     <?php endif;?>
 
-	<section class="updates-msgs" style="display:flex;flex-direction:row;">
+	<section class="updates-msgs things-notdone" style="display:flex;flex-direction:row;">
 	<?php if($data['user'][0]->user_type == 1):?>
 		<div class="msgs-acc" style="width:66.66%;">
 			<div class="msgs-container" data-intro='Communication is essential. Here you can <em>Message</em> the registered faculty".' data-step="11">

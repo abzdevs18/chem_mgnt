@@ -2,9 +2,9 @@
 	<div id="action_options" class="m_add_hidden">
 		<?php if($data['user'][0]->user_type == 1):?>
 	    	<a href="/admin/add_user_ad" style="background-color:var(--biohazard-label);"><i class="far fa-user-shield"></i> Add User</a>
-	    	<a href="/admin/add_student"><i class="far fa-user-tag"></i> Add Student</a>
+	    	<a href="/admin/add_student" class="things-notdone"><i class="far fa-user-tag"></i> Add Student</a>
 		<?php elseif($data['config'][5]->config_value == 1 && $data['user'][0]->user_type == 0):?>
-	    	<a href="/admin/add_student"><i class="far fa-user-tag"></i> Add Student</a>
+	    	<a href="/admin/add_student" class="things-notdone"><i class="far fa-user-tag"></i> Add Student</a>
         <?php endif;?>
 	</div>
 	<?php if($data['user'][0]->user_type == 1 || $data['config'][5]->config_value == 1):?>

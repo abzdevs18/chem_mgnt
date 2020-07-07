@@ -310,9 +310,9 @@
                     <?php elseif($data['config'][6]->config_value == 1 && $data['user'][0]->user_type == 0):?>
                         <a href="/admin/form" data-intro='To add new Chemicals, Click <em>Store Chemical</em>.' data-step="1"><i class="fal fa-bookmark"></i> Store Chemical</a>
                     <?php endif;?>
-                    <div id="notif-icon" data-intro="Here you'll see the <em>notification</em> of the system." data-step="2">
-                        <button><i class="fal fa-bell"></i></button>
-                        <span id="notif-counter">2</span>
+                    <div id="notif-icon things-notdone" data-intro="Here you'll see the <em>notification</em> of the system." data-step="2">
+                        <button class="things-notdone"><i class="fal fa-bell"></i></button>
+                        <span id="notif-counter" class="things-notdone">2</span>
                     </div>
                     <div
                         style="display: flex;flex-direction: row;margin-left: 20px;vertical-align: middle;line-height: 45px;border-left: 2px solid #999;" data-intro='To view you account settings click <em>profile icon</em>."' data-step="3">
@@ -413,11 +413,11 @@
                                 <i class="fal fa-flask"></i>
                                 <a href="#"> Chemicals</a>
                             </li>
-                            <li data-link="/admin/student"
+                        <!--     <li data-link="/admin/student"
                                 class="<?=($_SESSION['menu_active']=="student") ? 'menu-active' : ''; ?>">
                                 <i class="fal fa-users-class"></i>
                                 <a href="#"> Students</a>
-                            </li>
+                            </li> -->
                             <?php if($data['user'][0]->user_type == 1):?>
                             <li data-link="/admin/privacy"
                                 class="<?=($_SESSION['menu_active']=="privacy") ? 'menu-active' : ''; ?>">

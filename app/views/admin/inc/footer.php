@@ -49,9 +49,9 @@
 		
 	function demo() {
 		Push.create("New request received!", {
-			body: "<div style='width:30px;height:30px;background-color:red;'></div>",
-			icon: "",
-			link: "/#",
+		    body: "You have a new request from your Users!",
+		    icon: URL_ROOT + "/img/logo_icon/lab.ico",
+		    link: "/#",
 			// timeout: 4000,
 			requireInteraction: true,
 			onClick: function () {

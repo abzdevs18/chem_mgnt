@@ -206,5 +206,9 @@ class Api extends Controller
 	}
 
 	public function api_account(){
+		if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
+			$acc = $this->userApi->getAccount(trim($_POST['usrId']));
+			echo json_encode($acc);
+		}
 	}
 }

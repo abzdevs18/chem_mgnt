@@ -190,4 +190,14 @@ FROM user LEFT JOIN user_profile ON user.id = user_profile.user_id AND user_prof
 			return false;
 		}
 	}
+
+	public function getAccount($id){
+		$this->db->query("SELECT client_users.norsu_id AS norsu, client_users.firstname AS fname, client_users.lastname AS lname, user_email.email_add AS email FROM client_users LEFT JOIN user_email ON user_email.user_id = client_users.id WHERE client_users.id = $id");
+		$row = $this->db->single();
+		if($row){
+			return $row;
+		}else{
+			return false;
+		}
+	}
 }

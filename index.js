@@ -10,21 +10,21 @@ let server = express();
 let port = process.env.PORT || 3389;
 
 
-// const privateKey = fs.readFileSync('/etc/letsencrypt/live/chemlab.cf/privkey.pem');
+const privateKey = fs.readFileSync('/etc/letsencrypt/live/chemlab.cf/privkey.pem');
 
-// const certificate = fs.readFileSync('/etc/letsencrypt/live/chemlab.cf/cert.pem');
+const certificate = fs.readFileSync('/etc/letsencrypt/live/chemlab.cf/cert.pem');
 
-// const credentials = {
+const credentials = {
 
-//     key: privateKey, 
+    key: privateKey, 
 
-//     cert: certificate
-// }
+    cert: certificate
+}
 
 // let server = app.listen(port);
 
-let http = require("http").createServer(server);
-// let http = require("https").createServer(credentials,server);
+// let http = require("http").createServer(server);
+let http = require("https").createServer(credentials,server);
 let io = require("socket.io")(http);
 
 // let io = new server();

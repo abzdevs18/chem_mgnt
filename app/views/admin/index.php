@@ -61,7 +61,7 @@
 		</div>
 	</section>
 
-	<section class="offices-msgs dataGraph" style="display:none;">
+	<section class="offices-msgs dataGraph things-notdone">
 		<div class="alerts-notif">
 			<div class="alert-content" style="height:400px;">
 				<div class="content-head">
@@ -98,7 +98,7 @@
 		<div class="alerts-notif" style="width:40%;">
 			<div class="alert-content" data-intro='Users needs to be verified before requesting chemicals. Here are the list of <em>Registration request</em>".' data-step="9">
 				<div class="content-head">
-					<h2>Registration Request <sup><i class="fal fa-question-circle" style="font-size:12px;" title="Admin can approve the student registration in here. Account listed in here are not allowed to request anything. Red are Faculty"></i></sup></h2>
+					<h2>Latest Registration <sup><i class="fal fa-question-circle" style="font-size:12px;" title="Admin can approve the student registration in here. Account listed in here are not allowed to request anything. Red are Faculty"></i></sup></h2>
 				</div>
 				<div class="ad-log" style="padding:5px;">
 					<ul class="mCustomScrollbar content fluid light" data-mcs-theme="inset-2-dark" style="height: 400px;width: 100%;">

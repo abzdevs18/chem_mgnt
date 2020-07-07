@@ -79,10 +79,10 @@
     });
     </script>
     <script>
-    var socket = io.connect('http://192.168.0.11:3389/');
+    // var socket = io.connect('http://192.168.0.11:3389/');
 
     // Connecting to secure socket
-    // var socket = io.connect('https://chemlab.cf:3389/',{secure: true});
+    var socket = io.connect('https://chemlab.cf:3389/',{secure: true});
 
     tinymce.init({
         selector: 'textarea#chemicalFormula',

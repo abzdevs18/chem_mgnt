@@ -644,4 +644,34 @@ class Admin extends Controller
 			}
 		}
 	}
+
+	public function reqApproveN(){
+		if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {		
+			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);		
+			$data = [
+				/*check this first form*/
+				"status" => "",
+				"req_usr_id" => ""
+			];
+			$res = $this->chemModel->approveSpecificReq(trim($_POST['req']));	
+			if($res){
+				$data['status'] = 1;
+				$data['req_usr_id'] = $res->student_id;
+				echo json_encode($data);
+			}else{
+				$data['status'] = 0;
+				echo json_encode($data);
+			}	
+		}
+	}
+
+	public function getRequestData(){
+		if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {		
+			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+			$res = $this->chemModel->getRequestById(trim($_POST['reqId']));
+			if($res){
+				echo json_encode($res);
+			}	
+		}
+	}
 }

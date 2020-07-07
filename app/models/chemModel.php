@@ -66,13 +66,41 @@ class chemModel
 	}
 
 	public function getRequest(){
-		$this->db->query("SELECT request.id AS req_id, user_profile.img_path AS profIcon,chemicals.chemical_name AS chemName, chemicals.chemical_formula AS chemFormula,request.quantity AS req_quantity, chemicals.quantity AS chemical_quantity, request.purpose AS reqPurpose, request.time AS timeReq, request.date AS dateReq,department.name AS department, client_users.firstname AS fname, client_users.norsu_id AS norsu_id, client_users.lastname AS lname, client_users.account_type AS uType FROM request LEFT JOIN user_profile on user_profile.user_id = request.student_id LEFT JOIN client_users ON client_users.id = request.student_id LEFT JOIN chemicals ON chemicals.id = request.chem_id LEFT JOIN department ON department.id = client_users.department ORDER BY request.id DESC");
+		$this->db->query("SELECT request.id AS req_id, user_profile.img_path AS profIcon,chemicals.chemical_name AS chemName, chemicals.chemical_formula AS chemFormula,request.quantity AS req_quantity, chemicals.quantity AS chemical_quantity, request.purpose AS reqPurpose, request.time AS timeReq, request.date AS dateReq,department.name AS department, client_users.firstname AS fname, client_users.norsu_id AS norsu_id, client_users.lastname AS lname, client_users.account_type AS uType, request.req_status AS mStatus FROM request LEFT JOIN user_profile on user_profile.user_id = request.student_id LEFT JOIN client_users ON client_users.id = request.student_id LEFT JOIN chemicals ON chemicals.id = request.chem_id LEFT JOIN department ON department.id = client_users.department ORDER BY request.id DESC");
 		$row = $this->db->resultSet();
 		if ($row) {
 			return $row;
 		}else {
 			return false;
 		}
+	}
+
+	public function getRequestById($id){
+		$this->db->query("SELECT request.quantity AS quantity,request.student_id AS student_id,request.purpose AS purpose,request.date AS reqDate,chemicals.chemical_name AS chemical, chemicals.available_stock AS stock, chemicals.chemical_formula AS chem_formula, category.name AS category, client_users.firstname AS fname, client_users.lastname AS lname, department.name AS department, request.req_status AS mStatus FROM request LEFT JOIN chemicals ON chemicals.id = request.chem_id LEFT JOIN category ON chemicals.cat_id = category.id LEFT JOIN client_users ON request.student_id = client_users.id LEFT JOIN department ON department.id = client_users.department WHERE request.id = $id");
+		$row = $this->db->single();
+		if($row){
+			return $row;
+		}else{
+			return false;
+		}
+	}
+
+	public function approveSpecificReq($id){
+		$this->db->query("SELECT * FROM `request` WHERE `id`=$id");
+		$row = $this->db->single();
+		$req_quan = $row->quantity;
+		$chem = $row->chem_id;
+
+		$this->db->query("SELECT * FROM `chemicals` WHERE `id`=$chem");
+		$chemicals = $this->db->single();
+		$new = $chemicals->quantity - $req_quan;
+
+		$this->db->query("UPDATE `chemicals` SET `available_stock` = $new WHERE `id` = $chem");
+		$this->db->execute();
+
+		$this->db->query("UPDATE `request` SET `req_status` = 1 WHERE `id` = $id");
+		$this->db->execute();
+		return $row;
 	}
 
 	public function getConfigSecurity(){

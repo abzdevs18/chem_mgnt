@@ -24,6 +24,13 @@ if(currentPage == '/admin/request'){
       }else{
         eventTime += data[i].dateReq;
       }
+      let stat = "";
+      console.log(data[i].mStatus);
+      if(data[i].mStatus == 1){
+        stat += `<span class="ch-request-status" style="background:var(--back-light-green);">Confirmed</span>`;
+      }else{
+        stat += `<span class="ch-request-status">Pending</span>`;
+      }
       let uType = "";
       if(data[i].uType == 1){
         uType += `<span class="ch-request-status" style="background: var(--ch-request-decline);color: #fff;">Faculty</span>`;
@@ -31,7 +38,7 @@ if(currentPage == '/admin/request'){
         uType += `<span class="ch-request-status" style="background: var(--dispose-properly-label);color: #fff;">Student</span>`;
       }
       let item = `
-      <tr class="req_logs_" data-rowId="#contentId`+i+`" id="pending3">
+      <tr class="req_logs_"  data-reqid="`+data[i].req_id+`"  data-rowId="#contentId`+i+`" id="pending3">
         <td style="text-align: center;" class="ch-selection-item-action">
           <div class="ch-checkbox-item" data-checked></div>
           <!-- <input type="checkbox" name=""> -->
@@ -58,7 +65,7 @@ if(currentPage == '/admin/request'){
           <span>`+data[i].norsu_id+`</span>
         </td>
         <td>
-          <span class="ch-request-status">Pending</span>
+          `+stat+`
         </td>
         <td class="action-btn">
           <span class="eye things-notdone" data-jId="`+data[i].req_id+`"><i class="fal fa-eye"></i></span>
@@ -214,26 +221,26 @@ if(currentPage == '/admin/request'){
   });
   console.log(currentPage);
 }
-$(document).on('click','.req_approve', function(){
-  let id = $(this).attr("data-reqid");
-  $.ajax({
-    url: URL_ROOT + "/Admin/approve_req",
-    type: "POST",
-    dataType: "json",
-    data:{
-      req_id:id
-    },
-    success:function(data){
-      if(data['status'] == 1){
-        socket.emit("req_approve",data);
-      }
-      console.log(data);
-    },
-    error:function(err){
-      console.log(err)
-    }
-  });
-});
+// $(document).on('click','.req_approve', function(){
+//   let id = $(this).attr("data-reqid");
+//   $.ajax({
+//     url: URL_ROOT + "/Admin/approve_req",
+//     type: "POST",
+//     dataType: "json",
+//     data:{
+//       req_id:id
+//     },
+//     success:function(data){
+//       if(data['status'] == 1){
+//         socket.emit("req_approve",data);
+//       }
+//       console.log(data);
+//     },
+//     error:function(err){
+//       console.log(err)
+//     }
+//   });
+// });
 // import { log, showAlertFloat } from './modules';
 
 $(document).on("click", ".save-btn", function (e) {
@@ -311,7 +318,28 @@ $(document).on("click", "#save-update-chem", function (e) {
   });
   // console.log(decoded);
 });
-
+$(document).on("click",".approve_req",function(){
+  let id = $(this).attr("data-reqid");
+  $.ajax({
+    url: URL_ROOT + "/admin/reqApproveN",
+    type: "POST",
+    dataType: "json",
+    data: {
+      req:id
+    },
+    success: function (data) {
+        socket.emit("req_approve",data);
+      setTimeout(function(){
+        showAlertFloat("","Request Confirmed!!");
+        window.location.href ="/admin/request"
+      }, 3000);
+      console.log(data);
+    },
+    error: function (e) {
+      console.log(e);
+    }
+  });
+});
 function htmlEncode(value) {
   if (value) {
     return jQuery('<div />').text(value).html();

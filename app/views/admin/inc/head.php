@@ -195,20 +195,20 @@
     <!-- Float alert end -->
     <!-- Right Sidebar -->
     <div class="request_side">
-        <span><i class="fal fa-times"></i></span>
+        <span id="close-side-req" style="z-index: 9999999;"><i class="fal fa-times"></i></span>
         <div class="req_details mCustomScrollbar content fluid light" data-mcs-theme="inset-2-dark"
             style="height: calc( 100vh - 100px );width:100%;">
             <div id="head_name">
                 <div class="request_icon_wrapper m_icon">
                     <div class="req_icon m_icon_req">
-                        <span>M</span>
+                        <span id="requester_initial">M</span>
                     </div>
                     <div style="margin:5px;margin-top:11px;" class="m_head_req">
                         <h3>Clint Anthony Abueva</h3>
                     </div>
-                    <p style="font:var(--font-quick-500-18);font-size:15px;">Department</p>
+                    <p style="font:var(--font-quick-500-18);font-size:15px;"><span id="dept_req"></span> Department</p>
                     <div id="m_req_status">
-                        <span><i class="fas fa-circle" style="font-size:10px;"></i> Pending</span>
+                        <span id="req_status_c"><i class="fas fa-circle" style="font-size:10px;"></i> Pending</span>
                     </div>
                 </div>
             </div>
@@ -217,32 +217,47 @@
                 <div class="ad-log">
                     <ul class="mCustomScrollbar content fluid light" data-mcs-theme="inset-2-dark"
                         style="height: 300px;width: 100%;">
-                        <?php for($i = 0; $i <= 10; $i++) :?>
-                        <li>
-                            <span class="tg-adverified cat_chemical">Salt</span>
-                            <h3>Sodium Orthophosphate</h3>
-                            <time datetime="2017-08-08">01 Day Ago</time>
-                        </li>
-                        <?php endfor;?>
+                        <div class="msgs-3-col-item" style="width: 100%;">
+                            <div class="search-details">
+                            <div style="width:100px;height:100px;border-radius:50%;background-color:red;display:none;"></div>
+                                <div class="details-wrapp">
+                                    <p class="detail-name">Chemical Name:</p>
+                                    <p class="detail-desc" id="chem_name">Water</p>
+                                </div>
+                                <div class="details-wrapp">
+                                    <p class="detail-name">Chemical Formula:</p>
+                                    <p class="detail-desc" id="chem_form">Water</p>
+                                </div>
+                                <div class="details-wrapp">
+                                    <p class="detail-name">Requested Quantity:</p>
+                                    <p class="detail-desc" id="req_quan">Water</p>
+                                </div>
+                                <div class="details-wrapp">
+                                    <p class="detail-name">Date Requested:</p>
+                                    <p class="detail-desc" id="req_date">Water</p>
+                                </div>
+                                <div class="details-wrapp">
+                                    <p class="detail-name">Stock:</p>
+                                    <p class="detail-desc" id="chem_stock">30g</p>
+                                </div>
+                            </div>
+                        </div>
                     </ul>
                 </div>
-                <h3>Note</h3>
+                <h3>Purpose</h3>
                 <div class="ad-log">
                     <ul class="mCustomScrollbar content fluid light" data-mcs-theme="inset-2-dark"
                         style="height: 300px;width: 100%;">
-                        <?php for($i = 0; $i <= 2; $i++) :?>
-                        <li>
-                            <span class="tg-adverified cat_chemical">Salt</span>
-                            <h3>Sodium Orthophosphate</h3>
-                            <time datetime="2017-08-08">01 Day Ago</time>
-                        </li>
-                        <?php endfor;?>
+                        <div class="msgs-3-col-item" style="width: 100%;">
+                            <div class="search-details" id="data-note">
+                            </div>
+                        </div>
                     </ul>
                 </div>
             </div>
             <div class="actionButtonModal">
-                <button>Deny</button>
-                <button id="cancelDeletion">Approve</button>
+                <!-- <button>Deny</button> -->
+                <button id="cancelDeletion" class="approve_req" >Approve</button>
             </div>
         </div>
     </div>

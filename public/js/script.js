@@ -43,6 +43,36 @@ $(document).on("click",".req_logs_", function(e) {
 	// $(rowId).slideToggle(400);
 	// $(".containerCollapse").not(rowId).slideUp(100);
 	$(".request_side").css("right","0");
+	let reqId = $(this).attr("data-reqid");
+	$(".approve_req").attr("data-reqid",reqId);
+	$.ajax({
+		url:"/admin/getRequestData",
+		type:"POST",
+		dataType:'json',
+		data:{reqId},
+		success:function(data){
+			$("#chem_name").text(data.chemical);
+			$(".cat_chemical_name").text(data.chemical);
+			$(".m_head_req h3").text(data.fname + " "+data.lname);
+			if(data.mStatus == 1){
+				$("#req_status_c").text("Approve");
+			}else{
+				$("#req_status_c").text("Pending");
+			}
+			$("#requester_initial").text(data.fname.charAt(0));
+			$("#dept_req").text(data.department);
+			$("#chem_form").html(htmlDecode(data.chem_formula));
+			$("#req_quan").text(data.quantity);
+			$("#req_date").text(data.reqDate);
+			$("#chem_stock").text(data.stock);
+			$("#data-note").text(data.purpose);
+		}
+	});
+
+});
+
+$(document).on("click","#close-side-req",function(){
+	$(".request_side").css("right","-33%");
 });
 
 $(document).on("click",".pencil",function(e){
@@ -523,6 +553,13 @@ $(document).on("click","#add-note-modal", function(){
 		$(".cc-main-form").css({"z-index":"1"});
 	}
 });
+function htmlDecode(value) {
+  if (value) {
+    return $('<div />').html(value).text();
+  } else {
+    return '';
+  }
+}
 let currentPage = window.location.pathname;
 if(currentPage == '/admin/student'){
 	filterDropDown("student-filter-table","3","student-filter-id","student-search-filter");

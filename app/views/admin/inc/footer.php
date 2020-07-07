@@ -63,7 +63,7 @@
 		});
 	}
 	// Start the intro
-	let host = "https://192.168.0.11";
+	let host = "https://chemlab.cf";
 	if(window.location.href == host+'/admin'){		  
 		introJs().setOption(
 			"showStepNumbers", false,"showBullets",false,'doneLabel', 'Next page').start().oncomplete(function() {

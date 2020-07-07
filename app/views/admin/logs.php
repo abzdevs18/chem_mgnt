@@ -9,7 +9,7 @@
 			<div class="content-head">
 				<h2>System logs</h2>
 			</div>
-			<div class="sortby filter-category">
+			<div class="sortby filter-category" id="pending2">
 				<div id="sort-drop">
 					<span>Filter event:</span>
 					<select id="event-filter-id">
@@ -25,7 +25,7 @@
 					<i class="fal fa-search"></i>
 				</div>
 			</div><!-- End of Sorting -->
-			<div class="job-list-tables cc_tbl_pagination">
+			<div class="job-list-tables cc_tbl_pagination" id="pending3">
 				<table id="log-filter-table">
 					<thead>
 						<tr>
@@ -81,7 +81,7 @@
 					</tbody>
 				</table>
 			</div><!-- End of Table Design -->
-			<div class="box cc-pagination-footer index_native" data-rows="5"></div>
+			<div class="box cc-pagination-footer index_native" data-rows="15" id="pending4"></div>
 		</div> 
 	</section>
 

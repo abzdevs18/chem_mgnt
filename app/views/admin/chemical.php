@@ -13,7 +13,7 @@
 					<li class="active-filter">All Chemicals <span>(10)</span></li>
 				</ul>
 			</div>
-			<div class="sortby filter-category">
+			<div class="sortby filter-category" id="pending2">
 				<div id="sort-drop" style="opacity: 0;">
 					<span>Sort by:</span>
 					<select id="brand-filter-table">
@@ -26,7 +26,7 @@
 					<i class="fal fa-search"></i>
 				</div>
 			</div><!-- End of Sorting -->
-			<div class="job-list-tables cc_tbl_pagination">
+			<div class="job-list-tables cc_tbl_pagination" id="pending3">
 				<table id="chemical-filter-table">
 					<thead>
 						<tr>
@@ -81,7 +81,7 @@
 					</tbody>
 				</table>
 			</div><!-- End of Table Design -->
-			<div class="box cc-pagination-footer index_native" data-rows="5"></div>
+			<div class="box cc-pagination-footer index_native" data-rows="5" id="pending4"></div>
 		</div>
 	</section>
 <?php require_once APP_ROOT . '/views/admin/inc/footer.php'; ?>

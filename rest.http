@@ -1,5 +1,5 @@
-# @host = https://chemlab.cf/
-@host = http://sfchem.cf.local/
+@host = https://chemlab.cf/
+# @host = http://sfchem.cf.local/
 
 GET {{host}}/Api/api_get_chemicals
 ###
@@ -29,6 +29,11 @@ quantity=67
 &purpose=Tssadd
 &account_type=1
 &subject=2
+###
+POST {{host}}/Api/api_account HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+usrId=6
 ###
 POST {{host}}/Api/api_get_latest_message HTTP/1.1
 Content-Type: application/x-www-form-urlencoded

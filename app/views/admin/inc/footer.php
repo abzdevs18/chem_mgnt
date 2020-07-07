@@ -63,7 +63,7 @@
 		});
 	}
 	// Start the intro
-	let host = "http://sfchem.cf.local";
+	let host = "https://192.168.0.11";
 	if(window.location.href == host+'/admin'){		  
 		introJs().setOption(
 			"showStepNumbers", false,"showBullets",false,'doneLabel', 'Next page').start().oncomplete(function() {
@@ -103,11 +103,11 @@
 			{
 				intro: "This are the list of the <em>Pending request</em>."
 			},
-			{
-				element: '#pending1',
-				intro: "List categories.",
-				position: 'bottom'
-			},
+			// {
+			// 	element: '#pending1',
+			// 	intro: "List categories.",
+			// 	position: 'bottom'
+			// },
 			{
 				element: '#pending2',
 				intro: "<em>Sort </em> or <em>Search</em> list items.",
@@ -127,6 +127,58 @@
 			]
 		});
 		req.start().oncomplete(function() {
+			window.location.href = '/admin/chemical';
+		});
+	  }else if (window.location.href == host+'/admin/chemical'){
+		var ch = introJs();
+		ch.setOptions({
+			doneLabel: "Next page",
+			steps: [
+			{
+				element: '#pending2',
+				intro: "Search chemical in the search input field.",
+				position: 'bottom'
+			},
+			{
+				element: '#pending3',
+				intro: "This the chemical stored in database.",
+				position: 'bottom'
+			},
+			{
+				element: '#pending4',
+				intro: "List pagination.",
+				position: 'bottom'
+			},
+
+			]
+		});
+		ch.start().oncomplete(function() {
+			window.location.href = '/admin/logs';
+		});
+	  }else if (window.location.href == host+'/admin/logs'){
+		var ch = introJs();
+		ch.setOptions({
+			doneLabel: "Next page",
+			steps: [
+			{
+				element: '#pending2',
+				intro: "Search chemical in the search input field.",
+				position: 'bottom'
+			},
+			{
+				element: '#pending3',
+				intro: "This are just system logs about system activities.",
+				position: 'bottom'
+			},
+			{
+				element: '#pending4',
+				intro: "Your humble pagination!.",
+				position: 'bottom'
+			}
+
+			]
+		});
+		ch.start().oncomplete(function() {
 			window.location.href = '/admin/request';
 		});
 	  }

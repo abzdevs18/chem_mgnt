@@ -37,7 +37,7 @@ $(document).ready(function() {
 	});
 });
 
-$(document).on("click",".req_logs_", function(e) {
+$(document).on("click",".req_item_client", function(e) {
 	e.stopPropagation();
 	// let rowId = $(this).attr("data-rowId");
 	// $(rowId).slideToggle(400);
@@ -68,7 +68,6 @@ $(document).on("click",".req_logs_", function(e) {
 			$("#data-note").text(data.purpose);
 		}
 	});
-
 });
 
 $(document).on("click","#close-side-req",function(){

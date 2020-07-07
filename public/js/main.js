@@ -38,7 +38,7 @@ if(currentPage == '/admin/request'){
         uType += `<span class="ch-request-status" style="background: var(--dispose-properly-label);color: #fff;">Student</span>`;
       }
       let item = `
-      <tr class="req_logs_"  data-reqid="`+data[i].req_id+`"  data-rowId="#contentId`+i+`" id="pending3">
+      <tr class="req_logs_ req_item_client"  data-reqid="`+data[i].req_id+`"  data-rowId="#contentId`+i+`" id="pending3">
         <td style="text-align: center;" class="ch-selection-item-action">
           <div class="ch-checkbox-item" data-checked></div>
           <!-- <input type="checkbox" name=""> -->

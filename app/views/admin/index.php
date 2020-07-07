@@ -5,7 +5,7 @@
 	</section>
 	<?php if($data['user'][0]->user_type == 1):?>
 	<section class="main-section mar-30">
-		<div class="row" data-intro='Here you will see the graphical representation of <em>Monthly/Pending request, Chemicals in laboratory and number of Registered student</em>".' data-step="7">
+		<div class="row">
 			<div class="col-4">
 				<sup><i class="fal fa-question-circle" style="font-size:12px;" title="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi est eaque laborum eum sit? Ipsa earum dolor velit non praesentium architecto hic cupiditate fugiat sed. Maiores quod repellendus aliquam commodi."></i></sup>
 				<div class="col-wrap pad-30">
@@ -15,7 +15,7 @@
 					<div class="col-content">
 						<p><?php print_r($data['avg'])?></p>
 						<h3>Avg. Request/month</h3>
-						<a href="#" class="graphDetails" data-intro='To check the statistics of the request click <em>view details</em>".' data-step="8">view details <i class="fal fa-angle-right"></i></a>						
+						<a href="#" class="graphDetails">view details <i class="fal fa-angle-right"></i></a>						
 					</div>
 				</div>
 			</div>
@@ -94,9 +94,9 @@
 		</div>
 	</section>
 	
-	<section class="offices-msgs" style="justify-content:left;"  data-step="2" data-hint="Number of request from idela users">
+	<section class="offices-msgs" style="justify-content:left;">
 		<div class="alerts-notif" style="width:40%;">
-			<div class="alert-content" data-intro='Users needs to be verified before requesting chemicals. Here are the list of <em>Registration request</em>".' data-step="9">
+			<div class="alert-content" data-intro='Here are the list of <em>Latest Registration</em>".' data-step="9">
 				<div class="content-head">
 					<h2>Latest Registration <sup><i class="fal fa-question-circle" style="font-size:12px;" title="Admin can approve the student registration in here. Account listed in here are not allowed to request anything. Red are Faculty"></i></sup></h2>
 				</div>
@@ -128,7 +128,7 @@
 	<section class="updates-msgs things-notdone" style="display:flex;flex-direction:row;">
 	<?php if($data['user'][0]->user_type == 1):?>
 		<div class="msgs-acc" style="width:66.66%;">
-			<div class="msgs-container" data-intro='Communication is essential. Here you can <em>Message</em> the registered faculty".' data-step="11">
+			<div class="msgs-container">
 				<div class="content-head">
 					<h2>Faculty Messages</h2>
 				</div>	
@@ -199,7 +199,7 @@
 			</div>			
 		</div>
 	<?php else:?>		
-		<div class="row" style="display: grid;grid-template-columns: repeat(2,1fr);width: 66.66%;grid-template-rows: repeat(2,1fr);grid-gap: 10px;" data-intro='Here you will see the graphical representation of <em>Monthly/Pending request, Chemicals in laboratory and number of Registered student</em>".' data-step="7">
+		<div class="row" style="display: grid;grid-template-columns: repeat(2,1fr);width: 66.66%;grid-template-rows: repeat(2,1fr);grid-gap: 10px;">
 			<div class="col-4" style="width:unset;margin:unset;">
 				<sup><i class="fal fa-question-circle" style="font-size:12px;" title="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi est eaque laborum eum sit? Ipsa earum dolor velit non praesentium architecto hic cupiditate fugiat sed. Maiores quod repellendus aliquam commodi."></i></sup>
 				<div class="col-wrap pad-30" style="margin-top:50px;">
@@ -251,7 +251,7 @@
 		</div>
 	<?php endif ?>
 		<div class="alerts-notif">
-			<div class="alert-content" data-intro='With every request from the user, will be shown in here categories by user type.' data-step="12">
+			<div class="alert-content">
 				<div class="content-head">
 					<h2>Request <sup><i class="fal fa-question-circle" style="font-size:12px;" title="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi est eaque laborum eum sit? Ipsa earum dolor velit non praesentium architecto hic cupiditate fugiat sed. Maiores quod repellendus aliquam commodi."></i></sup></h2>
 				</div>

@@ -28,7 +28,7 @@
 					<div class="col-content">
 						<p><?php print_r($data['pending'])?></p>
 						<h3>Pending Request</h3>
-						<a href="#">view details <i class="fal fa-angle-right"></i></a>
+						<a href="#" class="graphDetails" >view details <i class="fal fa-angle-right"></i></a>
 					</div>
 				</div>
 			</div>
@@ -41,7 +41,7 @@
 					<div class="col-content">
 						<p><?php print_r($data['chem'])?></p>
 						<h3>Chemical in Lab</h3>
-						<a href="#">view details <i class="fal fa-angle-right"></i></a>
+						<a href="#" class="graphDetails" >view details <i class="fal fa-angle-right"></i></a>
 					</div>
 				</div>
 			</div>
@@ -54,7 +54,7 @@
 					<div class="col-content">
 						<p><?php print_r($data['user_count'])?></p>
 						<h3>University Users</h3>
-						<a href="#">view details <i class="fal fa-angle-right"></i></a>
+						<a href="#" class="graphDetails" >view details <i class="fal fa-angle-right"></i></a>
 					</div>
 				</div>
 			</div>

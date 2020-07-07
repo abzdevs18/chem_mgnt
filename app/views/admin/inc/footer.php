@@ -25,6 +25,8 @@
 	<script>  
 		var notif = new Audio('/media/audio/notif.mp3');
 		socket.on("new_req",function(data){
+    					notif.play();
+						demo();
 			let id = data['stud_id'];
 			$.ajax({
 				url: URL_ROOT + "/Admin/newRequest",
@@ -35,9 +37,7 @@
 				dataType:'json',
 				success: function(data) {
 					if(data.status == '1'){
-    					notif.play();
 						// console.log(data['req_usr_id']['chem']);
-						demo();
 					}
 				},
 				error: function(err) {
